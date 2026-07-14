@@ -1,8 +1,8 @@
-# Eticas AI Risk Taxonomy (Public)
+# Eticas AI Risk Taxonomy
 
-This is the public version of the Eticas AI Risk Taxonomy — a structured, machine-readable vocabulary of AI risk categories used across Eticas' audit methodologies, assessment frameworks, and reporting outputs.
+Eticas AI Risk Taxonomy is a structured, machine-readable vocabulary of AI risks used across Eticas' audit methodologies, assessment frameworks, and reporting outputs. The taxonomy consolidates AI risks from diverse sources and aligns them with governance frameworks based on prior research, and  our real-world expertised in the field. 
 
-This repository contains only the concepts and mappings that are already published on the public taxonomy site.
+This repository contains the concepts and mappings that are already published on the public taxonomy site.
 
 ## What's in this repository
 

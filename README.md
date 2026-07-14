@@ -49,5 +49,3 @@ If you use this taxonomy in your work, please cite:
 ```
 
 Eticas. (2026). Eticas AI Risk Taxonomy.
-
-https://taxonomy.eticas.ai/risk/

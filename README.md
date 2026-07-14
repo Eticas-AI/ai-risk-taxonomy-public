@@ -6,9 +6,9 @@ This repository contains the concepts and mappings that are already published on
 
 ## What's in this repository
 
-- `src/taxonomy.yaml` — established-maturity categories, sub-groups, and subcategories, with their definitions, scope, lifecycle stages, and mappings to external frameworks
-- `src/mappings.yaml` — definitions of the external frameworks referenced in `taxonomy.yaml` (EU AI Act, NIST AI RMF, ISO/IEC 42001, MIT AI Risk Repository, and others)
-- `src/config.yaml` — namespace and versioning metadata
+- `taxonomy.yaml` — established-maturity categories, sub-groups, and subcategories, with their definitions, scope, lifecycle stages, and mappings to external frameworks
+- `mappings.yaml` — definitions of the external frameworks referenced in `taxonomy.yaml` (EU AI Act, NIST AI RMF, ISO/IEC 42001, MIT AI Risk Repository, and others)
+- `config.yaml` — namespace and versioning metadata
 
 ## License
 
@@ -29,7 +29,7 @@ If you use this taxonomy in your work, please cite:
       url={https://arxiv.org/abs/2607.02201},
 }
 
+```
+
 Eticas. (2026). Eticas AI Risk Taxonomy.
 https://taxonomy.eticas.ai/risk/
-
-```

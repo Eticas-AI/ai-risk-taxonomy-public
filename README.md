@@ -2,11 +2,10 @@
 
 Eticas AI Risk Taxonomy is a structured, machine-readable vocabulary of AI risks used across Eticas' audit methodologies, assessment frameworks, and reporting outputs. The taxonomy consolidates AI risks from diverse sources and aligns them with governance frameworks based on prior research, and  our real-world expertised in the field. 
 
-Read the paper [The Eticas AI Risk Taxonomy: Open Infrastructure for Operationalizing AI Audits](https://arxiv.org/abs/2607.02201)
-
-Browse the taxonomy: [taxonomy.eticas.ai](https://taxonomy.eticas.ai)
-
 This repository contains the concepts and mappings that are already published on the public taxonomy site.
+
+Read the paper [The Eticas AI Risk Taxonomy: Open Infrastructure for Operationalizing AI Audits](https://arxiv.org/abs/2607.02201)  
+Browse the taxonomy: [taxonomy.eticas.ai](https://taxonomy.eticas.ai)
 
 ## Risk categories
 

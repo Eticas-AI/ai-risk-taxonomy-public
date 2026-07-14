@@ -1,0 +1,120 @@
+# External framework definitions
+#
+# Each entry defines a framework that taxonomy concepts can be mapped to.
+# The type field groups frameworks into three buckets:
+#   compliance: legally binding regulations or directly certifiable standards
+#   reference:  policy frameworks and principles (soft-law, voluntary)
+#   taxonomy:   academic taxonomies, vendor research, and SKOS/OWL vocabularies
+
+frameworks:
+  eu_ai_act:
+    type: compliance
+    name: EU AI Act (Regulation 2024/1689)
+    url: https://artificialintelligenceact.eu
+    base_uri: https://w3id.org/dpv/legal/eu/aiact#
+  iso_42001:
+    type: compliance
+    name: ISO/IEC 42001:2023 — AI Management System
+    url: https://www.iso.org/standard/42001
+    base_uri: https://taxonomy.eticas.ai/external/iso-42001/
+  aiuc1:
+    type: compliance
+    name: AIUC-1 — AI Underwriting Company Standard
+    version: Q2-2026
+    url: https://www.aiuc-1.com
+    base_uri: https://taxonomy.eticas.ai/external/aiuc-1/
+  coe_ai_convention:
+    type: compliance
+    name: Council of Europe Framework Convention on AI (CETS No. 225)
+    version: Adopted May 2024
+    url: https://www.coe.int/en/web/artificial-intelligence/the-framework-convention-on-artificial-intelligence
+    base_uri: https://taxonomy.eticas.ai/external/coe-cets-225/
+  ieee_7001:
+    type: compliance
+    name: IEEE Std 7001-2021 — Transparency of Autonomous Systems
+    version: '2021'
+    url: https://standards.ieee.org/ieee/7001/6929/
+    base_uri: https://taxonomy.eticas.ai/external/ieee-7001/
+  ieee_7002:
+    type: compliance
+    name: IEEE Std 7002-2022 — Data Privacy Process
+    version: '2022'
+    url: https://standards.ieee.org/ieee/7002/6898/
+    base_uri: https://taxonomy.eticas.ai/external/ieee-7002/
+  ieee_7003:
+    type: compliance
+    name: IEEE Std 7003-2024 — Algorithmic Bias Considerations
+    version: '2024'
+    url: https://standards.ieee.org/ieee/7003/7194/
+    base_uri: https://taxonomy.eticas.ai/external/ieee-7003/
+  nist_rmf:
+    type: reference
+    name: NIST AI Risk Management Framework (AI 100-1)
+    version: 1.0 (January 2023)
+    url: https://www.nist.gov/itl/ai-risk-management-framework
+    base_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/
+  nist_600:
+    type: reference
+    name: NIST AI 600-1 — Generative AI Risk Profile
+    version: 1.0 (July 2024)
+    url: https://doi.org/10.6028/NIST.AI.600-1
+    base_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/
+  oecd:
+    type: reference
+    name: OECD AI Principles
+    version: 2024 revision
+    url: https://oecd.ai/en/ai-principles
+    base_uri: https://taxonomy.eticas.ai/external/oecd-ai/
+  tc260:
+    type: reference
+    name: TC260 AI Safety Governance Framework (v2.0)
+    version: v2.0 (September 2025)
+    url: https://www.cac.gov.cn/2025-09/15/c_1759653448369123.htm
+    base_uri: https://taxonomy.eticas.ai/external/tc260/
+  csa_agentic_profile:
+    type: reference
+    name: CSA Agentic Profile (NIST AI RMF v1)
+    version: v1 (2025)
+    url: https://labs.cloudsecurityalliance.org/agentic/agentic-nist-ai-rmf-profile-v1/
+    base_uri: https://taxonomy.eticas.ai/external/csa-agentic-profile/
+  owasp_agentic_top10:
+    type: reference
+    name: OWASP Top 10 for Agentic Applications 2026
+    version: 2026 (December 2025)
+    url: https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/
+    base_uri: https://taxonomy.eticas.ai/external/owasp-agentic/
+  ieee_2894:
+    type: reference
+    name: IEEE Std 2894-2024 — Architectural Framework for Explainable AI (Guide)
+    version: '2024'
+    url: https://standards.ieee.org/ieee/2894/11296/
+    base_uri: https://taxonomy.eticas.ai/external/ieee-2894/
+  mit:
+    type: taxonomy
+    name: MIT AI Risk Repository
+    version: v4 (December 2025)
+    url: https://airisk.mit.edu
+    paper: Slattery et al., Patterns (Cell Press), March 2026
+    license: CC BY 4.0
+    base_uri: https://airisk.mit.edu/domain/
+  air_2024:
+    type: taxonomy
+    name: AIR 2024
+    version: 1.0 (June 2024)
+    url: https://arxiv.org/abs/2406.17864
+    paper: 'Zeng et al., AIR 2024: A Safety Risk Taxonomy for AI'
+    base_uri: https://taxonomy.eticas.ai/external/air-2024/
+  ibm_atlas:
+    type: taxonomy
+    name: IBM AI Risk Atlas
+    version: 2024-2025 (integrated into IBM Risk Atlas Nexus)
+    url: https://www.ibm.com/docs/en/watsonx/saas?topic=ai-risk-atlas
+    base_uri: https://taxonomy.eticas.ai/external/ibm-risk-atlas/
+  dpv_ai:
+    type: taxonomy
+    name: W3C Data Privacy Vocabulary — AI Extension
+    version: 2.3 (February 2026)
+    url: https://w3c.github.io/dpv/2.3/ai/
+    repository: https://github.com/w3c/dpv
+    base_uri: https://w3id.org/dpv/ai#
+    concept_url_prefix: https://w3c.github.io/dpv/2.3/ai/#

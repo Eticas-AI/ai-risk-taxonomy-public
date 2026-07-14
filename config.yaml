@@ -1,0 +1,15 @@
+# Taxonomy configuration
+
+namespace: "https://taxonomy.eticas.ai/risk/"
+version: "3.0.0"
+title: "Eticas AI Risk Taxonomy"
+description: >
+  A unified AI risk taxonomy for use across Eticas audit
+  methodologies, assessment frameworks, and reporting outputs.
+publisher: "Eticas"
+publisher_url: "https://eticas.ai"
+license_public: "https://creativecommons.org/licenses/by/4.0/"
+# The internal (full) distribution is proprietary to Eticas and not
+# published under an open licence. No dcterms:license is emitted in
+# the internal SKOS distribution.
+language: "en"

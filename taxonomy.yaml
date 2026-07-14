@@ -1,0 +1,1887 @@
+concepts:
+- id: bias-fairness
+  type: category
+  label: Bias & Fairness
+  alt_labels:
+  - Fairness
+  - Bias & Discrimination
+  - Algorithmic fairness
+  definition: 'The risk that an AI system produces outcomes that systematically advantage or disadvantage
+    individuals or groups based on protected or sensitive attributes, leading to unequal treatment, reduced
+    accuracy, or unjust impacts. This includes biases introduced through data, model design, or deployment
+    context, and covers both measurable disparities and perceived unfairness in decision-making.
+
+    '
+  scope: ALL
+  lifecycle_stages:
+  - pre-processing
+  - in-processing
+  - post-processing
+  maturity: established
+  perspective: rights & ethics
+  mappings:
+  - framework: mit
+    target_id: domain-1
+    target_label: Discrimination & Toxicity
+    relation: closeMatch
+    citation: Risks related to unfair treatment, harmful content exposure, and unequal AI performance
+      across different groups.
+  - framework: nist_600
+    target_id: harmful-bias
+    target_label: §2.6 Harmful Bias and Homogenization
+    relation: closeMatch
+    citation: Amplification and exacerbation of historical, societal, and systemic biases; performance
+      disparities and homogenization of outputs.
+  - framework: nist_rmf
+    target_id: fair
+    target_label: Fair with Harmful Bias Managed + Map 5.1 + Measure 2.11
+    relation: closeMatch
+    citation: Fairness in AI includes concerns for equality and equity by addressing issues such as harmful
+      bias and discrimination.
+  - framework: eu_ai_act
+    target_id: article-10-5-annex-iii
+    target_label: Article 10(5) + Article 6(2) + Annex III — bias-relevant data governance and high-risk
+      classification
+    relation: closeMatch
+    citation: Art. 10(5) on special categories of personal data; Art. 6(2) and Annex III define high-risk
+      uses where bias is the primary concern.
+  - framework: oecd
+    target_id: principle-1.2
+    target_label: Human rights, rule of law, fairness & privacy
+    relation: broadMatch
+    citation: Principle 1.2 covers fairness alongside rights-based concerns. Bias is not separately enumerated.
+  - framework: dpv_ai
+    target_id: AIBias
+    target_label: AI Bias
+    target_url: https://w3c.github.io/dpv/2.3/ai/#AIBias
+    relation: closeMatch
+    citation: Bias associated with development, use, or other activities involving an AI technology or
+      system. (DPV AI extension)
+  - framework: iso_42001
+    target_id: A.7.4
+    target_label: A.7.4 — Data for AI systems
+    relation: narrowMatch
+    citation: A.7.4 sets criteria for data sources and treatment of bias in data used by AI systems.
+  - framework: aiuc1
+    target_id: C.3-C.4-C.6
+    target_label: C.3 + C.4 + C.6 — safeguards to prevent harmful and vulnerable outputs
+    relation: relatedMatch
+    citation: C.3/C.4/C.6 prevent harmful outputs; AIUC-1 has no dedicated bias/fairness domain.
+  - framework: air_2024
+    target_id: L1-LegalRightsRelated
+    target_label: Legal & Rights-Related Risks (3.1.D)
+    relation: broadMatch
+    citation: AIR places bias under Legal & Rights-Related Risks; other sub-sections also apply.
+  - framework: ibm_atlas
+    target_id: output-fairness-and-training-data
+    target_label: Output → Fairness + Training data → Accuracy + Fairness
+    relation: closeMatch
+    citation: IBM Atlas covers bias at Output (Fairness dimension) and Training data (Accuracy + Fairness)
+      stages.
+  - framework: tc260
+    target_id: 3.1.1b-3.3.2a
+    target_label: §3.1.1(b) Model and algorithm risks (bias/discrimination) + §3.3.2(a) Ethical risks
+      (systemic social discrimination)
+    relation: closeMatch
+    citation: TC260 identifies bias introduced through models/algorithms and data-driven social discrimination
+      as risks under Endogenous and Derivative categories respectively.
+  - framework: coe_ai_convention
+    target_id: article-10
+    target_label: Article 10 — Equality and non-discrimination
+    relation: closeMatch
+    citation: The Convention requires parties to take measures to address discrimination risks from AI
+      systems.
+  - framework: ieee_7003
+    target_id: clause-7-and-9
+    target_label: Clauses 7 & 9 — Data Representation; Evaluation
+    relation: closeMatch
+    citation: The bias profile process (Clauses 4–9) treats algorithmic bias transversally; Clause 7 covers
+      data-driven bias spanning outcome disparities, representational harm (demographic skew, stereotyping)
+      and dynamic/systemic patterns, and Clause 9 defines methods to evaluate bias in AIS design and outputs
+      across stakeholder groups.
+- id: geographic-cultural-language-skew
+  type: subcategory
+  broader: bias-representational-harm
+  maturity: established
+  label: Geographic, cultural, or language skew
+  definition: 'Systematic performance differences across geographies, cultures, or languages, often resulting
+    from training data that overrepresents certain regions or linguistic traditions.
+
+    '
+  scope: ALL
+  lifecycle_stages:
+  - pre-processing
+  - in-processing
+  - post-processing
+  mappings:
+  - framework: mit
+    target_id: subdomain-1.1
+    target_label: Unfair discrimination & misrepresentation
+    relation: narrowMatch
+  - framework: nist_600
+    target_id: harmful-bias
+    target_label: Harmful Bias & Homogenization
+    relation: narrowMatch
+  - framework: dpv_ai
+    target_id: NonRepresentativeSamplingBias
+    target_label: Non-Representative Sampling Bias
+    target_url: https://w3c.github.io/dpv/2.3/ai/#NonRepresentativeSamplingBias
+    relation: closeMatch
+- id: feedback-loops
+  type: subcategory
+  broader: bias-dynamic-systemic-bias
+  maturity: established
+  label: Feedback loops reinforcing inequality
+  definition: 'System outputs that, when fed back into the system or its operational context, amplify
+    existing biases over time.
+
+    '
+  scope: ALL
+  lifecycle_stages:
+  - post-processing
+  mappings:
+  - framework: nist_rmf
+    target_id: systemic-bias
+    target_label: Systemic bias under harmful bias
+    relation: narrowMatch
+  - framework: iso_42001
+    target_id: A.6.2.6
+    target_label: AI system operation and monitoring
+    relation: closeMatch
+  - framework: ibm_atlas
+    target_id: societal-impact-drift
+    target_label: Output → Drift + Non-technical → Societal impact
+    relation: closeMatch
+- id: bias-outcome-disparities
+  type: subgroup
+  broader: bias-fairness
+  label: Outcome disparities
+  definition: Risks related to unequal treatment, allocation, or performance outcomes across demographic
+    and protected groups. These are observable differences in what the system does to or for different
+    groups.
+  mappings:
+  - framework: mit
+    target_id: subdomain-1.3
+    target_label: Unequal performance across groups
+    relation: exactMatch
+  - framework: nist_600
+    target_id: harmful-bias
+    target_label: Harmful Bias & Homogenization
+    relation: broadMatch
+  - framework: nist_rmf
+    target_id: manage-2.3
+    target_label: Manage 2.3 — allocation harms and disparate performance
+    relation: closeMatch
+  - framework: eu_ai_act
+    target_id: annex-iii
+    target_label: Annex III high-risk uses (employment, education, essential services)
+    relation: closeMatch
+  - framework: dpv_ai
+    target_id: DataBias
+    target_label: Data Bias
+    target_url: https://w3c.github.io/dpv/2.3/ai/#DataBias
+    relation: broadMatch
+  - framework: iso_42001
+    target_id: A.5.2
+    target_label: AI system impact assessment
+    relation: closeMatch
+  - framework: aiuc1
+    target_id: C.5
+    target_label: Prevent customer-defined high-risk outputs
+    relation: narrowMatch
+  - framework: air_2024
+    target_id: L2-DiscriminationBias
+    target_label: Discrimination & Bias (Discriminatory Activities)
+    relation: closeMatch
+  - framework: ibm_atlas
+    target_id: output-bias
+    target_label: Output bias (Fairness dimension)
+    relation: exactMatch
+- id: disparate-impact-protected-groups
+  type: subcategory
+  broader: bias-outcome-disparities
+  maturity: established
+  label: Disparate impact on protected groups
+  definition: The system produces systematically different — typically worse — outcomes for individuals
+    belonging to protected groups, including across multiple intersecting attributes (race, gender, age,
+    disability, etc.). Encompasses unequal allocation of opportunity, quality of service disparities,
+    intersectional unfairness, and accessibility barriers.
+  scope: ALL
+  lifecycle_stages:
+  - post-processing
+  alt_labels:
+  - Disparate impact
+  - Quality of service disparity
+  - Allocation of opportunity
+  - Intersectional unfairness
+  - Accessibility barriers
+  mappings:
+  - framework: mit
+    target_id: subdomain-1.1
+    target_label: Unfair discrimination and misrepresentation
+    relation: closeMatch
+  - framework: mit
+    target_id: subdomain-1.3
+    target_label: Unequal performance across groups
+    relation: closeMatch
+  - framework: nist_600
+    target_id: harmful-bias
+    target_label: Harmful Bias & Homogenization
+    relation: broadMatch
+  - framework: nist_rmf
+    target_id: harmful-bias
+    target_label: Harmful bias / disparate performance
+    relation: closeMatch
+  - framework: eu_ai_act
+    target_id: article-5-1c
+    target_label: Article 5(1)(c) — prohibited social scoring
+    relation: closeMatch
+  - framework: eu_ai_act
+    target_id: article-10
+    target_label: Article 10 — data and data governance
+    relation: closeMatch
+  - framework: dpv_ai
+    target_id: Discrimination
+    target_label: Discrimination
+    target_url: https://w3c.github.io/dpv/2.3/risk/#Discrimination
+    relation: closeMatch
+  - framework: iso_42001
+    target_id: A.5.2
+    target_label: AI system impact assessment
+    relation: closeMatch
+  - framework: air_2024
+    target_id: L2-DiscriminationBias-protected
+    target_label: Discrimination & Bias × Protected Characteristics (60 Level-4 risks)
+    relation: closeMatch
+  - framework: ibm_atlas
+    target_id: output-fairness
+    target_label: Output → Fairness dimension
+    relation: closeMatch
+- id: bias-representational-harm
+  type: subgroup
+  broader: bias-fairness
+  label: Representational harm
+  definition: Risks related to how the system represents groups in its outputs — through stereotypes,
+    toxic content, skewed representation, or homogenization. These are harms in the form of meaning and
+    content rather than allocation of resources or opportunities.
+  mappings:
+  - framework: mit
+    target_id: subdomain-1.1
+    target_label: Unfair discrimination & misrepresentation
+    relation: closeMatch
+  - framework: nist_600
+    target_id: harmful-bias
+    target_label: Harmful Bias & Homogenization (representational dimension)
+    relation: narrowMatch
+  - framework: nist_rmf
+    target_id: harmful-bias
+    target_label: Harmful bias (representational dimension)
+    relation: narrowMatch
+  - framework: dpv_ai
+    target_id: NonRepresentativeSamplingBias
+    target_label: Non-Representative Sampling Bias
+    target_url: https://w3c.github.io/dpv/2.3/ai/#NonRepresentativeSamplingBias
+    relation: narrowMatch
+  - framework: ibm_atlas
+    target_id: toxicity-harmful-output
+    target_label: Output → Toxicity / Harmful output
+    relation: narrowMatch
+- id: bias-dynamic-systemic-bias
+  type: subgroup
+  broader: bias-fairness
+  label: Dynamic & Systemic bias
+  definition: Risks related to how bias is amplified or perpetuated over time through interaction between
+    AI systems and the social systems they operate in.
+  mappings:
+  - framework: nist_rmf
+    target_id: systemic-bias
+    target_label: Systemic bias under harmful bias
+    relation: closeMatch
+  - framework: nist_600
+    target_id: harmful-bias
+    target_label: Harmful Bias & Homogenization (systemic dimension)
+    relation: narrowMatch
+  - framework: eu_ai_act
+    target_id: article-9
+    target_label: Article 9 — risk management throughout lifecycle
+    relation: closeMatch
+  - framework: eu_ai_act
+    target_id: article-72
+    target_label: Article 72 — post-market monitoring
+    relation: closeMatch
+  - framework: dpv_ai
+    target_id: AutomationBias
+    target_label: Automation Bias
+    target_url: https://w3c.github.io/dpv/2.3/ai/#AutomationBias
+    relation: closeMatch
+  - framework: oecd
+    target_id: principle-1.5
+    target_label: Accountability — lifecycle bias monitoring
+    relation: closeMatch
+  - framework: iso_42001
+    target_id: A.6.2.6
+    target_label: AI system operation and monitoring
+    relation: closeMatch
+  - framework: aiuc1
+    target_id: C.8
+    target_label: Monitor AI risk categories
+    relation: relatedMatch
+  - framework: mit
+    target_id: subdomain-6.5
+    target_label: Governance failure
+    relation: relatedMatch
+  - framework: ibm_atlas
+    target_id: societal-impact-drift
+    target_label: Output → Drift + Non-technical → Societal impact
+    relation: closeMatch
+- id: privacy-confidentiality
+  type: category
+  label: Privacy & Confidentiality
+  alt_labels:
+  - Privacy
+  - Data Privacy
+  definition: 'The risk that an AI system collects, processes, or infers personal information in ways
+    that infringe on individuals'' rights to control their data (privacy), or that sensitive information
+    is exposed, accessed, or shared without authorization (confidentiality). This includes risks from
+    data leakage, re-identification, unauthorized use, or insufficient safeguards.
+
+    '
+  scope: ALL
+  lifecycle_stages:
+  - pre-processing
+  - in-processing
+  - post-processing
+  maturity: established
+  perspective: rights & ethics
+  mappings:
+  - framework: mit
+    target_id: subdomain-2.1
+    target_label: Compromise of privacy by obtaining, leaking or correctly inferring sensitive information
+    relation: closeMatch
+    citation: Privacy risks from data collection, model memorisation, and inference attacks that expose
+      sensitive personal information.
+  - framework: nist_600
+    target_id: data-privacy
+    target_label: Data Privacy
+    relation: closeMatch
+    citation: Data privacy risks including unauthorized access, collection, and inference of personal
+      data by AI systems.
+  - framework: nist_rmf
+    target_id: privacy-enhanced
+    target_label: Privacy-Enhanced
+    relation: closeMatch
+    citation: Privacy values including data minimisation, consent, and de-identification throughout the
+      AI lifecycle.
+  - framework: oecd
+    target_id: principle-1.2
+    target_label: Human rights, rule of law, fairness & privacy
+    relation: broadMatch
+    citation: Principle 1.2 covers privacy alongside human rights and fairness concerns.
+  - framework: dpv_ai
+    target_id: PersonalDataHandling
+    target_label: Personal Data Handling (DPV core)
+    relation: broadMatch
+    target_url: https://w3c.github.io/dpv/2.3/dpv/#PersonalDataHandling
+    citation: Personal Data Handling as defined in DPV core; broader than AI-specific privacy risks.
+  - framework: eu_ai_act
+    target_id: article-10-5-recital-47
+    target_label: Article 10(5) — special categories of personal data + Recital 47 (fundamental rights
+      including privacy)
+    relation: closeMatch
+    citation: Art. 10(5) on special categories of personal data; Recital 47 on fundamental rights including
+      privacy.
+  - framework: iso_42001
+    target_id: A.7.5
+    target_label: Privacy considerations for AI systems
+    relation: closeMatch
+    citation: A.7.5 establishes privacy considerations specific to AI system data processing.
+  - framework: aiuc1
+    target_id: A
+    target_label: Data & Privacy domain
+    relation: exactMatch
+    citation: Domain A covers data and privacy comprehensively; exactMatch at category level.
+  - framework: air_2024
+    target_id: L2-Privacy
+    target_label: Legal & Rights → Privacy (Unauthorized Privacy Violations × Sensitive Data types)
+    relation: broadMatch
+    citation: AIR structures privacy under Legal & Rights-Related Risks with granular violation types.
+  - framework: ibm_atlas
+    target_id: input-output-privacy
+    target_label: Input → Data privacy + Output → Privacy violations
+    relation: closeMatch
+    citation: IBM Atlas covers privacy at both Input (data privacy) and Output (privacy violations) stages.
+  - framework: tc260
+    target_id: 3.1.2a-3.1.2d
+    target_label: §3.1.2(a) Data risks — collection without consent + §3.1.2(d) Data risks — PII leaks
+    relation: closeMatch
+    citation: TC260 identifies data collection without consent and PII leak risks under Endogenous Data
+      Risks.
+  - framework: coe_ai_convention
+    target_id: article-11
+    target_label: Article 11 — Privacy and personal data protection
+    relation: closeMatch
+    citation: The Convention requires protection of privacy and personal data throughout the AI lifecycle.
+  - framework: ieee_7002
+    target_id: standard
+    target_label: IEEE 7002-2022 (whole standard)
+    relation: closeMatch
+    citation: Systems-engineering process for privacy-oriented considerations across the development lifecycle,
+      with procedures, diagrams and checklists for conformity assessment, and PIAs as the identification
+      tool.
+- id: privacy-collection-use
+  type: subgroup
+  broader: privacy-confidentiality
+  label: Data collection & use
+  definition: Risks from how personal data is collected, processed, and repurposed.
+  mappings:
+  - framework: dpv_ai
+    target_id: PersonalDataCollection
+    target_label: Personal Data Handling
+    target_url: https://w3c.github.io/dpv/2.3/ai/#PersonalDataHandling
+    relation: closeMatch
+  - framework: eu_ai_act
+    target_id: article-5
+    target_label: Article 5 — Prohibited AI practices (emotion recognition, biometric categorization)
+    relation: relatedMatch
+- id: unlawful-data-processing
+  type: subcategory
+  broader: privacy-collection-use
+  maturity: established
+  label: Unlawful collection or processing of personal data
+  definition: 'Collection, storage, or processing of personal data without adequate legal basis, consent,
+    or compliance with applicable data protection regulations.
+
+    '
+  scope: ALL
+  lifecycle_stages:
+  - pre-processing
+  mappings:
+  - framework: eu_ai_act
+    target_id: article-10
+    target_label: Article 10 — data and data governance
+    relation: closeMatch
+  - framework: dpv_ai
+    target_id: PersonalDataHandling
+    target_label: Personal Data Handling
+    relation: closeMatch
+  - framework: air_2024
+    target_id: L3-UnauthorizedPrivacyViolations
+    target_label: Privacy → Unauthorized Privacy Violations
+    relation: closeMatch
+- id: function-creep
+  type: subcategory
+  broader: privacy-collection-use
+  maturity: established
+  label: Function creep
+  definition: 'Repurposing of personal data beyond the original intent or consent scope, including secondary
+    uses not anticipated at collection time.
+
+    '
+  scope: ALL
+  lifecycle_stages:
+  - post-processing
+  mappings:
+  - framework: dpv_ai
+    target_id: PersonalDataHandling
+    target_label: Personal Data Handling (purpose limitation)
+    relation: relatedMatch
+  - framework: iso_42001
+    target_id: A.6.2.2
+    target_label: Documented intended use
+    relation: closeMatch
+- id: inference-based-profiling
+  type: subcategory
+  broader: privacy-collection-use
+  maturity: established
+  label: Inference-based profiling of sensitive attributes
+  definition: 'Inference of sensitive attributes or characteristics — emotional states, political opinions,
+    sexual orientation, health status, and similar — from behavioural, interaction, or other proxy data
+    the individual did not directly disclose. Generalises the former emotion-inference-profiling concept
+    beyond emotion recognition to inference-based profiling at large.
+
+    '
+  scope: ALL
+  lifecycle_stages:
+  - in-processing
+  - post-processing
+  mappings:
+  - framework: eu_ai_act
+    target_id: article-5-1f
+    target_label: Article 5(1)(f) — emotion recognition in workplace and education (prohibited)
+    relation: closeMatch
+  - framework: eu_ai_act
+    target_id: article-5-1g
+    target_label: Article 5(1)(g) — biometric categorization for sensitive attributes
+    relation: closeMatch
+  - framework: air_2024
+    target_id: L3-PrivacyViolations-Sensitive
+    target_label: Privacy → Sensitive attribute profiling
+    relation: closeMatch
+- id: privacy-data-protection
+  type: subgroup
+  broader: privacy-confidentiality
+  label: Data protection
+  definition: Risks related to safeguards for stored and processed personal data.
+  mappings:
+  - framework: nist_600
+    target_id: '4'
+    target_label: Data Privacy
+    relation: closeMatch
+  - framework: iso_42001
+    target_id: A.7.5
+    target_label: Privacy considerations for AI systems
+    relation: closeMatch
+  - framework: aiuc1
+    target_id: A.5
+    target_label: Implement customer data policies
+    relation: closeMatch
+- id: weak-data-controls
+  type: subcategory
+  broader: privacy-data-protection
+  maturity: established
+  label: Weak data retention, erasure, and access controls
+  definition: 'Insufficient policies or technical measures for data retention limits, secure deletion,
+    and access restrictions, increasing the risk of unauthorized access or indefinite data persistence.
+
+    '
+  scope: ALL
+  lifecycle_stages:
+  - pre-processing
+  - post-processing
+  mappings:
+  - framework: iso_42001
+    target_id: A.7.5
+    target_label: Privacy considerations for AI systems
+    relation: closeMatch
+  - framework: aiuc1
+    target_id: A.5
+    target_label: Implement customer data policies
+    relation: closeMatch
+- id: re-identification
+  type: subcategory
+  broader: privacy-data-protection
+  maturity: established
+  label: Re-identification of anonymised data
+  definition: 'The possibility that anonymised or pseudonymised data can be linked back to specific individuals
+    through inference, combination with other datasets, or model outputs.
+
+    '
+  scope: ALL
+  lifecycle_stages:
+  - pre-processing
+  - post-processing
+  mappings:
+  - framework: dpv_ai
+    target_id: Reidentification
+    target_label: Re-identification
+    target_url: https://w3c.github.io/dpv/2.3/risk/#Reidentification
+    relation: exactMatch
+  - framework: mit
+    target_id: subdomain-2.1
+    target_label: Compromise of privacy by inferring sensitive information
+    relation: closeMatch
+  - framework: nist_600
+    target_id: data-privacy
+    target_label: Data Privacy (de-anonymization clause)
+    relation: narrowMatch
+- id: privacy-model-level
+  type: subgroup
+  broader: privacy-confidentiality
+  label: Model-level privacy
+  definition: Risks from AI models leaking or exposing private information through their outputs or structure.
+  mappings:
+  - framework: mit
+    target_id: subdomain-2.1
+    target_label: Compromise of privacy by obtaining, leaking or inferring sensitive information
+    relation: closeMatch
+  - framework: dpv_ai
+    target_id: MembershipInferenceAttack
+    target_label: Membership Inference Attack
+    target_url: https://w3c.github.io/dpv/2.3/ai/#MembershipInferenceAttack
+    relation: closeMatch
+  references:
+  - label: OpenAI Privacy Filter
+    url: https://github.com/openai/privacy-filter
+    type: tool
+    note: Open-source tool for detecting and filtering personally identifiable information in LLM inputs
+      and outputs.
+- id: sensitive-information-leakage
+  type: subcategory
+  broader: privacy-model-level
+  maturity: established
+  label: Sensitive information leakage through model outputs
+  alt_labels:
+  - PII leakage rate
+  - Privacy leakage
+  definition: Personal or confidential/proprietary information present in training data, inference-time
+    context, or connected systems, surfacing in model outputs through memorisation, context disclosure,
+    cross-tenant contamination, or system-prompt extraction. Broadens the former pii-leakage (personal
+    data only) to also cover organisational and commercial confidentiality (the former confidential-information-leakage,
+    retired and absorbed here).
+  scope: ALL
+  lifecycle_stages:
+  - in-processing
+  - post-processing
+  source: HRA
+  mappings:
+  - framework: mit
+    target_id: subdomain-2.1
+    target_label: Compromise of privacy by leaking or inferring sensitive information
+    relation: exactMatch
+  - framework: nist_600
+    target_id: data-privacy
+    target_label: Data Privacy (leakage clause)
+    relation: closeMatch
+  - framework: eu_ai_act
+    target_id: article-15-5
+    target_label: Article 15(5) — cybersecurity (confidentiality attacks)
+    relation: narrowMatch
+  - framework: dpv_ai
+    target_id: UnauthorisedDataDisclosure
+    target_label: Unauthorised Data Disclosure
+    target_url: https://w3c.github.io/dpv/2.3/risk/#UnauthorisedDataDisclosure
+    relation: closeMatch
+  - framework: aiuc1
+    target_id: A.6
+    target_label: Prevent PII leakage
+    relation: exactMatch
+  - framework: air_2024
+    target_id: L3-PrivacyViolations-PII
+    target_label: Privacy → Unauthorized Privacy Violations × PII
+    relation: exactMatch
+  - framework: ibm_atlas
+    target_id: personal-information-output
+    target_label: Output → Revealing personal information in output
+    relation: exactMatch
+- id: reliability
+  type: category
+  label: Reliability
+  alt_labels:
+  - Validity and Reliability
+  definition: Risks arising from an AI systems failure to perform dependably — whether through degraded
+    output integrity and robustness (e.g., hallucinations, model drift), or through inability to maintain
+    function under adverse or changing conditions (e.g., infrastructure failure, connectivity loss).
+  scope: ALL
+  lifecycle_stages:
+  - pre-processing
+  - in-processing
+  - post-processing
+  maturity: established
+  perspective: technical soundness
+  mappings:
+  - framework: mit
+    target_id: subdomain-7.3
+    target_label: Lack of capability or robustness
+    relation: closeMatch
+  - framework: mit
+    target_id: domain-3
+    target_label: Misinformation
+    relation: broadMatch
+  - framework: nist_600
+    target_id: '2'
+    target_label: Confabulation
+    relation: closeMatch
+  - framework: nist_600
+    target_id: '8'
+    target_label: Information Integrity
+    relation: closeMatch
+    citation: Information Integrity covers non-adversarial spread of inaccurate information; close match
+      with scope note — also covers content provenance which overlaps with Transparency.
+  - framework: nist_rmf
+    target_id: valid-reliable
+    target_label: Valid & Reliable
+    relation: closeMatch
+  - framework: oecd
+    target_id: robustness
+    target_label: Robustness, security & safety
+    relation: broadMatch
+  - framework: eu_ai_act
+    target_id: article-15
+    target_label: Article 15 — accuracy, robustness and cybersecurity
+    relation: closeMatch
+  - framework: iso_42001
+    target_id: A.6.2.4
+    target_label: AI system verification and validation
+    relation: closeMatch
+  - framework: aiuc1
+    target_id: D
+    target_label: Reliability domain
+    relation: exactMatch
+  - framework: air_2024
+    target_id: L1-SystemOperational
+    target_label: System & Operational Risks (L1)
+    relation: broadMatch
+  - framework: ibm_atlas
+    target_id: output-robustness
+    target_label: Output → Robustness + Inference → Accuracy
+    relation: closeMatch
+  - framework: coe_ai_convention
+    target_id: article-4b
+    target_label: Article 4(b) — Reliability (general obligation)
+    relation: broadMatch
+    citation: The Convention's reliability obligation is a general principle, not a detailed risk specification.
+  references:
+  - label: HealthBench Professional (OpenAI, 2025)
+    url: https://cdn.openai.com/dd128428-0184-4e25-b155-3a7686c7d744/HealthBench-Professional.pdf
+    type: benchmark
+    domain: healthcare
+    note: Benchmark for evaluating LLM reliability and accuracy in professional healthcare contexts. Useful
+      when auditing AI systems deployed in health domains.
+- id: reliability-output-quality
+  type: subgroup
+  broader: reliability
+  label: Output Integrity and Robustness
+  definition: Risks including hallucinations, output inconsistency, model drift, and out-of-distribution
+    failures that undermine the dependability and trustworthiness of system outputs.
+  mappings:
+  - framework: nist_600
+    target_id: '2'
+    target_label: Confabulation
+    relation: closeMatch
+  - framework: nist_rmf
+    target_id: valid-reliable
+    target_label: Valid & Reliable
+    relation: closeMatch
+  - framework: aiuc1
+    target_id: D.1
+    target_label: Prevent hallucinated outputs
+    relation: closeMatch
+  - framework: ibm_atlas
+    target_id: output-robustness
+    target_label: Output → Robustness
+    relation: closeMatch
+- id: hallucination
+  type: subcategory
+  broader: reliability-output-quality
+  maturity: established
+  label: Hallucination and fabricated outputs
+  alt_labels:
+  - Confabulation
+  - Hallucination prevention
+  definition: 'Generation of false, fabricated, or misleading information that appears credible, including
+    invented facts, statistics, citations, or events.
+
+    '
+  scope: LLM
+  lifecycle_stages:
+  - post-processing
+  source: HRA
+  mappings:
+  - framework: nist_600
+    target_id: confabulation
+    target_label: Confabulation
+    relation: exactMatch
+  - framework: mit
+    target_id: subdomain-3.1
+    target_label: False or misleading information
+    relation: closeMatch
+  - framework: ibm_atlas
+    target_id: hallucination
+    target_label: Output → Robustness → Hallucination
+    relation: exactMatch
+  - framework: aiuc1
+    target_id: D.1
+    target_label: Prevent hallucinated outputs
+    relation: exactMatch
+  - framework: aiuc1
+    target_id: D.2
+    target_label: Third-party testing for hallucinations
+    relation: exactMatch
+- id: output-inconsistency
+  type: subcategory
+  broader: reliability-output-quality
+  maturity: established
+  label: Output inconsistency
+  definition: 'Inconsistent results across similar inputs and contexts, undermining reproducibility and
+    user trust.
+
+    '
+  scope: ALL
+  lifecycle_stages:
+  - in-processing
+  - post-processing
+  mappings:
+  - framework: nist_rmf
+    target_id: valid-reliable
+    target_label: Valid & Reliable (consistency)
+    relation: narrowMatch
+  - framework: aiuc1
+    target_id: D.1
+    target_label: Prevent hallucinated outputs
+    relation: narrowMatch
+- id: output-drift
+  type: subcategory
+  broader: reliability-output-quality
+  maturity: established
+  label: Output drift over time
+  definition: 'Degradation of output quality or accuracy as data distributions, user behaviour, or operating
+    conditions change after deployment.
+
+    '
+  scope: ALL
+  lifecycle_stages:
+  - post-processing
+  mappings:
+  - framework: iso_42001
+    target_id: A.6.2.6
+    target_label: AI system operation and monitoring
+    relation: closeMatch
+  - framework: ibm_atlas
+    target_id: output-drift
+    target_label: Output → Drift
+    relation: closeMatch
+- id: governance
+  type: category
+  label: Governance
+  alt_labels:
+  - Accountability
+  - Governance & Accountability
+  definition: 'The risk that an AI system lacks adequate structures, policies, or accountability mechanisms
+    to oversee its design, deployment, and use. Weak governance can lead to unclear responsibilities,
+    poor documentation, limited auditability, and failure to align with legal, ethical, or organizational
+    standards.
+
+    '
+  scope: ALL
+  lifecycle_stages:
+  - pre-processing
+  - in-processing
+  - post-processing
+  maturity: established
+  perspective: governance & compliance
+  mappings:
+  - framework: mit
+    target_id: subdomain-6.5
+    target_label: Governance failure
+    relation: closeMatch
+  - framework: nist_600
+    target_id: value-chain
+    target_label: Value Chain & Component Integration
+    relation: relatedMatch
+    citation: NIST 600-1 has no governance-specific risk area; Value Chain is the closest. Governance
+      maps primarily to the NIST AI RMF GOVERN function.
+  - framework: nist_rmf
+    target_id: accountable-transparent
+    target_label: Accountable & Transparent
+    relation: closeMatch
+  - framework: oecd
+    target_id: principle-1.5
+    target_label: Accountability
+    relation: closeMatch
+  - framework: iso_42001
+    target_id: A.2
+    target_label: A.2 Policies + A.3 Internal organization
+    relation: exactMatch
+  - framework: nist_rmf
+    target_id: govern-function
+    target_label: GOVERN function (entire)
+    relation: closeMatch
+  - framework: eu_ai_act
+    target_id: article-17
+    target_label: Article 17 — Quality management system + Article 9 — Risk management
+    relation: closeMatch
+  - framework: aiuc1
+    target_id: E
+    target_label: Accountability domain
+    relation: closeMatch
+  - framework: dpv_ai
+    target_id: Governance
+    target_label: dpv:OrganisationalMeasure (DPV core)
+    relation: closeMatch
+    target_url: https://w3c.github.io/dpv/2.3/dpv/#OrganisationalMeasure
+  - framework: ibm_atlas
+    target_id: governance-non-technical
+    target_label: Non-technical → Governance dimension
+    relation: exactMatch
+  - framework: coe_ai_convention
+    target_id: article-8
+    target_label: Article 8 — Accountability and responsibility
+    relation: closeMatch
+    citation: The Convention requires accountability throughout the AI lifecycle.
+- id: governance-accountability
+  type: subgroup
+  broader: governance
+  label: Accountability
+  definition: Risks from unclear allocation of responsibility, weak human oversight, and inadequate attribution
+    mechanisms for AI system decisions and their adverse impacts.
+  mappings:
+  - framework: nist_rmf
+    target_id: govern-function
+    target_label: GOVERN function
+    relation: broadMatch
+  - framework: oecd
+    target_id: principle-1.5
+    target_label: Accountability
+    relation: closeMatch
+  - framework: iso_42001
+    target_id: A.3
+    target_label: A.3 Internal organization (roles & responsibilities)
+    relation: closeMatch
+  - framework: aiuc1
+    target_id: E.4
+    target_label: Assign accountability
+    relation: closeMatch
+- id: unclear-responsibilities
+  type: subcategory
+  broader: governance-accountability
+  maturity: established
+  label: Unclear responsibilities and accountability gaps
+  definition: 'Missing or ambiguous assignment of roles and responsibilities for AI system design, deployment,
+    monitoring, and incident response.
+
+    '
+  scope: ALL
+  lifecycle_stages:
+  - pre-processing
+  - post-processing
+  mappings:
+  - framework: iso_42001
+    target_id: A.3.2
+    target_label: Roles and responsibilities
+    relation: closeMatch
+  - framework: aiuc1
+    target_id: E.4
+    target_label: Assign accountability
+    relation: closeMatch
+  - framework: nist_rmf
+    target_id: govern-1
+    target_label: GOVERN 1 — Policies, processes, procedures
+    relation: closeMatch
+- id: governance-documentation
+  type: subgroup
+  broader: governance
+  label: Documentation & auditability
+  definition: Risks from incomplete, inaccessible, or absent documentation and audit trails.
+  mappings:
+  - framework: iso_42001
+    target_id: A.6.2.8
+    target_label: AI system documentation (system documentation maintained throughout lifecycle)
+    relation: closeMatch
+  - framework: eu_ai_act
+    target_id: article-11
+    target_label: Article 11 — Technical documentation
+    relation: closeMatch
+  - framework: aiuc1
+    target_id: E.10
+    target_label: Document regulatory compliance
+    relation: closeMatch
+  - framework: nist_rmf
+    target_id: govern-1
+    target_label: GOVERN 1 — documented policies and processes
+    relation: closeMatch
+- id: poor-documentation
+  type: subcategory
+  broader: governance-documentation
+  maturity: established
+  label: Poor documentation
+  definition: 'Incomplete, outdated, or absent documentation of system purpose, architecture, data sources,
+    known limitations, and operational procedures.
+
+    '
+  scope: ALL
+  lifecycle_stages:
+  - pre-processing
+  - in-processing
+  - post-processing
+  mappings:
+  - framework: eu_ai_act
+    target_id: article-11
+    target_label: Article 11 — Technical documentation (Annex IV)
+    relation: closeMatch
+  - framework: iso_42001
+    target_id: A.6.2.8
+    target_label: AI system documentation
+    relation: closeMatch
+  - framework: aiuc1
+    target_id: E.17
+    target_label: Document system transparency policy
+    relation: closeMatch
+- id: limited-auditability
+  type: subcategory
+  broader: governance-documentation
+  maturity: established
+  label: Limited auditability
+  definition: 'Insufficient logging, versioning, or traceability for meaningful external review or internal
+    audit.
+
+    '
+  scope: ALL
+  lifecycle_stages:
+  - in-processing
+  - post-processing
+  mappings:
+  - framework: nist_rmf
+    target_id: measure-2.8
+    target_label: MEASURE 2.8 — risks and trustworthiness characteristics measured
+    relation: closeMatch
+  - framework: iso_42001
+    target_id: A.6.2.8
+    target_label: AI system documentation
+    relation: closeMatch
+  - framework: aiuc1
+    target_id: E.15
+    target_label: Log AI system activity
+    relation: closeMatch
+- id: governance-compliance
+  type: subgroup
+  broader: governance
+  label: Compliance & process
+  definition: Risks from gaps in organisational processes for ongoing oversight, compliance, and lifecycle
+    management of AI systems — including regulatory compliance, change management, data governance, monitoring
+    and evaluation, remediation of failures, and incident response.
+  mappings:
+  - framework: iso_42001
+    target_id: A.9
+    target_label: A.9 Use of AI systems + clause 10 (improvement / nonconformity)
+    relation: closeMatch
+  - framework: eu_ai_act
+    target_id: article-17
+    target_label: Article 17 — Quality management system + Article 9 — Risk management
+    relation: closeMatch
+  - framework: nist_rmf
+    target_id: govern-1
+    target_label: GOVERN 1 — Policies, processes, procedures
+    relation: closeMatch
+  - framework: aiuc1
+    target_id: E.10
+    target_label: Document regulatory compliance + E.12 Quality management system
+    relation: closeMatch
+  - framework: dpv_ai
+    target_id: RiskManagement
+    target_label: Risk Management
+    relation: closeMatch
+  - framework: nist_600
+    target_id: value-chain
+    target_label: Value Chain and Component Integration
+    relation: narrowMatch
+- id: regulatory-non-compliance
+  type: subcategory
+  broader: governance-compliance
+  maturity: established
+  label: Regulatory non-compliance
+  definition: 'Failure to align with applicable legal, ethical, or organisational standards, including
+    sector-specific regulations.
+
+    '
+  scope: ALL
+  lifecycle_stages:
+  - pre-processing
+  - post-processing
+  mappings:
+  - framework: eu_ai_act
+    target_id: chapter-iii
+    target_label: Chapter III — High-risk AI system requirements
+    relation: closeMatch
+  - framework: iso_42001
+    target_id: A.2
+    target_label: A.2 Policies related to AI
+    relation: closeMatch
+  - framework: aiuc1
+    target_id: E.10
+    target_label: Document regulatory compliance
+    relation: closeMatch
+- id: lack-of-change-management
+  type: subcategory
+  broader: governance-compliance
+  maturity: established
+  label: Lack of change management
+  definition: 'Absence of controlled processes for system modifications, including uncontrolled changes
+    to production systems.
+
+    '
+  scope: ALL
+  lifecycle_stages:
+  - post-processing
+  mappings:
+  - framework: iso_42001
+    target_id: A.6.2.6
+    target_label: AI system operation and monitoring
+    relation: closeMatch
+  - framework: nist_rmf
+    target_id: manage-4
+    target_label: MANAGE 4 — risk treatment and update
+    relation: closeMatch
+- id: security-misuse
+  type: category
+  label: Security & Misuse
+  alt_labels:
+  - Safety, Security & Misuse
+  - Security
+  - Safety
+  definition: The risk that an AI system is exposed to AI-specific vulnerabilities, attacks, or misuse
+    that compromise its integrity, availability, or confidentiality. This covers risks beyond traditional
+    IT security, including adversarial inputs, prompt injection, model extraction, jailbreaking, and supply-chain
+    risks specific to AI components. It is intended to complement, not replace, standard IT security assessments.
+  scope: ALL
+  lifecycle_stages:
+  - pre-processing
+  - in-processing
+  - post-processing
+  maturity: established
+  perspective: technical soundness
+  mappings:
+  - framework: mit
+    target_id: subdomain-2.2
+    target_label: AI system security vulnerabilities and attacks
+    relation: closeMatch
+  - framework: mit
+    target_id: domain-4
+    target_label: Malicious Actors
+    relation: closeMatch
+  - framework: nist_600
+    target_id: information-security
+    target_label: Information Security
+    relation: closeMatch
+  - framework: nist_rmf
+    target_id: secure-resilient
+    target_label: Secure & Resilient
+    relation: closeMatch
+  - framework: oecd
+    target_id: principle-1.4
+    target_label: Robustness, security & safety
+    relation: broadMatch
+  - framework: dpv_ai
+    target_id: SecurityAttack
+    target_label: Security Attack
+    relation: broadMatch
+    target_url: https://w3c.github.io/dpv/2.3/ai/#SecurityAttack
+  - framework: eu_ai_act
+    target_id: article-15-5
+    target_label: Article 15(5) — cybersecurity (resilience against attacks)
+    relation: closeMatch
+  - framework: aiuc1
+    target_id: B
+    target_label: Security domain (and Society domain F for misuse)
+    relation: closeMatch
+  - framework: air_2024
+    target_id: L1-SystemOperational
+    target_label: System & Operational Risks (Security + Operational Misuses)
+    relation: closeMatch
+  - framework: ibm_atlas
+    target_id: security-misuse
+    target_label: Inference → Adversarial robustness + Non-technical → Misuse
+    relation: closeMatch
+  - framework: tc260
+    target_id: 3.2.2a
+    target_label: §3.2.2(a) Information content risks — malicious manipulation generating illegal/harmful
+      content
+    relation: closeMatch
+    citation: TC260 identifies malicious user manipulation causing AI to generate content involving crimes,
+      pornography, extremism.
+  - framework: coe_ai_convention
+    target_id: article-12
+    target_label: Article 12 — Reliability, safe innovation (security dimension)
+    relation: broadMatch
+    citation: The Convention's safe innovation obligation covers security concerns broadly.
+- id: security-ai-attacks
+  type: subgroup
+  broader: security-misuse
+  label: Adversarial Threats & Attacks
+  definition: The risks that arise from adversarial inputs, injected instructions, bypassed safety controls,
+    or corrupted training data.
+  mappings:
+  - framework: dpv_ai
+    target_id: SecurityAttack
+    target_label: Security Attack
+    target_url: https://w3c.github.io/dpv/2.3/ai/#SecurityAttack
+    relation: closeMatch
+  - framework: mit
+    target_id: subdomain-2.2
+    target_label: AI system security vulnerabilities and attacks
+    relation: closeMatch
+  - framework: nist_rmf
+    target_id: secure-resilient
+    target_label: Secure & Resilient (adversarial ML)
+    relation: closeMatch
+  - framework: eu_ai_act
+    target_id: article-15-5
+    target_label: Article 15(5) — cybersecurity (Recital 76 enumerates poisoning, evasion, confidentiality
+      attacks)
+    relation: closeMatch
+  - framework: aiuc1
+    target_id: B.1
+    target_label: Third-party testing of adversarial robustness
+    relation: closeMatch
+  - framework: ibm_atlas
+    target_id: robustness-adversarial
+    target_label: Inference → Robustness → Adversarial robustness
+    relation: closeMatch
+- id: evasion-attacks
+  type: subcategory
+  broader: security-ai-attacks
+  maturity: established
+  label: Evasion attacks
+  definition: Adversarial perturbations crafted to force misclassification or attacker-chosen outputs
+    at inference time, with or without access to model internals. Narrowed from the former adversarial-attacks
+    (which also covered poisoning and extraction) to evasion specifically; those concerns now live in
+    data-poisoning and model-extraction respectively.
+  scope: ALL
+  lifecycle_stages:
+  - in-processing
+  - post-processing
+  mappings:
+  - framework: dpv_ai
+    target_id: AdversarialAttack
+    target_label: Adversarial Attack
+    target_url: https://w3c.github.io/dpv/2.3/ai/#AdversarialAttack
+    relation: exactMatch
+  - framework: mit
+    target_id: subdomain-2.2
+    target_label: AI system security vulnerabilities and attacks
+    relation: narrowMatch
+  - framework: aiuc1
+    target_id: B.2
+    target_label: Detect adversarial input
+    relation: closeMatch
+  - framework: ibm_atlas
+    target_id: robustness-adversarial
+    target_label: Inference → Robustness → Adversarial robustness
+    relation: closeMatch
+- id: prompt-injection
+  type: subcategory
+  broader: security-ai-attacks
+  maturity: established
+  label: Prompt injection
+  alt_labels:
+  - Prompt injection protection
+  definition: 'Malicious inputs designed to subvert system intent by injecting instructions that override
+    the system prompt, leading to harmful, deceptive, or unauthorized outputs.
+
+    '
+  scope: LLM
+  lifecycle_stages:
+  - post-processing
+  source: HRA
+  mappings:
+  - framework: dpv_ai
+    target_id: PromptInjection
+    target_label: Prompt Injection
+    relation: exactMatch
+  - framework: aiuc1
+    target_id: B.2
+    target_label: Detect adversarial input
+    relation: closeMatch
+  - framework: nist_600
+    target_id: information-security
+    target_label: Information Security
+    relation: narrowMatch
+- id: jailbreaking
+  type: subcategory
+  broader: security-ai-attacks
+  maturity: established
+  label: Jailbreaking
+  alt_labels:
+  - Jailbreakability
+  definition: 'Techniques used to bypass safety controls, content filters, or usage restrictions to trigger
+    prohibited behaviours or outputs.
+
+    '
+  scope: LLM
+  lifecycle_stages:
+  - post-processing
+  source: HRA
+  mappings:
+  - framework: aiuc1
+    target_id: C.1
+    target_label: Prevent jailbreaks (safety controls)
+    relation: closeMatch
+  - framework: mit
+    target_id: subdomain-2.2
+    target_label: AI system security vulnerabilities and attacks
+    relation: narrowMatch
+- id: model-extraction
+  type: subcategory
+  broader: security-ai-attacks
+  maturity: established
+  label: Model extraction
+  definition: Attacks that aim to recover or replicate the underlying AI model, its parameters, or its
+    training data through queried interactions, enabling intellectual property theft or further targeted
+    attacks against the system.
+  scope: ALL
+  lifecycle_stages:
+  - post-processing
+  alt_labels:
+  - Model stealing
+  - Model inversion
+  mappings:
+  - framework: ibm_atlas
+    target_id: extraction-attack
+    target_label: Inference → Extraction attack
+    relation: exactMatch
+  - framework: dpv_ai
+    target_id: ModelInversion
+    target_label: Model Inversion
+    target_url: https://w3c.github.io/dpv/2.3/ai/#ModelInversion
+    relation: closeMatch
+  - framework: nist_600
+    target_id: information-security
+    target_label: Information Security (exfiltration of model weights/training data)
+    relation: narrowMatch
+  - framework: nist_rmf
+    target_id: secure-resilient
+    target_label: Secure & Resilient (confidentiality attacks)
+    relation: narrowMatch
+  - framework: eu_ai_act
+    target_id: article-15-5
+    target_label: Article 15(5) — cybersecurity (Recital 76 confidentiality attacks)
+    relation: narrowMatch
+  - framework: aiuc1
+    target_id: B.4
+    target_label: Prevent AI endpoint scraping
+    relation: closeMatch
+  - framework: mit
+    target_id: subdomain-2.2
+    target_label: AI system security vulnerabilities and attacks
+    relation: narrowMatch
+- id: data-poisoning
+  type: subcategory
+  broader: security-ai-attacks
+  maturity: established
+  label: Data poisoning
+  definition: Adversarial manipulation of training or fine-tuning data to introduce backdoors, bias, or
+    systematic errors into the model. Includes both broad-spectrum poisoning (degrading overall performance)
+    and targeted poisoning (creating exploitable triggers or specific failure modes).
+  scope: ALL
+  lifecycle_stages:
+  - pre-processing
+  - in-processing
+  alt_labels:
+  - Training data poisoning
+  - Backdoor attacks
+  mappings:
+  - framework: dpv_ai
+    target_id: DataPoisoning
+    target_label: Data Poisoning
+    target_url: https://w3c.github.io/dpv/2.3/ai/#DataPoisoning
+    relation: exactMatch
+  - framework: ibm_atlas
+    target_id: data-poisoning
+    target_label: Input → Data poisoning / Training-data tampering
+    relation: exactMatch
+  - framework: eu_ai_act
+    target_id: recital-76
+    target_label: Recital 76 — data poisoning (cybersecurity)
+    relation: exactMatch
+  - framework: nist_600
+    target_id: information-security
+    target_label: Information Security (data poisoning)
+    relation: narrowMatch
+  - framework: nist_rmf
+    target_id: secure-resilient
+    target_label: Secure & Resilient (training-time attacks)
+    relation: narrowMatch
+  - framework: aiuc1
+    target_id: B.1
+    target_label: Third-party testing of adversarial robustness
+    relation: closeMatch
+  - framework: mit
+    target_id: subdomain-2.2
+    target_label: AI system security vulnerabilities and attacks
+    relation: narrowMatch
+- id: security-system
+  type: subgroup
+  broader: security-misuse
+  label: Infrastructure & System security
+  definition: The risks that arise from unauthorised access, vulnerable third-party components, or over-disclosure
+    of technical details that enable targeting. Unlike Governance risks, this includes whether the system
+    and its environment can be technically compromised.
+  mappings:
+  - framework: nist_600
+    target_id: '9'
+    target_label: Information Security
+    relation: closeMatch
+  - framework: iso_42001
+    target_id: A.6.2.5
+    target_label: AI system deployment (secure deployment)
+    relation: closeMatch
+  - framework: aiuc1
+    target_id: B
+    target_label: Security domain
+    relation: closeMatch
+  - framework: ibm_atlas
+    target_id: security-non-technical
+    target_label: Non-technical → Misuse + Inference → Security
+    relation: closeMatch
+- id: unauthorized-access
+  type: subcategory
+  broader: security-system
+  maturity: established
+  label: Unauthorized access
+  definition: 'Exploitation of access control weaknesses to gain unauthorized access to the system, its
+    data, or its administrative functions.
+
+    '
+  scope: ALL
+  lifecycle_stages:
+  - post-processing
+  mappings:
+  - framework: aiuc1
+    target_id: B.6
+    target_label: Prevent unauthorized AI agent actions
+    relation: closeMatch
+  - framework: dpv_ai
+    target_id: SecurityAttack
+    target_label: Security Attack (unauthorized access)
+    relation: narrowMatch
+- id: supply-chain-vulnerabilities
+  type: subcategory
+  broader: governance-accountability
+  maturity: established
+  label: Supply-chain vulnerabilities
+  definition: 'Risks introduced through third-party components, pre-trained models, data sources, or other
+    dependencies not fully under the deployer''s control.
+
+    '
+  scope: ALL
+  lifecycle_stages:
+  - pre-processing
+  - in-processing
+  mappings:
+  - framework: nist_600
+    target_id: value-chain
+    target_label: Value Chain and Component Integration
+    relation: closeMatch
+  - framework: iso_42001
+    target_id: A.10
+    target_label: Third-party and customer relationships
+    relation: closeMatch
+  - framework: eu_ai_act
+    target_id: article-25
+    target_label: Article 25 — value-chain responsibilities
+    relation: closeMatch
+- id: incident-response-gaps
+  type: subcategory
+  broader: governance-compliance
+  maturity: established
+  label: Incident response gaps
+  definition: 'Insufficient detection, logging, escalation, or response capabilities for security incidents
+    and misuse events.
+
+    '
+  scope: ALL
+  lifecycle_stages:
+  - post-processing
+  mappings:
+  - framework: eu_ai_act
+    target_id: article-73
+    target_label: Article 73 — Reporting of serious incidents
+    relation: exactMatch
+  - framework: nist_rmf
+    target_id: manage-4
+    target_label: MANAGE 4 — incident response and recovery
+    relation: closeMatch
+  - framework: iso_42001
+    target_id: clause-10
+    target_label: Clause 10 — Improvement and incident response
+    relation: closeMatch
+  - framework: aiuc1
+    target_id: E.1
+    target_label: AI failure plan for security breaches + E.2 for harmful outputs
+    relation: closeMatch
+  - framework: dpv_ai
+    target_id: IncidentManagement
+    target_label: Incident Management
+    relation: closeMatch
+- id: security-harmful-misuse
+  type: subgroup
+  broader: security-misuse
+  label: Harmful & Malicious Misuse
+  definition: Risks from deliberate misuse of the AI system to generate harmful content, manipulate users,
+    or operate beyond its intended purpose. These risks involve explicit malicious intent (human or otherwise)
+    — distinguishing them from unintentional system failures (which belong under Reliability).
+  mappings:
+  - framework: nist_600
+    target_id: dangerous-content
+    target_label: Dangerous, Violent or Hateful Content + CBRN + Obscene/Abusive
+    relation: closeMatch
+  - framework: mit
+    target_id: domain-4
+    target_label: Malicious Actors & Misuse
+    relation: closeMatch
+  - framework: eu_ai_act
+    target_id: article-5-1a
+    target_label: Article 5(1)(a) — prohibited manipulative practices
+    relation: closeMatch
+  - framework: nist_rmf
+    target_id: safe
+    target_label: Safe (trustworthy characteristic)
+    relation: closeMatch
+  - framework: aiuc1
+    target_id: F
+    target_label: Society domain (cyber misuse + catastrophic misuse)
+    relation: closeMatch
+  - framework: air_2024
+    target_id: L2-Manipulation
+    target_label: Societal Risks → Manipulation, Deception, Political Usage
+    relation: closeMatch
+  - framework: ibm_atlas
+    target_id: harmful-output-misuse
+    target_label: Output → Harmful output + Non-technical → Misuse
+    relation: closeMatch
+- id: environmental-impact
+  type: category
+  label: Environmental Impact
+  alt_labels:
+  - Sustainability
+  - Environmental sustainability
+  definition: 'The risk that an AI system''s development, deployment, or use causes negative environmental
+    effects, such as excessive energy or water consumption, carbon emissions, or unsustainable use of
+    hardware and resources. This includes hidden impacts across the system''s lifecycle, from model training
+    to long-term operation.
+
+    '
+  scope: ALL
+  lifecycle_stages:
+  - pre-processing
+  - in-processing
+  - post-processing
+  maturity: established
+  perspective: technical soundness
+  mappings:
+  - framework: mit
+    target_id: subdomain-6.6
+    target_label: Environmental harm
+    relation: exactMatch
+  - framework: nist_600
+    target_id: environmental
+    target_label: Environmental Impacts
+    relation: exactMatch
+  - framework: oecd
+    target_id: principle-1.1
+    target_label: Inclusive growth, sustainable development & environmental sustainability
+    relation: exactMatch
+  - framework: ibm_atlas
+    target_id: environmental-impact
+    target_label: Non-technical → Societal impact → Environmental impact
+    relation: exactMatch
+  - framework: eu_ai_act
+    target_id: article-95
+    target_label: Article 95 — Codes of conduct for sustainability + Recital 139
+    relation: relatedMatch
+  - framework: iso_42001
+    target_id: A.5.2
+    target_label: AI system impact assessment + Annex C objectives
+    relation: relatedMatch
+    citation: ISO 42001's impact assessment could include environmental but doesn't specifically mandate
+      it; Annex C objectives are informative.
+  - framework: tc260
+    target_id: 3.3.1b
+    target_label: §3.3.1(b) Social and Environmental Risks — energy, electricity, land, and water consumption
+      from AI computing
+    relation: closeMatch
+    citation: TC260 v2.0 explicitly identifies energy consumption and carbon emissions from AI data centers
+      as derivative risks.
+- id: transparency-explainability
+  type: category
+  label: Transparency & Explainability
+  alt_labels:
+  - Explainability & Transparency
+  - Transparency and Explainability
+  definition: 'The risk that stakeholders cannot understand how an AI system works, what it does, or why
+    it produces specific outputs. Lack of transparency undermines informed consent, impedes oversight,
+    and erodes trust.
+
+    '
+  scope: ALL
+  lifecycle_stages:
+  - post-processing
+  maturity: established
+  perspective: governance & compliance
+  note: 'In the RAIA Guide, this category is assessed only at the Post-Processing stage.
+
+    '
+  mappings:
+  - framework: mit
+    target_id: subdomain-7.4
+    target_label: Lack of transparency or interpretability
+    relation: closeMatch
+  - framework: nist_rmf
+    target_id: explainable-interpretable
+    target_label: Explainable & Interpretable
+    relation: closeMatch
+  - framework: oecd
+    target_id: principle-1.3
+    target_label: Transparency & explainability
+    relation: closeMatch
+  - framework: dpv_ai
+    target_id: TransparencyRisk
+    target_label: ai:TransparencyRisk + ai:ExplainabilityRisk (DPV AI extension)
+    relation: exactMatch
+    target_url: https://w3c.github.io/dpv/2.3/ai/#TransparencyRisk
+  - framework: eu_ai_act
+    target_id: article-13
+    target_label: Article 13 — Transparency and provision of information
+    relation: closeMatch
+  - framework: nist_600
+    target_id: information-integrity
+    target_label: Information Integrity (provenance) + Value Chain
+    relation: relatedMatch
+    citation: NIST 600-1 has no direct transparency risk area; the mapping bridges via the provenance
+      dimension of Information Integrity (#8) and Value Chain (#12). The strong reference-framework anchor
+      for transparency is NIST RMF's "Explainable & Interpretable" Trustworthy AI characteristic, mapped
+      separately.
+  - framework: iso_42001
+    target_id: A.8
+    target_label: A.8 Information for interested parties + A.6.2.8 documentation
+    relation: exactMatch
+  - framework: aiuc1
+    target_id: E.16
+    target_label: Implement AI disclosure mechanisms + E.17 transparency policy
+    relation: closeMatch
+  - framework: ibm_atlas
+    target_id: explainability-transparency
+    target_label: Output → Explainability + Non-technical → Transparency
+    relation: exactMatch
+  - framework: coe_ai_convention
+    target_id: article-9
+    target_label: Article 9 — Transparency and oversight
+    relation: closeMatch
+    citation: The Convention requires transparency about the use of AI systems.
+  - framework: ieee_7001
+    target_id: standard
+    target_label: IEEE 7001-2021 (whole standard)
+    relation: closeMatch
+    citation: Measurable, testable levels of transparency for autonomous systems, tailored to multiple
+      stakeholder groups (users, the public, regulators, certification bodies, incident investigators).
+  - framework: ieee_2894
+    target_id: standard
+    target_label: IEEE 2894-2024 (whole guide)
+    relation: closeMatch
+    citation: Architectural framework for explainable AI (XAI), covering definitions and categorisation
+      of XAI methods, application scenarios, and performance evaluation.
+- id: transparency-explainability-group
+  type: subgroup
+  broader: transparency-explainability
+  label: Explainability
+  definition: Risks from stakeholders being unable to understand why the system produces specific outputs.
+  mappings:
+  - framework: nist_rmf
+    target_id: explainable
+    target_label: Explainable & Interpretable
+    relation: closeMatch
+  - framework: mit
+    target_id: subdomain-7.4
+    target_label: Lack of transparency or interpretability
+    relation: closeMatch
+  - framework: dpv_ai
+    target_id: ExplainabilityRisk
+    target_label: Explainability Risk
+    relation: closeMatch
+  - framework: ibm_atlas
+    target_id: output-explainability
+    target_label: Output → Explainability
+    relation: closeMatch
+- id: right-to-explanation-contestation
+  type: subcategory
+  broader: transparency-explainability-group
+  maturity: established
+  label: Right to explanation and contestation
+  definition: The risk that affected individuals are not informed about decisions taken with AI assistance,
+    do not receive a meaningful explanation of those decisions, or have no effective channel to challenge
+    or appeal them. Includes obligations under GDPR Article 22 (rights regarding automated individual
+    decision-making) and EU AI Act Article 13 (transparency and provision of information to deployers
+    and affected persons).
+  scope: ADM
+  lifecycle_stages:
+  - post-processing
+  alt_labels:
+  - Right to explanation
+  - Right to contest
+  - Absence of appeal mechanisms
+  - Ineffective communication with affected parties
+  mappings:
+  - framework: eu_ai_act
+    target_id: article-86
+    target_label: Article 86 — Right to explanation of individual decision-making
+    relation: exactMatch
+  - framework: dpv_ai
+    target_id: RightToExplanation
+    target_label: Right to Explanation (DPV core / GDPR extension)
+    target_url: https://w3c.github.io/dpv/2.3/legal/eu/gdpr/
+    relation: exactMatch
+  - framework: nist_rmf
+    target_id: accountable-transparent
+    target_label: Accountable & Transparent (Govern 1.5; Manage 4.3)
+    relation: narrowMatch
+  - framework: oecd
+    target_id: principle-1.3
+    target_label: Transparency and explainability (challenge mechanisms)
+    relation: closeMatch
+  - framework: iso_42001
+    target_id: A.8.3
+    target_label: External reporting + A.8.4 Communication of incidents
+    relation: closeMatch
+  - framework: aiuc1
+    target_id: E.16
+    target_label: Implement AI disclosure mechanisms
+    relation: closeMatch
+  - framework: air_2024
+    target_id: L2-FundamentalRights
+    target_label: Fundamental Rights → Violating Specific Types of Rights
+    relation: closeMatch
+- id: transparency-communication
+  type: subgroup
+  broader: transparency-explainability
+  label: Communication & disclosure
+  definition: Risks from inadequate communication about system capabilities, limitations, and AI involvement.
+  mappings:
+  - framework: eu_ai_act
+    target_id: article-13
+    target_label: Article 13 — Transparency and provision of information to deployers
+    relation: closeMatch
+  - framework: oecd
+    target_id: principle-1.3
+    target_label: Transparency and explainability
+    relation: closeMatch
+  - framework: iso_42001
+    target_id: A.8.2
+    target_label: Information for users / affected parties
+    relation: closeMatch
+  - framework: aiuc1
+    target_id: E.16
+    target_label: Implement AI disclosure mechanisms
+    relation: closeMatch
+  - framework: nist_600
+    target_id: information-integrity
+    target_label: Information Integrity (provenance disclosure)
+    relation: closeMatch
+- id: agentic-ai
+  type: category
+  label: Agentic AI
+  alt_labels:
+  - AI Agents
+  - Agentic risks
+  definition: Risks arising from AI systems that autonomously plan, reason, and act across multiple steps
+    using tools, memory, and external services, beyond single-inference interactions. These risks are
+    distinct from standard LLM risks because the agent takes real-world actions, operates across time,
+    and interacts with external systems and other agents.
+  scope: LLM
+  lifecycle_stages:
+  - post-processing
+  maturity: established
+  perspective: technical soundness
+  note: 'Initial scope deliberately limited to primary enterprise risks of agentic deployment. Adversarial
+    threats specific to agents (e.g., memory poisoning) are not yet included — they sit closer to security
+    and will be revisited as the category matures. Loss of meaningful human control over agentic systems
+    is currently covered under Autonomy & Agency / System autonomy and may be promoted or cross-referenced
+    here in a future iteration. Some overlap with Autonomy & Agency / System autonomy is acknowledged
+    and will be reconciled in a future minor version.
+
+    '
+  mappings:
+  - framework: csa_agentic_profile
+    target_id: AG-MP.2-AG-MP.3-AG-GV.2
+    target_label: AG-MP.3 (Multi-Agent Topology Risk) + AG-MP.2 (Agent Action-Consequence Analysis) +
+      AG-GV.2 (Delegation Accountability)
+    relation: closeMatch
+    citation: The CSA Agentic Profile categories cover the same risk surface as Eticas Agentic AI — multi-agent
+      topology, action-consequence analysis, and delegation accountability — at the GOVERN/MAP function
+      level of the NIST RMF.
+  - framework: owasp_agentic_top10
+    target_id: ASI01-ASI02-ASI03
+    target_label: ASI01 (Agent Goal Hijack) + ASI02 (Tool Misuse and Exploitation) + ASI03 (Identity and
+      Privilege Abuse)
+    relation: closeMatch
+    citation: ASI02 covers Eticas unsafe-tool-calls and excessive-agency; ASI01 covers scope-creep-goal-misalignment;
+      ASI03 covers excessive-agency from the identity/privilege angle. Memory poisoning (ASI06) is deliberately
+      out of scope at v1.2 (see category note).
+  - framework: ibm_atlas
+    target_id: agentic-explainability-robustness-efficiency
+    target_label: New and amplified risks of agentic AI — Explainability, Robustness, Computational Inefficiency
+    relation: closeMatch
+    citation: IBM Risk Atlas explicitly identifies Explainability, Robustness, and Computational Inefficiency
+      as new and amplified risks introduced by agentic AI deployment patterns; covers untraceable-agent-actions,
+      function-calling-hallucination, and redundant-actions respectively.
+- id: agentic-actions-tool-use
+  type: subgroup
+  broader: agentic-ai
+  label: Autonomous Actions and Tool Use
+  definition: Risks from the agent taking real-world actions through external tools, APIs, and services,
+    including being granted excessive permissions, executing unnecessary or out-of-scope actions, bypassing
+    human oversight, or consuming disproportionate resources.
+- id: unsafe-tool-calls
+  type: subcategory
+  broader: agentic-actions-tool-use
+  maturity: established
+  label: Unsafe or unauthorised tool calls
+  definition: 'The agent invokes tools, APIs, or services beyond its intended scope — for example, calling
+    the wrong tool, calling a tool with incorrect parameters, or accessing systems it was not designed
+    to interact with.
+
+    '
+  scope: LLM
+  lifecycle_stages:
+  - post-processing
+- id: function-calling-hallucination
+  type: subcategory
+  broader: agentic-actions-tool-use
+  maturity: established
+  label: Function calling hallucination
+  definition: 'The agent generates incorrect or malformed function calls — for example, by specifying
+    wrong parameters, calling non-existent tools, or misinterpreting tool schemas — causing downstream
+    failures or unintended system interactions.
+
+    '
+  scope: LLM
+  lifecycle_stages:
+  - post-processing
+- id: excessive-agency
+  type: subcategory
+  broader: agentic-actions-tool-use
+  maturity: established
+  label: Excessive agency
+  definition: 'A configuration risk rather than an action risk: the agent has been granted more permissions,
+    capabilities, or access rights than necessary for its defined task, expanding the potential damage
+    of any failure or attack.
+
+    '
+  scope: LLM
+  lifecycle_stages:
+  - pre-processing
+  - post-processing
+- id: scope-creep-goal-misalignment
+  type: subcategory
+  broader: agentic-actions-tool-use
+  maturity: established
+  label: Scope creep and goal misalignment
+  definition: 'The agent pursues its objective in ways that exceed intended boundaries, develop unintended
+    sub-goals, or conflict with user intent — driven by ambiguous instructions, reward misspecification,
+    or emergent planning behaviour across multiple steps.
+
+    '
+  scope: LLM
+  lifecycle_stages:
+  - post-processing
+- id: agentic-multi-agent-integrity
+  type: subgroup
+  broader: agentic-ai
+  label: Multi-agent Integrity
+  definition: Risks from systems composed of multiple agents — including trust exploitation, cascading
+    failures, goal misalignment between agents, and insufficient traceability across the pipeline.
+- id: trust-exploitation-between-agents
+  type: subcategory
+  broader: agentic-multi-agent-integrity
+  maturity: established
+  label: Trust exploitation between agents
+  definition: 'A compromised or malicious agent manipulates other agents in a pipeline by exploiting implicit
+    trust in inter-agent communication, passing false instructions, forged outputs, or poisoned context
+    to downstream agents.
+
+    '
+  scope: LLM
+  lifecycle_stages:
+  - post-processing
+- id: untraceable-agent-actions
+  type: subcategory
+  broader: agentic-multi-agent-integrity
+  maturity: established
+  label: Unexplainable and untraceable actions
+  definition: 'Agent actions across multi-step pipelines cannot be reconstructed, explained, or attributed,
+    making it impossible to audit what the agent did, in what order, and why. Includes loss of data provenance
+    — for example, the agent loses track of the origin and reliability of retrieved data, making factual
+    claims unverifiable.
+
+    '
+  scope: LLM
+  lifecycle_stages:
+  - post-processing

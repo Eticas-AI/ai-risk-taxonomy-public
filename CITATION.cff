@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use this taxonomy, please cite the paper below."
+title: "The Eticas AI Risk Taxonomy: Open Infrastructure for Operationalizing AI Audits"
+type: article
+authors:
+  - family-names: "Galdon Clavell"
+    given-names: "Gemma"
+  - family-names: "Accuosto"
+    given-names: "Pablo"
+  - family-names: "Gohar"
+    given-names: "Usman"
+date-released: 2026-07-02
+url: "https://arxiv.org/abs/2607.02201"
+identifiers:
+  - type: other
+    value: "arXiv:2607.02201"
+    description: "arXiv preprint"
+preferred-citation:
+  type: article
+  title: "The Eticas AI Risk Taxonomy: Open Infrastructure for Operationalizing AI Audits"
+  authors:
+    - family-names: "Galdon Clavell"
+      given-names: "Gemma"
+    - family-names: "Accuosto"
+      given-names: "Pablo"
+    - family-names: "Gohar"
+      given-names: "Usman"
+  year: 2026
+  journal: "arXiv preprint"
+  url: "https://arxiv.org/abs/2607.02201"
+  identifiers:
+    - type: other
+      value: "arXiv:2607.02201"
+license: CC-BY-4.0

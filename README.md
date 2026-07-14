@@ -28,8 +28,8 @@ If you use this taxonomy in your work, please cite:
       primaryClass={cs.CY},
       url={https://arxiv.org/abs/2607.02201},
 }
-```
 
 Eticas. (2026). Eticas AI Risk Taxonomy.
 https://taxonomy.eticas.ai/risk/
+
 ```

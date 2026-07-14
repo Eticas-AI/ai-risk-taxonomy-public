@@ -16,7 +16,20 @@ Published under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). See `
 
 ## Citation
 
+If you use this taxonomy in your work, please cite:
+
+```bib
+@article{galdonclavell2026eticas,
+      title={The Eticas AI Risk Taxonomy: Open Infrastructure for Operationalizing AI Audits},
+      author={Galdon Clavell, Gemma and Accuosto, Pablo and Gohar, Usman},
+      year={2026},
+      eprint={2607.02201},
+      archivePrefix={arXiv},
+      primaryClass={cs.CY},
+      url={https://arxiv.org/abs/2607.02201},
+}
 ```
+
 Eticas. (2026). Eticas AI Risk Taxonomy.
 https://taxonomy.eticas.ai/risk/
 ```

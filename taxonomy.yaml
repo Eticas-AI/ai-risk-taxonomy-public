@@ -1587,9 +1587,6 @@ concepts:
   - post-processing
   maturity: established
   perspective: governance & compliance
-  note: 'In the RAIA Guide, this category is assessed only at the Post-Processing stage.
-
-    '
   mappings:
   - framework: mit
     target_id: subdomain-7.4
@@ -1760,14 +1757,6 @@ concepts:
   - post-processing
   maturity: established
   perspective: technical soundness
-  note: 'Initial scope deliberately limited to primary enterprise risks of agentic deployment. Adversarial
-    threats specific to agents (e.g., memory poisoning) are not yet included — they sit closer to security
-    and will be revisited as the category matures. Loss of meaningful human control over agentic systems
-    is currently covered under Autonomy & Agency / System autonomy and may be promoted or cross-referenced
-    here in a future iteration. Some overlap with Autonomy & Agency / System autonomy is acknowledged
-    and will be reconciled in a future minor version.
-
-    '
   mappings:
   - framework: csa_agentic_profile
     target_id: AG-MP.2-AG-MP.3-AG-GV.2

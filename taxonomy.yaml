@@ -615,55 +615,6 @@ concepts:
     target_id: L3-UnauthorizedPrivacyViolations
     target_label: Privacy → Unauthorized Privacy Violations
     relation: closeMatch
-- id: function-creep
-  type: subcategory
-  broader: privacy-collection-use
-  maturity: established
-  label: Function creep
-  definition: 'Repurposing of personal data beyond the original intent or consent scope, including secondary
-    uses not anticipated at collection time.
-
-    '
-  scope: ALL
-  lifecycle_stages:
-  - post-processing
-  mappings:
-  - framework: dpv_ai
-    target_id: PersonalDataHandling
-    target_label: Personal Data Handling (purpose limitation)
-    relation: relatedMatch
-  - framework: iso_42001
-    target_id: A.6.2.2
-    target_label: Documented intended use
-    relation: closeMatch
-- id: inference-based-profiling
-  type: subcategory
-  broader: privacy-collection-use
-  maturity: established
-  label: Inference-based profiling of sensitive attributes
-  definition: 'Inference of sensitive attributes or characteristics — emotional states, political opinions,
-    sexual orientation, health status, and similar — from behavioural, interaction, or other proxy data
-    the individual did not directly disclose. Generalises the former emotion-inference-profiling concept
-    beyond emotion recognition to inference-based profiling at large.
-
-    '
-  scope: ALL
-  lifecycle_stages:
-  - in-processing
-  - post-processing
-  mappings:
-  - framework: eu_ai_act
-    target_id: article-5-1f
-    target_label: Article 5(1)(f) — emotion recognition in workplace and education (prohibited)
-    relation: closeMatch
-  - framework: eu_ai_act
-    target_id: article-5-1g
-    target_label: Article 5(1)(g) — biometric categorization for sensitive attributes
-    relation: closeMatch
-  - framework: air_2024
-    target_id: L3-PrivacyViolations-Sensitive
-    target_label: Privacy → Sensitive attribute profiling
-    relation: closeMatch
 - id: privacy-data-protection
   type: subgroup
   broader: privacy-confidentiality
@@ -1000,6 +951,24 @@ concepts:
     target_id: valid-reliable
     target_label: Valid & Reliable (robustness to distribution shift)
     relation: narrowMatch
+- id: task-performance
+  type: subcategory
+  broader: reliability-output-quality
+  maturity: emerging
+  label: Task performance
+  alt_labels:
+  - Task effectiveness
+  - Inadequate task performance
+  definition: The system does not succeed at its intended task in operation, or succeeds unevenly across
+    subpopulations and input types, falling short of what the use requires. Measured ex post against the
+    task the system was deployed for; whether the system was validated for that task in the first place
+    is fitness-for-purpose (Governance), and for systems whose output is an evaluative score, whether
+    the score measures what it claims is measurement-validity. First pass (v4.0.0) — moved here from fitness-for-purpose
+    at Usman Gohar's request ("it's measurement, not governance"); definition and mechanism set to be
+    adjusted against his Layer-2 entry when it lands.
+  scope: ALL
+  lifecycle_stages:
+  - post-processing
 - id: failure-remediation-gaps
   type: subcategory
   broader: governance-compliance
@@ -1175,18 +1144,6 @@ concepts:
   label: Graceful degradation
   definition: 'Absence of defined degradation pathways that allow the system to maintain partial function
     when components fail, connectivity is lost, or resources are constrained.
-
-    '
-  scope: ALL
-  lifecycle_stages:
-  - post-processing
-- id: recovery-capability
-  type: subcategory
-  broader: reliability-resilience
-  maturity: emerging
-  label: Recovery capability
-  definition: 'Lack of tested recovery procedures, rollback mechanisms, or recovery time objectives for
-    restoring system function after disruption.
 
     '
   scope: ALL
@@ -1532,10 +1489,10 @@ concepts:
   broader: governance-compliance
   maturity: emerging
   label: Fitness for purpose and task effectiveness
-  definition: The system has not been validated against the problem it is intended to solve, or does not
-    achieve adequate or equitable task performance across subpopulations and input types. Covers both
-    the ex ante question (was this designed for this problem?) and the ex post question (does it actually
-    work?).
+  definition: The system has not been validated against the problem it is intended to solve, or is deployed
+    for a task or context beyond the one it was validated for. Covers the ex ante question (was this designed
+    and validated for this problem?) and its enforcement in deployment; whether the system actually succeeds
+    at the task in operation is task-performance (Reliability).
   scope: ALL
   lifecycle_stages:
   - pre-processing
@@ -1726,11 +1683,17 @@ concepts:
   type: subcategory
   broader: security-ai-attacks
   maturity: established
-  label: Evasion attacks
-  definition: Adversarial perturbations crafted to force misclassification or attacker-chosen outputs
-    at inference time, with or without access to model internals. Narrowed from the former adversarial-attacks
-    (which also covered poisoning and extraction) to evasion specifically; those concerns now live in
-    data-poisoning and model-extraction respectively.
+  label: Guardrail evasion
+  alt_labels:
+  - Evasion attacks
+  - Guardrail robustness
+  - Adversarial evasion
+  definition: Inputs crafted so that a deployed system acts on a request its safeguards should have blocked.
+    For LLM deployments this is the robustness of the guardrail or filter layer to input transformations
+    that keep the request readable to the model while defeating the guardrail (reframed in v4.0.0 from
+    the classifier-era 'evasion attacks'); for classifier-based systems it is the classic adversarial
+    perturbation that forces misclassification at inference time. Narrowed in v3.0.0 from the former adversarial-attacks
+    to evasion specifically; poisoning lives in data-poisoning.
   scope: ALL
   lifecycle_stages:
   - in-processing
@@ -1805,50 +1768,6 @@ concepts:
     target_id: subdomain-2.2
     target_label: AI system security vulnerabilities and attacks
     relation: narrowMatch
-- id: model-extraction
-  type: subcategory
-  broader: security-ai-attacks
-  maturity: established
-  label: Model extraction
-  definition: Attacks that aim to recover or replicate the underlying AI model, its parameters, or its
-    training data through queried interactions, enabling intellectual property theft or further targeted
-    attacks against the system.
-  scope: ALL
-  lifecycle_stages:
-  - post-processing
-  alt_labels:
-  - Model stealing
-  - Model inversion
-  mappings:
-  - framework: ibm_atlas
-    target_id: extraction-attack
-    target_label: Inference → Extraction attack
-    relation: exactMatch
-  - framework: dpv_ai
-    target_id: ModelInversion
-    target_label: Model Inversion
-    target_url: https://w3c.github.io/dpv/2.3/ai/#ModelInversion
-    relation: closeMatch
-  - framework: nist_600
-    target_id: information-security
-    target_label: Information Security (exfiltration of model weights/training data)
-    relation: narrowMatch
-  - framework: nist_rmf
-    target_id: secure-resilient
-    target_label: Secure & Resilient (confidentiality attacks)
-    relation: narrowMatch
-  - framework: eu_ai_act
-    target_id: article-15-5
-    target_label: Article 15(5) — cybersecurity (Recital 76 confidentiality attacks)
-    relation: narrowMatch
-  - framework: aiuc1
-    target_id: B.4
-    target_label: Prevent AI endpoint scraping
-    relation: closeMatch
-  - framework: mit
-    target_id: subdomain-2.2
-    target_label: AI system security vulnerabilities and attacks
-    relation: narrowMatch
 - id: data-poisoning
   type: subcategory
   broader: security-ai-attacks
@@ -1918,27 +1837,6 @@ concepts:
     target_id: security-non-technical
     target_label: Non-technical → Misuse + Inference → Security
     relation: closeMatch
-- id: unauthorized-access
-  type: subcategory
-  broader: security-system
-  maturity: established
-  label: Unauthorized access
-  definition: 'Exploitation of access control weaknesses to gain unauthorized access to the system, its
-    data, or its administrative functions.
-
-    '
-  scope: ALL
-  lifecycle_stages:
-  - post-processing
-  mappings:
-  - framework: aiuc1
-    target_id: B.6
-    target_label: Prevent unauthorized AI agent actions
-    relation: closeMatch
-  - framework: dpv_ai
-    target_id: SecurityAttack
-    target_label: Security Attack (unauthorized access)
-    relation: narrowMatch
 - id: supply-chain-vulnerabilities
   type: subcategory
   broader: governance-accountability
@@ -2283,7 +2181,7 @@ concepts:
     or appeal them. Includes obligations under GDPR Article 22 (rights regarding automated individual
     decision-making) and EU AI Act Article 13 (transparency and provision of information to deployers
     and affected persons).
-  scope: ADM
+  scope: ALL
   lifecycle_stages:
   - post-processing
   alt_labels:

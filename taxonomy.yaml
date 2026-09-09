@@ -713,9 +713,8 @@ concepts:
   - Privacy leakage
   definition: Personal or confidential/proprietary information present in training data, inference-time
     context, or connected systems, surfacing in model outputs through memorisation, context disclosure,
-    cross-tenant contamination, or system-prompt extraction. Broadens the former pii-leakage (personal
-    data only) to also cover organisational and commercial confidentiality (the former confidential-information-leakage,
-    retired and absorbed here).
+    cross-tenant contamination, or system-prompt extraction. Covers personal data and organisational or
+    commercial confidentiality alike.
   scope: ALL
   lifecycle_stages:
   - in-processing
@@ -961,11 +960,9 @@ concepts:
   - Inadequate task performance
   definition: The system does not succeed at its intended task in operation, or succeeds unevenly across
     subpopulations and input types, falling short of what the use requires. Measured ex post against the
-    task the system was deployed for; whether the system was validated for that task in the first place
-    is fitness-for-purpose (Governance), and for systems whose output is an evaluative score, whether
-    the score measures what it claims is measurement-validity. First pass (v4.0.0) — moved here from fitness-for-purpose
-    at Usman Gohar's request ("it's measurement, not governance"); definition and mechanism set to be
-    adjusted against his Layer-2 entry when it lands.
+    task the system was deployed for. Whether the system was validated for that task in the first place
+    is fitness-for-purpose (Governance); for systems whose output is an evaluative score, whether the
+    score measures what it claims is measurement-validity.
   scope: ALL
   lifecycle_stages:
   - post-processing
@@ -1689,11 +1686,10 @@ concepts:
   - Guardrail robustness
   - Adversarial evasion
   definition: Inputs crafted so that a deployed system acts on a request its safeguards should have blocked.
-    For LLM deployments this is the robustness of the guardrail or filter layer to input transformations
-    that keep the request readable to the model while defeating the guardrail (reframed in v4.0.0 from
-    the classifier-era 'evasion attacks'); for classifier-based systems it is the classic adversarial
-    perturbation that forces misclassification at inference time. Narrowed in v3.0.0 from the former adversarial-attacks
-    to evasion specifically; poisoning lives in data-poisoning.
+    For LLM deployments, the robustness of the guardrail or filter layer to input transformations that
+    keep the request readable to the model while defeating the guardrail; for classifier-based systems,
+    adversarial perturbations that force misclassification at inference time. Poisoning of training or
+    fine-tuning data is data-poisoning.
   scope: ALL
   lifecycle_stages:
   - in-processing

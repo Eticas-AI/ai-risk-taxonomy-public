@@ -2294,14 +2294,15 @@ concepts:
     relation: closeMatch
 - id: autonomy-agency
   type: category
-  label: Autonomy & Agency
+  label: Human Agency & Control
   alt_labels:
+  - Autonomy & Agency
   - Autonomy & Human Agency
   - Human-AI Interaction
-  definition: The risk that an AI system undermines human agency or operates with insufficient human control.
-    This includes over-reliance on AI outputs, automation bias, deskilling, and — for agentic AI systems
-    — failure modes arising from multi-step autonomous actions, tool use, or coordination with other AI
-    agents.
+  definition: The risk that an AI system undermines the capacity of the people who use or operate it to
+    exercise judgement and control. This includes deference to automated outputs, miscalibrated trust,
+    erosion of human skills, dependence that leaves people or organisations unable to function without
+    the system, and human oversight that exists in form but cannot be exercised in practice.
   scope: ALL
   lifecycle_stages:
   - post-processing
@@ -2334,8 +2335,8 @@ concepts:
     target_label: Principle 1.2 — human agency and oversight
     relation: closeMatch
   - framework: aiuc1
-    target_id: B.6
-    target_label: Prevent unauthorized AI agent actions + C.7 Human review
+    target_id: C.7
+    target_label: Flag high-risk outputs for human review
     relation: closeMatch
   - framework: ibm_atlas
     target_id: value-alignment-anthropomorphisation
@@ -2350,36 +2351,13 @@ concepts:
     target_label: Articles 7–8 — Human agency and oversight (implied)
     relation: broadMatch
     citation: The Convention addresses human agency through its human rights and accountability articles.
-- id: autonomy-human-agency
-  type: subgroup
-  broader: autonomy-agency
-  label: Human agency
-  definition: Risks to human decision-making capacity arising from interaction with AI systems.
-  mappings:
-  - framework: mit
-    target_id: subdomain-5.1
-    target_label: Overreliance and unsafe use
-    relation: closeMatch
-  - framework: mit
-    target_id: subdomain-5.2
-    target_label: Loss of human agency and autonomy
-    relation: closeMatch
-  - framework: nist_600
-    target_id: '7'
-    target_label: Human-AI Configuration
-    relation: closeMatch
-  - framework: dpv_ai
-    target_id: AutomationBias
-    target_label: Automation Bias
-    target_url: https://w3c.github.io/dpv/2.3/ai/#AutomationBias
-    relation: closeMatch
 - id: automation-bias
   label: Automation bias
   definition: Over-reliance on automated outputs, accepting AI recommendations without sufficient scrutiny,
     leading to missed errors and reduced human judgment.
   scope: ALL
   type: subcategory
-  broader: autonomy-human-agency
+  broader: autonomy-agency
   maturity: emerging
   lifecycle_stages:
   - post-processing
@@ -2403,7 +2381,7 @@ concepts:
     acceptance, or insufficient trust leading to underuse of valuable AI capabilities.
   scope: ALL
   type: subcategory
-  broader: autonomy-human-agency
+  broader: autonomy-agency
   maturity: emerging
   lifecycle_stages:
   - post-processing
@@ -2422,7 +2400,7 @@ concepts:
     of tasks to AI systems.
   scope: ALL
   type: subcategory
-  broader: autonomy-human-agency
+  broader: autonomy-agency
   maturity: emerging
   lifecycle_stages:
   - post-processing
@@ -2437,11 +2415,12 @@ concepts:
     relation: relatedMatch
 - id: over-reliance
   label: Over-reliance on AI
-  definition: Systemic dependence on AI systems that leaves individuals or organisations unable to function
-    when the system is unavailable or produces incorrect outputs.
+  definition: Dependence on an AI system such that individuals or organisations can no longer make or
+    evaluate the decision without it, so its errors pass through and its unavailability leaves the decision
+    untaken.
   scope: ALL
   type: subcategory
-  broader: autonomy-human-agency
+  broader: autonomy-agency
   maturity: emerging
   lifecycle_stages:
   - post-processing
@@ -2458,88 +2437,14 @@ concepts:
     target_id: anthropomorphisation
     target_label: Output → Anthropomorphisation (over-reliance)
     relation: closeMatch
-- id: autonomy-system-autonomy
-  type: subgroup
-  broader: autonomy-agency
-  label: System autonomy
-  definition: Risks from AI systems operating with a degree of autonomy beyond single-inference interactions.
-  mappings:
-  - framework: mit
-    target_id: subdomain-7.6
-    target_label: Multi-agent risks
-    relation: closeMatch
-  - framework: mit
-    target_id: subdomain-7.1
-    target_label: AI pursuing its own goals
-    relation: closeMatch
-  - framework: aiuc1
-    target_id: B.6
-    target_label: Prevent unauthorized AI agent actions
-    relation: closeMatch
-  - framework: air_2024
-    target_id: L3-AutonomousUnsafeOperation
-    target_label: Operational Misuses → Autonomous Unsafe Operation of Systems
-    relation: closeMatch
-- id: multi-step-actions
-  label: Multi-step autonomous actions
-  definition: AI systems that plan and execute sequences of actions, where errors in early steps cascade
-    unpredictably through later steps.
-  scope: LLM
-  type: subcategory
-  broader: autonomy-system-autonomy
-  maturity: emerging
-  lifecycle_stages:
-  - post-processing
-  mappings:
-  - framework: aiuc1
-    target_id: B.6
-    target_label: Prevent unauthorized AI agent actions
-    relation: closeMatch
-  - framework: mit
-    target_id: subdomain-7.6
-    target_label: Multi-agent risks
-    relation: relatedMatch
-- id: tool-use-risks
-  label: Tool use risks
-  definition: AI systems that interact with external tools, APIs, or services, creating unintended side
-    effects or security exposures.
-  scope: LLM
-  type: subcategory
-  broader: autonomy-system-autonomy
-  maturity: emerging
-  lifecycle_stages:
-  - post-processing
-  mappings:
-  - framework: aiuc1
-    target_id: B.6
-    target_label: Prevent unauthorized AI agent actions (tool-call safety)
-    relation: closeMatch
-- id: emergent-behaviour
-  label: Emergent behaviour
-  definition: Unexpected capabilities or behaviours arising from agent interactions, multi-model coordination,
-    or complex system dynamics that were not anticipated during design.
-  scope: LLM
-  type: subcategory
-  broader: autonomy-system-autonomy
-  maturity: emerging
-  lifecycle_stages:
-  - post-processing
-  mappings:
-  - framework: mit
-    target_id: subdomain-7.6
-    target_label: Multi-agent risks (emergent dynamics)
-    relation: closeMatch
-  - framework: mit
-    target_id: subdomain-7.1
-    target_label: AI pursuing its own goals
-    relation: closeMatch
 - id: loss-of-human-control
   label: Loss of meaningful human control
-  definition: AI systems operating at speeds or complexity levels that make meaningful human oversight
-    impractical, including inability to understand, interrupt, or reverse autonomous decisions.
+  definition: Human control over the system that exists in form but cannot be exercised in practice, because
+    the pace, volume, or complexity of the system's decisions exceeds what a person can meaningfully assess,
+    interrupt, or reverse before they take effect.
   scope: ALL
   type: subcategory
-  broader: autonomy-system-autonomy
+  broader: autonomy-agency
   maturity: emerging
   lifecycle_stages:
   - post-processing
@@ -2547,11 +2452,13 @@ concepts:
   - framework: mit
     target_id: subdomain-5.2
     target_label: Loss of human agency and autonomy
-    relation: exactMatch
+    relation: relatedMatch
   - framework: eu_ai_act
     target_id: article-14
     target_label: Article 14 — Human oversight (effective oversight)
     relation: closeMatch
+    citation: Article 14(4) requires oversight that is effective in practice, which is this risk; the
+      provision of oversight measures (Article 14(3)) is mapped from human-oversight-control (Governance).
   - framework: aiuc1
     target_id: C.7
     target_label: Flag high-risk outputs for human review
@@ -2763,6 +2670,10 @@ concepts:
     citation: IBM Risk Atlas explicitly identifies Explainability, Robustness, and Computational Inefficiency
       as new and amplified risks introduced by agentic AI deployment patterns; covers untraceable-agent-actions,
       function-calling-hallucination, and redundant-actions respectively.
+  - framework: air_2024
+    target_id: L3-AutonomousUnsafeOperation
+    target_label: Operational Misuses → Autonomous Unsafe Operation of Systems
+    relation: closeMatch
 - id: agentic-actions-tool-use
   type: subgroup
   broader: agentic-ai
@@ -2823,12 +2734,22 @@ concepts:
   scope: LLM
   lifecycle_stages:
   - post-processing
+  mappings:
+  - framework: mit
+    target_id: subdomain-7.1
+    target_label: AI pursuing its own goals
+    relation: closeMatch
 - id: agentic-multi-agent-integrity
   type: subgroup
   broader: agentic-ai
   label: Multi-agent Integrity
   definition: Risks from systems composed of multiple agents — including trust exploitation, cascading
     failures, goal misalignment between agents, and insufficient traceability across the pipeline.
+  mappings:
+  - framework: mit
+    target_id: subdomain-7.6
+    target_label: Multi-agent risks
+    relation: closeMatch
 - id: trust-exploitation-between-agents
   type: subcategory
   broader: agentic-multi-agent-integrity

@@ -490,7 +490,11 @@ concepts:
   definition: 'The risk that an AI system collects, processes, or infers personal information in ways
     that infringe on individuals'' rights to control their data (privacy), or that sensitive information
     is exposed, accessed, or shared without authorization (confidentiality). This includes risks from
-    data leakage, re-identification, unauthorized use, or insufficient safeguards.
+    data leakage, re-identification, unauthorized use, or insufficient safeguards. On the confidentiality
+    side the category covers confidential information the system holds or is given - in particular customer,
+    partner or third-party data entrusted under contract, NDA or similar terms of use; confidentiality
+    as a general security property of the system (authentication, credential handling, endpoint hardening)
+    is not a privacy risk and is not covered here.
 
     '
   scope: ALL
@@ -579,7 +583,8 @@ concepts:
   type: subgroup
   broader: privacy-confidentiality
   label: Data collection & use
-  definition: Risks from how personal data is collected, processed, and repurposed.
+  definition: Risks from how personal data, and data entrusted to the system under terms of use, is obtained,
+    processed and repurposed.
   mappings:
   - framework: dpv_ai
     target_id: PersonalDataCollection
@@ -615,11 +620,38 @@ concepts:
     target_id: L3-UnauthorizedPrivacyViolations
     target_label: Privacy → Unauthorized Privacy Violations
     relation: closeMatch
+- id: confidential-data-use-violation
+  type: subcategory
+  broader: privacy-collection-use
+  maturity: emerging
+  label: Use of confidential data outside its sharing terms
+  definition: 'Use, onward transfer or processing of confidential data entrusted to the system - customer,
+    partner or third-party data shared under contract, NDA or other terms of use - for a purpose, by a
+    recipient or in a jurisdiction those terms exclude. The contractual counterpart of unlawful-data-processing:
+    the obligation arises from the terms under which the data was shared rather than from data protection
+    law, and applies whether or not the data is personal.
+
+    '
+  scope: ALL
+  lifecycle_stages:
+  - pre-processing
+  - post-processing
+  mappings:
+  - framework: aiuc1
+    target_id: A.5
+    target_label: Implement customer data policies
+    relation: closeMatch
+  - framework: ibm_atlas
+    target_id: confidential-data-input
+    target_label: Training & tuning → Confidential information in data + Inference → Confidential data
+      in prompt
+    relation: relatedMatch
 - id: privacy-data-protection
   type: subgroup
   broader: privacy-confidentiality
   label: Data protection
-  definition: Risks related to safeguards for stored and processed personal data.
+  definition: Risks from how stored personal data, and data entrusted to the system under terms of use,
+    is retained, erased and accessed, and whether anonymized personal data stays anonymous.
   mappings:
   - framework: nist_600
     target_id: '4'
@@ -638,8 +670,10 @@ concepts:
   broader: privacy-data-protection
   maturity: established
   label: Weak data retention, erasure, and access controls
-  definition: 'Insufficient policies or technical measures for data retention limits, secure deletion,
-    and access restrictions, increasing the risk of unauthorized access or indefinite data persistence.
+  definition: 'Personal data, or data entrusted to the system under terms of use, accessed by parties
+    not authorized to see it, kept beyond the period its purpose, the law or its sharing terms allow,
+    or not erased when it should be, because retention limits, deletion and access restrictions are undefined
+    or unenforced.
 
     '
   scope: ALL
@@ -660,8 +694,8 @@ concepts:
   broader: privacy-data-protection
   maturity: established
   label: Re-identification of anonymised data
-  definition: 'The possibility that anonymised or pseudonymised data can be linked back to specific individuals
-    through inference, combination with other datasets, or model outputs.
+  definition: 'The possibility that anonymized or pseudonymized data held or produced by the system can
+    be linked back to specific individuals through inference or combination with other datasets.
 
     '
   scope: ALL
@@ -686,7 +720,7 @@ concepts:
   type: subgroup
   broader: privacy-confidentiality
   label: Model-level privacy
-  definition: Risks from AI models leaking or exposing private information through their outputs or structure.
+  definition: Risks from the model exposing personal or confidential information through its outputs.
   mappings:
   - framework: mit
     target_id: subdomain-2.1

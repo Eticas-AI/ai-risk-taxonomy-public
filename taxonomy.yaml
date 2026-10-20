@@ -111,7 +111,6 @@ concepts:
   scope: ALL
   lifecycle_stages:
   - pre-processing
-  - in-processing
   - post-processing
   mappings:
   - framework: mit
@@ -138,6 +137,8 @@ concepts:
     '
   scope: ALL
   lifecycle_stages:
+  - pre-processing
+  - in-processing
   - post-processing
   mappings:
   - framework: nist_rmf
@@ -165,6 +166,7 @@ concepts:
     '
   scope: ALL
   lifecycle_stages:
+  - pre-processing
   - in-processing
   - post-processing
   source: HRA
@@ -254,6 +256,7 @@ concepts:
     even when access is the same.
   scope: ALL
   lifecycle_stages:
+  - pre-processing
   - in-processing
   - post-processing
   source: HRA
@@ -607,6 +610,8 @@ concepts:
   scope: ALL
   lifecycle_stages:
   - pre-processing
+  - in-processing
+  - post-processing
   mappings:
   - framework: eu_ai_act
     target_id: article-10
@@ -635,6 +640,7 @@ concepts:
   scope: ALL
   lifecycle_stages:
   - pre-processing
+  - in-processing
   - post-processing
   mappings:
   - framework: aiuc1
@@ -679,6 +685,7 @@ concepts:
   scope: ALL
   lifecycle_stages:
   - pre-processing
+  - in-processing
   - post-processing
   mappings:
   - framework: iso_42001
@@ -794,7 +801,6 @@ concepts:
     function under adverse or changing conditions (e.g., infrastructure failure, connectivity loss).
   scope: ALL
   lifecycle_stages:
-  - pre-processing
   - in-processing
   - post-processing
   maturity: established
@@ -929,7 +935,6 @@ concepts:
     '
   scope: ALL
   lifecycle_stages:
-  - in-processing
   - post-processing
   mappings:
   - framework: nist_rmf
@@ -1191,7 +1196,6 @@ concepts:
     '
   scope: ALL
   lifecycle_stages:
-  - pre-processing
   - post-processing
 - id: measurement-validity
   type: subgroup
@@ -1349,7 +1353,6 @@ concepts:
     '
   scope: ALL
   lifecycle_stages:
-  - pre-processing
   - post-processing
   source: HRA
   mappings:
@@ -1421,7 +1424,6 @@ concepts:
     '
   scope: ALL
   lifecycle_stages:
-  - in-processing
   - post-processing
   mappings:
   - framework: nist_rmf
@@ -1528,6 +1530,7 @@ concepts:
   lifecycle_stages:
   - pre-processing
   - in-processing
+  - post-processing
   source: HRA
   alt_labels:
   - Fitness for purpose
@@ -1726,7 +1729,6 @@ concepts:
     fine-tuning data is data-poisoning.
   scope: ALL
   lifecycle_stages:
-  - in-processing
   - post-processing
   mappings:
   - framework: dpv_ai
@@ -1880,6 +1882,7 @@ concepts:
   lifecycle_stages:
   - pre-processing
   - in-processing
+  - post-processing
   mappings:
   - framework: nist_600
     target_id: value-chain
@@ -1976,7 +1979,6 @@ concepts:
     '
   scope: ALL
   lifecycle_stages:
-  - pre-processing
   - in-processing
   - post-processing
   maturity: established
@@ -2753,7 +2755,6 @@ concepts:
     '
   scope: LLM
   lifecycle_stages:
-  - pre-processing
   - post-processing
 - id: scope-creep-goal-misalignment
   type: subcategory

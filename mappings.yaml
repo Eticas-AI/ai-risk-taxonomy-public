@@ -10,11 +10,13 @@ frameworks:
   eu_ai_act:
     type: compliance
     name: EU AI Act (Regulation 2024/1689)
+    version: Regulation (EU) 2024/1689, OJ L 12.7.2024
     url: https://artificialintelligenceact.eu
     base_uri: https://w3id.org/dpv/legal/eu/aiact#
   iso_42001:
     type: compliance
     name: ISO/IEC 42001:2023 — AI Management System
+    version: '2023'
     url: https://www.iso.org/standard/42001
     base_uri: https://taxonomy.eticas.ai/external/iso-42001/
   aiuc1:
@@ -94,16 +96,16 @@ frameworks:
     name: MIT AI Risk Repository
     version: v4 (December 2025)
     url: https://airisk.mit.edu
-    paper: Slattery et al., Patterns (Cell Press), March 2026
-    license: CC BY 4.0
     base_uri: https://airisk.mit.edu/domain/
+    license: CC BY 4.0
+    paper: Slattery et al., Patterns (Cell Press), March 2026
   air_2024:
     type: taxonomy
     name: AIR 2024
     version: 1.0 (June 2024)
     url: https://arxiv.org/abs/2406.17864
-    paper: 'Zeng et al., AIR 2024: A Safety Risk Taxonomy for AI'
     base_uri: https://taxonomy.eticas.ai/external/air-2024/
+    paper: 'Zeng et al., AIR 2024: A Safety Risk Taxonomy for AI'
   ibm_atlas:
     type: taxonomy
     name: IBM AI Risk Atlas
@@ -115,6 +117,6 @@ frameworks:
     name: W3C Data Privacy Vocabulary — AI Extension
     version: 2.3 (February 2026)
     url: https://w3c.github.io/dpv/2.3/ai/
-    repository: https://github.com/w3c/dpv
     base_uri: https://w3id.org/dpv/ai#
+    repository: https://github.com/w3c/dpv
     concept_url_prefix: https://w3c.github.io/dpv/2.3/ai/#

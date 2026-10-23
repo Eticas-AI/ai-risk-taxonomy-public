@@ -3,16 +3,22 @@
 #
 # Each concept's `mappings` list is computed from the mapping records:
 #   framework      key of the framework in mappings.yaml
-#   target_id      the part mapped to, appended to the framework's base_uri
+#   target_id      the part mapped to, as the framework's file names it
+#   target_uri     the part's IRI: the publisher's own where it mints one (ELI for
+#                  EU legislation, DPV), otherwise the framework's base_uri + target_id
 #   target_label   the label Eticas uses for the part; usually, not always, the
 #                  framework's own heading (see CHANGELOG 5.6.0)
 #   target_url     the part's page in English, where the framework publishes one
 #   relation       exactMatch | closeMatch | broadMatch | narrowMatch | relatedMatch,
 #                  read from the concept towards the part
-#   review_status  unreviewed (no review recorded yet) | reviewed (confirmed by an
-#                  Eticas reviewer against the concept's current definition and this
-#                  framework edition) | outdated (reviewed, but the definition or the
-#                  edition has changed since)
+#   review_status  reviewed (confirmed by an Eticas reviewer against the concept's
+#                  current definition and this framework edition) | outdated
+#                  (reviewed, but the definition has changed since) | inherited (in
+#                  the taxonomy since before v5.7.0, unchanged, no review recorded) |
+#                  agent-proposed (from an agent-based review that read both texts;
+#                  no person has confirmed it yet) | provisional (made without access
+#                  to the framework's text) | unreviewed (any other mapping with no
+#                  review)
 # Mappings whose review changed or rejected them are not published.
 
 concepts:
@@ -38,73 +44,107 @@ concepts:
   perspective: rights & ethics
   mappings:
   - framework: eu_ai_act
-    target_id: article-10-5-annex-iii
-    target_label: Article 10(5) + Article 6(2) + Annex III — bias-relevant data governance and high-risk
-      classification
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: article-4a-1
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_4a/par_1/2026-07-27
+    target_label: Article 4a(1) — processing of special categories of personal data by providers of high-risk
+      AI systems for bias detection and correction
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_4a/par_1/2026-07-27
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: eu_ai_act
+    target_id: article-10-2f
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_10/par_2/pnt_f/2026-07-27
+    target_label: Article 10(2)(f) — examination of data sets in view of possible biases
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_10/par_2/pnt_f/2026-07-27
+    relation: narrowMatch
+    review_status: agent-proposed
+  - framework: eu_ai_act
+    target_id: article-10-2g
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_10/par_2/pnt_g/2026-07-27
+    target_label: Article 10(2)(g) — measures to detect, prevent and mitigate possible biases
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_10/par_2/pnt_g/2026-07-27
+    relation: narrowMatch
+    review_status: agent-proposed
   - framework: iso_42001
     target_id: A.7.4
-    target_label: A.7.4 — Data for AI systems
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.7.4
+    target_label: A.7.4 Quality of data for AI systems
     relation: narrowMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: aiuc1
     target_id: C.3-C.4-C.6
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/C.3-C.4-C.6
     target_label: C.3 + C.4 + C.6 — safeguards to prevent harmful and vulnerable outputs
     relation: relatedMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: coe_ai_convention
     target_id: article-10
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-10
     target_label: Article 10 — Equality and non-discrimination
+    relation: closeMatch
+    review_status: inherited
+  - framework: ieee_7003
+    target_id: clause-7
+    target_uri: https://taxonomy.eticas.ai/external/ieee-7003/clause-7
+    target_label: Clause 7 — Data Representation
     relation: closeMatch
     review_status: unreviewed
   - framework: ieee_7003
-    target_id: clause-7-and-9
-    target_label: Clauses 7 & 9 — Data Representation; Evaluation
+    target_id: clause-9
+    target_uri: https://taxonomy.eticas.ai/external/ieee-7003/clause-9
+    target_label: Clause 9 — Evaluation
     relation: closeMatch
     review_status: unreviewed
   - framework: nist_rmf
     target_id: fair
-    target_label: Fair with Harmful Bias Managed
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/fair
+    target_label: Fair – with Harmful Bias Managed
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_600
     target_id: harmful-bias
-    target_label: Harmful Bias & Homogenization
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/harmful-bias
+    target_label: Harmful Bias or Homogenization
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: oecd
     target_id: principle-1.2
-    target_label: Human rights, rule of law, fairness & privacy
+    target_uri: https://taxonomy.eticas.ai/external/oecd-ai/principle-1.2
+    target_label: 1.2 Respect for the rule of law, human rights and democratic values, including fairness
+      and privacy
     relation: broadMatch
+    review_status: inherited
+  - framework: tc260
+    target_id: 3.1.1b
+    target_uri: https://taxonomy.eticas.ai/external/tc260/3.1.1b
+    target_label: §3.1.1(b) Bias and discrimination
+    relation: closeMatch
     review_status: unreviewed
   - framework: tc260
-    target_id: 3.1.1b-3.3.2a
-    target_label: §3.1.1(b) Model and algorithm risks (bias/discrimination) + §3.3.2(a) Ethical risks
-      (systemic social discrimination)
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: 3.3.2a
+    target_uri: https://taxonomy.eticas.ai/external/tc260/3.3.2a
+    target_label: §3.3.2(a) Aggravating social bias and widening intelligence divide
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: domain-1
+    target_uri: https://airisk.mit.edu/domain/domain-1
     target_label: Discrimination & Toxicity
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: air_2024
     target_id: L1-LegalRightsRelated
-    target_label: Legal & Rights-Related Risks (3.1.D)
+    target_uri: https://taxonomy.eticas.ai/external/air-2024/L1-LegalRightsRelated
+    target_label: Legal & Rights-Related Risks
     relation: broadMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: output-fairness-and-training-data
-    target_label: Output → Fairness + Training data → Accuracy + Fairness
-    relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: dpv_ai
     target_id: AIBias
+    target_uri: https://w3id.org/dpv/ai#AIBias
     target_label: AI Bias
     target_url: https://w3c.github.io/dpv/2.3/ai/#AIBias
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: geographic-cultural-language-skew
   type: subcategory
   broader: bias-representational-harm
@@ -121,20 +161,29 @@ concepts:
   mappings:
   - framework: nist_600
     target_id: harmful-bias
-    target_label: Harmful Bias & Homogenization
-    relation: narrowMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/harmful-bias
+    target_label: Harmful Bias or Homogenization
+    relation: broadMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: subdomain-1.1
+    target_uri: https://airisk.mit.edu/domain/subdomain-1.1
     target_label: Unfair discrimination and misrepresentation
-    relation: narrowMatch
-    review_status: unreviewed
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: mit
+    target_id: subdomain-1.3
+    target_uri: https://airisk.mit.edu/domain/subdomain-1.3
+    target_label: Unequal performance across groups
+    relation: broadMatch
+    review_status: agent-proposed
   - framework: dpv_ai
     target_id: NonRepresentativeSamplingBias
+    target_uri: https://w3id.org/dpv/ai#NonRepresentativeSamplingBias
     target_label: Non-Representative Sampling Bias
     target_url: https://w3c.github.io/dpv/2.3/ai/#NonRepresentativeSamplingBias
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: feedback-loops
   type: subcategory
   broader: bias-dynamic-systemic-bias
@@ -150,21 +199,26 @@ concepts:
   - in-processing
   - post-processing
   mappings:
+  - framework: eu_ai_act
+    target_id: article-15-4-sub3
+    target_uri: https://taxonomy.eticas.ai/external/eu-ai-act-2026-07-27/article-15-4-sub3
+    target_label: Article 15(4), third subparagraph — continuously learning systems and feedback loops
+      from possibly biased outputs
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_15/par_4/2026-07-27
+    relation: closeMatch
+    review_status: agent-proposed
   - framework: iso_42001
     target_id: A.6.2.6
-    target_label: AI system operation and monitoring
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.6.2.6
+    target_label: A.6.2.6 AI system operation and monitoring
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
     target_id: systemic-bias
-    target_label: Systemic bias under harmful bias
-    relation: narrowMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: societal-impact-drift
-    target_label: Output → Drift + Non-technical → Societal impact
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/systemic-bias
+    target_label: Systemic bias
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: stereotyping-demeaning-content
   type: subcategory
   broader: bias-representational-harm
@@ -185,19 +239,22 @@ concepts:
   mappings:
   - framework: mit
     target_id: subdomain-1.1
+    target_uri: https://airisk.mit.edu/domain/subdomain-1.1
     target_label: Unfair discrimination and misrepresentation
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: air_2024
     target_id: L3-Stereotyping
-    target_label: Discrimination & Bias → Stereotyping
+    target_uri: https://taxonomy.eticas.ai/external/air-2024/L3-Stereotyping
+    target_label: Perpetuating Harmful Beliefs
     relation: closeMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: toxicity-stereotyping
-    target_label: Output → Toxicity / Harmful output (stereotyping)
-    relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
+  - framework: air_2024
+    target_id: L3-OffensiveLanguage
+    target_uri: https://taxonomy.eticas.ai/external/air-2024/L3-OffensiveLanguage
+    target_label: Offensive Language
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: harmful-content-toxicity
   type: subcategory
   broader: bias-representational-harm
@@ -217,29 +274,40 @@ concepts:
   mappings:
   - framework: aiuc1
     target_id: C.3
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/C.3
     target_label: Prevent harmful outputs
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_600
     target_id: dangerous-content
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/dangerous-content
     target_label: Dangerous, Violent, or Hateful Content
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
+  - framework: tc260
+    target_id: 3.2.2a
+    target_uri: https://taxonomy.eticas.ai/external/tc260/3.2.2a
+    target_label: §3.2.2(a) Output of illegal and harmful information
+    relation: broadMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: subdomain-1.2
+    target_uri: https://airisk.mit.edu/domain/subdomain-1.2
     target_label: Exposure to toxic content
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: air_2024
     target_id: L1-ContentSafety
+    target_uri: https://taxonomy.eticas.ai/external/air-2024/L1-ContentSafety
     target_label: Content Safety Risks
     relation: broadMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: toxicity-harmful-output
-    target_label: Output → Toxicity / Harmful output
-    relation: exactMatch
-    review_status: unreviewed
+    review_status: inherited
+  - framework: air_2024
+    target_id: L2-HateToxicity
+    target_uri: https://taxonomy.eticas.ai/external/air-2024/L2-HateToxicity
+    target_label: Hate/Toxicity
+    relation: closeMatch
+    review_status: agent-proposed
 - id: sentiment-fairness
   type: subcategory
   broader: bias-representational-harm
@@ -257,14 +325,10 @@ concepts:
   mappings:
   - framework: mit
     target_id: subdomain-1.1
+    target_uri: https://airisk.mit.edu/domain/subdomain-1.1
     target_label: Unfair discrimination and misrepresentation
-    relation: narrowMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: output-fairness-sentiment
-    target_label: Output → Fairness (sentiment quality across groups)
-    relation: narrowMatch
-    review_status: unreviewed
+    relation: broadMatch
+    review_status: agent-proposed
 - id: performance-equity
   type: subcategory
   broader: bias-outcome-disparities
@@ -285,24 +349,29 @@ concepts:
   mappings:
   - framework: aiuc1
     target_id: C.5
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/C.5
     target_label: Prevent customer-defined high-risk outputs
     relation: narrowMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
-    target_id: harmful-bias-disparate-performance
-    target_label: Harmful bias / disparate performance
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: fair
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/fair
+    target_label: Fair – with Harmful Bias Managed
+    relation: broadMatch
+    review_status: agent-proposed
+  - framework: nist_rmf
+    target_id: measure-2.11
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/measure-2.11
+    target_label: 'MEASURE 2.11: Fairness and bias – as identified in the MAP function – are evaluated
+      and results are documented.'
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: subdomain-1.3
+    target_uri: https://airisk.mit.edu/domain/subdomain-1.3
     target_label: Unequal performance across groups
     relation: closeMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: output-bias
-    target_label: Output bias (Fairness dimension)
-    relation: exactMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: bias-outcome-disparities
   type: subgroup
   broader: bias-fairness
@@ -313,50 +382,61 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: annex-iii
-    target_label: Annex III high-risk uses (employment, education, essential services)
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/anx_III/2026-07-27
+    target_label: Annex III — High-risk AI systems referred to in Article 6(2)
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/anx_III/2026-07-27
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: iso_42001
     target_id: A.5.2
-    target_label: AI system impact assessment
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.5.2
+    target_label: A.5.2 AI system impact assessment process
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: aiuc1
     target_id: C.5
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/C.5
     target_label: Prevent customer-defined high-risk outputs
     relation: narrowMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
-    target_id: manage-2.3
-    target_label: Manage 2.3 — allocation harms and disparate performance
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: fair
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/fair
+    target_label: Fair – with Harmful Bias Managed
+    relation: broadMatch
+    review_status: agent-proposed
+  - framework: nist_rmf
+    target_id: measure-2.11
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/measure-2.11
+    target_label: 'MEASURE 2.11: Fairness and bias – as identified in the MAP function – are evaluated
+      and results are documented.'
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: nist_600
     target_id: harmful-bias
-    target_label: Harmful Bias & Homogenization
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/harmful-bias
+    target_label: Harmful Bias or Homogenization
     relation: broadMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: mit
     target_id: subdomain-1.3
+    target_uri: https://airisk.mit.edu/domain/subdomain-1.3
     target_label: Unequal performance across groups
-    relation: exactMatch
-    review_status: unreviewed
+    relation: narrowMatch
+    review_status: agent-proposed
   - framework: air_2024
     target_id: L2-DiscriminationBias
-    target_label: Discrimination & Bias (Discriminatory Activities)
+    target_uri: https://taxonomy.eticas.ai/external/air-2024/L2-DiscriminationBias
+    target_label: Discrimination/Bias
     relation: closeMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: output-bias
-    target_label: Output bias (Fairness dimension)
-    relation: exactMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: dpv_ai
     target_id: DataBias
+    target_uri: https://w3id.org/dpv/ai#DataBias
     target_label: Data Bias
     target_url: https://w3c.github.io/dpv/2.3/ai/#DataBias
-    relation: broadMatch
-    review_status: unreviewed
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: disparate-impact-protected-groups
   type: subcategory
   broader: bias-outcome-disparities
@@ -377,56 +457,62 @@ concepts:
   - Accessibility barriers
   mappings:
   - framework: eu_ai_act
-    target_id: article-5-1c
-    target_label: Article 5(1)(c) — prohibited social scoring
+    target_id: article-10
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_10/2026-07-27
+    target_label: Article 10 — Data and data governance
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_10/2026-07-27
     relation: closeMatch
     review_status: unreviewed
   - framework: eu_ai_act
-    target_id: article-10
-    target_label: Article 10 — Data and data governance
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: article-5-1c
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_5/par_1/pnt_c/2026-07-27
+    target_label: Article 5(1)(c) — social scoring
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_5/par_1/pnt_c/2026-07-27
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: iso_42001
     target_id: A.5.2
-    target_label: AI system impact assessment
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.5.2
+    target_label: A.5.2 AI system impact assessment process
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
-    target_id: harmful-bias
-    target_label: Harmful bias
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: fair
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/fair
+    target_label: Fair – with Harmful Bias Managed
+    relation: broadMatch
+    review_status: agent-proposed
   - framework: nist_600
     target_id: harmful-bias
-    target_label: Harmful Bias & Homogenization
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/harmful-bias
+    target_label: Harmful Bias or Homogenization
     relation: broadMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: mit
     target_id: subdomain-1.1
+    target_uri: https://airisk.mit.edu/domain/subdomain-1.1
     target_label: Unfair discrimination and misrepresentation
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: mit
     target_id: subdomain-1.3
+    target_uri: https://airisk.mit.edu/domain/subdomain-1.3
     target_label: Unequal performance across groups
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: air_2024
-    target_id: L2-DiscriminationBias-protected
-    target_label: Discrimination & Bias × Protected Characteristics (60 Level-4 risks)
+    target_id: L2-DiscriminationBias
+    target_uri: https://taxonomy.eticas.ai/external/air-2024/L2-DiscriminationBias
+    target_label: Discrimination/Bias
     relation: closeMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: output-fairness
-    target_label: Output → Fairness dimension
-    relation: closeMatch
-    review_status: unreviewed
+    review_status: agent-proposed
   - framework: dpv_ai
     target_id: Discrimination
+    target_uri: https://w3id.org/dpv/risk#Discrimination
     target_label: Discrimination
     target_url: https://w3c.github.io/dpv/2.3/risk/#Discrimination
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: bias-representational-harm
   type: subgroup
   broader: bias-fairness
@@ -436,31 +522,30 @@ concepts:
     content rather than allocation of resources or opportunities.
   mappings:
   - framework: nist_rmf
-    target_id: harmful-bias
-    target_label: Harmful bias
-    relation: narrowMatch
-    review_status: unreviewed
+    target_id: fair
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/fair
+    target_label: Fair – with Harmful Bias Managed
+    relation: broadMatch
+    review_status: agent-proposed
   - framework: nist_600
     target_id: harmful-bias
-    target_label: Harmful Bias & Homogenization
-    relation: narrowMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/harmful-bias
+    target_label: Harmful Bias or Homogenization
+    relation: broadMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: subdomain-1.1
+    target_uri: https://airisk.mit.edu/domain/subdomain-1.1
     target_label: Unfair discrimination and misrepresentation
     relation: closeMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: toxicity-harmful-output
-    target_label: Output → Toxicity / Harmful output
-    relation: narrowMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: dpv_ai
     target_id: NonRepresentativeSamplingBias
+    target_uri: https://w3id.org/dpv/ai#NonRepresentativeSamplingBias
     target_label: Non-Representative Sampling Bias
     target_url: https://w3c.github.io/dpv/2.3/ai/#NonRepresentativeSamplingBias
-    relation: narrowMatch
-    review_status: unreviewed
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: homogenization-output-across-groups
   type: subcategory
   broader: bias-representational-harm
@@ -476,19 +561,16 @@ concepts:
   mappings:
   - framework: nist_600
     target_id: harmful-bias-homogenization
-    target_label: Harmful Bias or Homogenization (homogenization clause)
-    relation: exactMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/harmful-bias-homogenization
+    target_label: 'Harmful Bias or Homogenization: undesired homogenization'
+    relation: closeMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: subdomain-6.3
+    target_uri: https://airisk.mit.edu/domain/subdomain-6.3
     target_label: Economic and cultural devaluation of human effort
     relation: relatedMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: output-diversity-mode-collapse
-    target_label: Output diversity / mode collapse
-    relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: bias-dynamic-systemic-bias
   type: subgroup
   broader: bias-fairness
@@ -497,56 +579,70 @@ concepts:
     AI systems and the social systems they operate in.
   mappings:
   - framework: eu_ai_act
+    target_id: article-15-4-sub3
+    target_uri: https://taxonomy.eticas.ai/external/eu-ai-act-2026-07-27/article-15-4-sub3
+    target_label: Article 15(4), third subparagraph — continuously learning systems and feedback loops
+      from possibly biased outputs
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_15/par_4/2026-07-27
+    relation: narrowMatch
+    review_status: agent-proposed
+  - framework: eu_ai_act
     target_id: article-9
-    target_label: Article 9 — risk management throughout lifecycle
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_9/2026-07-27
+    target_label: Article 9 — Risk management system
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_9/2026-07-27
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: eu_ai_act
     target_id: article-72
-    target_label: Article 72 — Post-market monitoring
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_72/2026-07-27
+    target_label: Article 72 — Post-market monitoring by providers and post-market monitoring plan for
+      high-risk AI systems
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_72/2026-07-27
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: iso_42001
     target_id: A.6.2.6
-    target_label: AI system operation and monitoring
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.6.2.6
+    target_label: A.6.2.6 AI system operation and monitoring
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: aiuc1
     target_id: C.8
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/C.8
     target_label: Monitor AI risk categories
     relation: relatedMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
     target_id: systemic-bias
-    target_label: Systemic bias under harmful bias
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/systemic-bias
+    target_label: Systemic bias
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_600
     target_id: harmful-bias
-    target_label: Harmful Bias & Homogenization
-    relation: narrowMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/harmful-bias
+    target_label: Harmful Bias or Homogenization
+    relation: broadMatch
+    review_status: agent-proposed
   - framework: oecd
-    target_id: principle-1.5
-    target_label: Accountability
+    target_id: principle-1.5-c
+    target_uri: https://taxonomy.eticas.ai/external/oecd-ai/principle-1.5-c
+    target_label: 1.5(c) A systematic risk management approach across the AI system lifecycle
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: tc260
+    target_id: 3.3.2a
+    target_uri: https://taxonomy.eticas.ai/external/tc260/3.3.2a
+    target_label: §3.3.2(a) Aggravating social bias and widening intelligence divide
     relation: closeMatch
-    review_status: unreviewed
+    review_status: agent-proposed
   - framework: mit
     target_id: subdomain-6.5
+    target_uri: https://airisk.mit.edu/domain/subdomain-6.5
     target_label: Governance failure
     relation: relatedMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: societal-impact-drift
-    target_label: Output → Drift + Non-technical → Societal impact
-    relation: closeMatch
-    review_status: unreviewed
-  - framework: dpv_ai
-    target_id: AutomationBias
-    target_label: Automation Bias
-    target_url: https://w3c.github.io/dpv/2.3/ai/#AutomationBias
-    relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: privacy-confidentiality
   type: category
   label: Privacy & Confidentiality
@@ -572,72 +668,99 @@ concepts:
   perspective: rights & ethics
   mappings:
   - framework: eu_ai_act
-    target_id: article-10-5-recital-47
-    target_label: Article 10(5) — special categories of personal data + Recital 47 (fundamental rights
-      including privacy)
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: article-4a-1
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_4a/par_1/2026-07-27
+    target_label: Article 4a(1) — processing of special categories of personal data by providers of high-risk
+      AI systems for bias detection and correction
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_4a/par_1/2026-07-27
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: iso_42001
-    target_id: A.7.5
-    target_label: Privacy considerations for AI systems
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: A.7.2
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.7.2
+    target_label: A.7.2 Data for development and enhancement of AI system
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: iso_42001
+    target_id: A.5.4
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.5.4
+    target_label: A.5.4 Assessing AI system impact on individuals or groups of individuals
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: iso_42001
+    target_id: C.2.7
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/C.2.7
+    target_label: C.2.7 Privacy
+    relation: narrowMatch
+    review_status: agent-proposed
   - framework: aiuc1
     target_id: A
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/A
     target_label: Data & Privacy domain
     relation: exactMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: coe_ai_convention
     target_id: article-11
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-11
     target_label: Article 11 — Privacy and personal data protection
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: ieee_7002
     target_id: standard
+    target_uri: https://taxonomy.eticas.ai/external/ieee-7002/standard
     target_label: IEEE 7002-2022 (whole standard)
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
     target_id: privacy-enhanced
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/privacy-enhanced
     target_label: Privacy-Enhanced
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_600
     target_id: data-privacy
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/data-privacy
     target_label: Data Privacy
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: oecd
     target_id: principle-1.2
-    target_label: Human rights, rule of law, fairness & privacy
+    target_uri: https://taxonomy.eticas.ai/external/oecd-ai/principle-1.2
+    target_label: 1.2 Respect for the rule of law, human rights and democratic values, including fairness
+      and privacy
     relation: broadMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: tc260
-    target_id: 3.1.2a-3.1.2d
-    target_label: §3.1.2(a) Data risks — collection without consent + §3.1.2(d) Data risks — PII leaks
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: 3.1.2a
+    target_uri: https://taxonomy.eticas.ai/external/tc260/3.1.2a
+    target_label: §3.1.2(a) Illegal collection and use of data
+    relation: narrowMatch
+    review_status: agent-proposed
+  - framework: tc260
+    target_id: 3.1.2d
+    target_uri: https://taxonomy.eticas.ai/external/tc260/3.1.2d
+    target_label: §3.1.2(d) Data and personal information leakage
+    relation: narrowMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: subdomain-2.1
+    target_uri: https://airisk.mit.edu/domain/subdomain-2.1
     target_label: Compromise of privacy by obtaining, leaking or correctly inferring sensitive information
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: air_2024
     target_id: L2-Privacy
-    target_label: Legal & Rights → Privacy (Unauthorized Privacy Violations × Sensitive Data types)
-    relation: broadMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: input-output-privacy
-    target_label: Input → Data privacy + Output → Privacy violations
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/air-2024/L2-Privacy
+    target_label: Privacy
+    relation: narrowMatch
+    review_status: agent-proposed
   - framework: dpv_ai
     target_id: PersonalDataHandling
+    target_uri: https://w3id.org/dpv#PersonalDataHandling
     target_label: Personal Data Handling
     target_url: https://w3c.github.io/dpv/2.3/dpv/#PersonalDataHandling
-    relation: broadMatch
-    review_status: unreviewed
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: privacy-collection-use
   type: subgroup
   broader: privacy-confidentiality
@@ -647,15 +770,18 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-5
-    target_label: Article 5 — Prohibited AI practices (emotion recognition, biometric categorization)
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_5/2026-07-27
+    target_label: Article 5 — Prohibited AI practices
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_5/2026-07-27
     relation: relatedMatch
     review_status: unreviewed
   - framework: dpv_ai
-    target_id: PersonalDataCollection
-    target_label: Personal Data Handling
-    target_url: https://w3c.github.io/dpv/2.3/ai/#PersonalDataHandling
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: Collect
+    target_uri: https://w3id.org/dpv#Collect
+    target_label: Collect
+    target_url: https://w3c.github.io/dpv/2.3/dpv/#Collect
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: unlawful-data-processing
   type: subcategory
   broader: privacy-collection-use
@@ -673,20 +799,38 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-10
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_10/2026-07-27
     target_label: Article 10 — Data and data governance
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_10/2026-07-27
     relation: closeMatch
     review_status: unreviewed
+  - framework: eu_ai_act
+    target_id: article-4a-1
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_4a/par_1/2026-07-27
+    target_label: Article 4a(1) — processing of special categories of personal data by providers of high-risk
+      AI systems for bias detection and correction
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_4a/par_1/2026-07-27
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: tc260
+    target_id: 3.1.2a
+    target_uri: https://taxonomy.eticas.ai/external/tc260/3.1.2a
+    target_label: §3.1.2(a) Illegal collection and use of data
+    relation: closeMatch
+    review_status: agent-proposed
   - framework: air_2024
     target_id: L3-UnauthorizedPrivacyViolations
-    target_label: Privacy → Unauthorized Privacy Violations
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/air-2024/L3-UnauthorizedPrivacyViolations
+    target_label: Unauthorized Privacy Violations
+    relation: broadMatch
+    review_status: agent-proposed
   - framework: dpv_ai
-    target_id: PersonalDataHandling
-    target_label: Personal Data Handling
-    target_url: https://w3c.github.io/dpv/2.3/dpv/#PersonalDataHandling
+    target_id: IllegalDataProcessing
+    target_uri: https://w3id.org/dpv/risk#IllegalDataProcessing
+    target_label: Illegal Data Processing
+    target_url: https://w3c.github.io/dpv/2.3/risk/#IllegalDataProcessing
     relation: closeMatch
-    review_status: unreviewed
+    review_status: agent-proposed
 - id: confidential-data-use-violation
   type: subcategory
   broader: privacy-collection-use
@@ -707,15 +851,10 @@ concepts:
   mappings:
   - framework: aiuc1
     target_id: A.5
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/A.5
     target_label: Implement customer data policies
     relation: closeMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: confidential-data-input
-    target_label: Training & tuning → Confidential information in data + Inference → Confidential data
-      in prompt
-    relation: relatedMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: privacy-data-protection
   type: subgroup
   broader: privacy-confidentiality
@@ -724,20 +863,23 @@ concepts:
     is retained, erased and accessed, and whether anonymized personal data stays anonymous.
   mappings:
   - framework: iso_42001
-    target_id: A.7.5
-    target_label: Privacy considerations for AI systems
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: A.7.2
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.7.2
+    target_label: A.7.2 Data for development and enhancement of AI system
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: aiuc1
     target_id: A.5
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/A.5
     target_label: Implement customer data policies
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_600
-    target_id: '4'
+    target_id: data-privacy
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/data-privacy
     target_label: Data Privacy
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: weak-data-controls
   type: subcategory
   broader: privacy-data-protection
@@ -756,15 +898,23 @@ concepts:
   - post-processing
   mappings:
   - framework: iso_42001
-    target_id: A.7.5
-    target_label: Privacy considerations for AI systems
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: A.7.2
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.7.2
+    target_label: A.7.2 Data for development and enhancement of AI system
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: iso_42001
+    target_id: A.4.3
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.4.3
+    target_label: A.4.3 Data resources
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: aiuc1
     target_id: A.5
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/A.5
     target_label: Implement customer data policies
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: re-identification
   type: subcategory
   broader: privacy-data-protection
@@ -781,20 +931,23 @@ concepts:
   mappings:
   - framework: nist_600
     target_id: data-privacy
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/data-privacy
     target_label: Data Privacy
-    relation: narrowMatch
-    review_status: unreviewed
+    relation: broadMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: subdomain-2.1
+    target_uri: https://airisk.mit.edu/domain/subdomain-2.1
     target_label: Compromise of privacy by obtaining, leaking or correctly inferring sensitive information
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: dpv_ai
     target_id: Reidentification
+    target_uri: https://w3id.org/dpv/risk#Reidentification
     target_label: Re-identification
     target_url: https://w3c.github.io/dpv/2.3/risk/#Reidentification
     relation: exactMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: privacy-model-level
   type: subgroup
   broader: privacy-confidentiality
@@ -803,15 +956,23 @@ concepts:
   mappings:
   - framework: mit
     target_id: subdomain-2.1
+    target_uri: https://airisk.mit.edu/domain/subdomain-2.1
     target_label: Compromise of privacy by obtaining, leaking or correctly inferring sensitive information
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
+  - framework: air_2024
+    target_id: L4-ModelAttacks
+    target_uri: https://taxonomy.eticas.ai/external/air-2024/L4-ModelAttacks
+    target_label: Model attacks (membership inference, model inversion)
+    relation: narrowMatch
+    review_status: agent-proposed
   - framework: dpv_ai
-    target_id: MembershipInferenceAttack
-    target_label: Membership Inference Attack
-    target_url: https://w3c.github.io/dpv/2.3/ai/#MembershipInferenceAttack
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: ModelInversion
+    target_uri: https://w3id.org/dpv/ai#ModelInversion
+    target_label: Model Inversion
+    target_url: https://w3c.github.io/dpv/2.3/ai/#ModelInversion
+    relation: narrowMatch
+    review_status: agent-proposed
   references:
   - label: OpenAI Privacy Filter
     url: https://github.com/openai/privacy-filter
@@ -838,40 +999,49 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-15-5
-    target_label: Article 15(5) — Cybersecurity
-    relation: narrowMatch
-    review_status: unreviewed
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_15/par_5/2026-07-27
+    target_label: Article 15(5) — resilience against attempts by unauthorized third parties to alter use,
+      outputs or performance
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_15/par_5/2026-07-27
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: aiuc1
     target_id: A.6
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/A.6
     target_label: Prevent PII leakage
     relation: exactMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_600
     target_id: data-privacy
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/data-privacy
     target_label: Data Privacy
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
+  - framework: tc260
+    target_id: 3.1.2d
+    target_uri: https://taxonomy.eticas.ai/external/tc260/3.1.2d
+    target_label: §3.1.2(d) Data and personal information leakage
+    relation: closeMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: subdomain-2.1
+    target_uri: https://airisk.mit.edu/domain/subdomain-2.1
     target_label: Compromise of privacy by obtaining, leaking or correctly inferring sensitive information
-    relation: exactMatch
-    review_status: unreviewed
+    relation: broadMatch
+    review_status: agent-proposed
   - framework: air_2024
-    target_id: L3-PrivacyViolations-PII
-    target_label: Privacy → Unauthorized Privacy Violations × PII
-    relation: exactMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: personal-information-output
-    target_label: Output → Revealing personal information in output
-    relation: exactMatch
-    review_status: unreviewed
+    target_id: L4-UnauthorizedDisclosure
+    target_uri: https://taxonomy.eticas.ai/external/air-2024/L4-UnauthorizedDisclosure
+    target_label: Unauthorized disclosure
+    relation: narrowMatch
+    review_status: agent-proposed
   - framework: dpv_ai
     target_id: UnauthorisedDataDisclosure
+    target_uri: https://w3id.org/dpv/risk#UnauthorisedDataDisclosure
     target_label: Unauthorised Data Disclosure
     target_url: https://w3c.github.io/dpv/2.3/risk/#UnauthorisedDataDisclosure
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: reliability
   type: category
   label: Reliability
@@ -889,64 +1059,65 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-15
-    target_label: Article 15 — accuracy, robustness and cybersecurity
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_15/2026-07-27
+    target_label: Article 15 — Accuracy, robustness and cybersecurity
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_15/2026-07-27
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: iso_42001
     target_id: A.6.2.4
-    target_label: AI system verification and validation
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.6.2.4
+    target_label: A.6.2.4 AI system verification and validation
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: aiuc1
     target_id: D
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/D
     target_label: Reliability domain
     relation: exactMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: coe_ai_convention
-    target_id: article-4b
-    target_label: Article 4(b) — Reliability (general obligation)
+    target_id: article-12
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-12
+    target_label: Article 12 — Reliability
     relation: broadMatch
     review_status: unreviewed
   - framework: nist_rmf
     target_id: valid-reliable
-    target_label: Valid & Reliable
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/valid-reliable
+    target_label: Valid and Reliable
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_600
-    target_id: '2'
+    target_id: confabulation
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/confabulation
     target_label: Confabulation
-    relation: closeMatch
-    review_status: unreviewed
+    relation: narrowMatch
+    review_status: agent-proposed
   - framework: nist_600
-    target_id: '8'
+    target_id: information-integrity
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/information-integrity
     target_label: Information Integrity
-    relation: closeMatch
-    review_status: unreviewed
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: oecd
-    target_id: robustness
-    target_label: Robustness, security & safety
+    target_id: principle-1.4
+    target_uri: https://taxonomy.eticas.ai/external/oecd-ai/principle-1.4
+    target_label: 1.4 Robustness, security and safety
     relation: broadMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: mit
     target_id: subdomain-7.3
+    target_uri: https://airisk.mit.edu/domain/subdomain-7.3
     target_label: Lack of capability or robustness
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: mit
     target_id: domain-3
+    target_uri: https://airisk.mit.edu/domain/domain-3
     target_label: Misinformation
-    relation: broadMatch
-    review_status: unreviewed
-  - framework: air_2024
-    target_id: L1-SystemOperational
-    target_label: System & Operational Risks (L1)
-    relation: broadMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: output-robustness
-    target_label: Output → Robustness
-    relation: closeMatch
-    review_status: unreviewed
+    relation: relatedMatch
+    review_status: agent-proposed
   references:
   - label: HealthBench Professional (OpenAI, 2025)
     url: https://cdn.openai.com/dd128428-0184-4e25-b155-3a7686c7d744/HealthBench-Professional.pdf
@@ -963,24 +1134,22 @@ concepts:
   mappings:
   - framework: aiuc1
     target_id: D.1
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/D.1
     target_label: Prevent hallucinated outputs
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
     target_id: valid-reliable
-    target_label: Valid & Reliable
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/valid-reliable
+    target_label: Valid and Reliable
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_600
-    target_id: '2'
+    target_id: confabulation
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/confabulation
     target_label: Confabulation
-    relation: closeMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: output-robustness
-    target_label: Output → Robustness
-    relation: closeMatch
-    review_status: unreviewed
+    relation: narrowMatch
+    review_status: agent-proposed
 - id: hallucination
   type: subcategory
   broader: reliability-output-quality
@@ -1000,29 +1169,34 @@ concepts:
   mappings:
   - framework: aiuc1
     target_id: D.1
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/D.1
     target_label: Prevent hallucinated outputs
     relation: exactMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: aiuc1
     target_id: D.2
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/D.2
     target_label: Third-party testing for hallucinations
     relation: exactMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_600
     target_id: confabulation
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/confabulation
     target_label: Confabulation
     relation: exactMatch
-    review_status: unreviewed
+    review_status: inherited
+  - framework: nist_600
+    target_id: information-integrity
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/information-integrity
+    target_label: Information Integrity
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: subdomain-3.1
+    target_uri: https://airisk.mit.edu/domain/subdomain-3.1
     target_label: False or misleading information
     relation: closeMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: hallucination
-    target_label: Output → Robustness → Hallucination
-    relation: exactMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: output-inconsistency
   type: subcategory
   broader: reliability-output-quality
@@ -1038,14 +1212,16 @@ concepts:
   mappings:
   - framework: aiuc1
     target_id: D.1
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/D.1
     target_label: Prevent hallucinated outputs
     relation: narrowMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
     target_id: valid-reliable
-    target_label: Valid & Reliable
-    relation: narrowMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/valid-reliable
+    target_label: Valid and Reliable
+    relation: broadMatch
+    review_status: agent-proposed
 - id: output-drift
   type: subcategory
   broader: reliability-output-quality
@@ -1061,14 +1237,10 @@ concepts:
   mappings:
   - framework: iso_42001
     target_id: A.6.2.6
-    target_label: AI system operation and monitoring
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.6.2.6
+    target_label: A.6.2.6 AI system operation and monitoring
     relation: closeMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: output-drift
-    target_label: Output → Drift
-    relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: out-of-distribution-robustness
   type: subcategory
   broader: reliability-output-quality
@@ -1086,14 +1258,16 @@ concepts:
   mappings:
   - framework: nist_rmf
     target_id: valid-reliable
-    target_label: Valid & Reliable
-    relation: narrowMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/valid-reliable
+    target_label: Valid and Reliable
+    relation: broadMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: subdomain-7.3
+    target_uri: https://airisk.mit.edu/domain/subdomain-7.3
     target_label: Lack of capability or robustness
-    relation: narrowMatch
-    review_status: unreviewed
+    relation: broadMatch
+    review_status: agent-proposed
 - id: task-performance
   type: subcategory
   broader: reliability-output-quality
@@ -1129,19 +1303,23 @@ concepts:
   mappings:
   - framework: iso_42001
     target_id: clause-10
-    target_label: Clause 10 — Improvement / nonconformity & corrective action
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/clause-10
+    target_label: Clause 10 — Improvement
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: aiuc1
     target_id: E.3
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/E.3
     target_label: AI failure plan for hallucinations
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
     target_id: manage-4
-    target_label: MANAGE 4 — risk treatments and response
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/manage-4
+    target_label: 'MANAGE 4: Risk treatments, including response and recovery, and communication plans
+      for the identified and measured AI risks are documented and monitored regularly.'
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: monitoring-evaluation-gaps
   type: subcategory
   broader: governance-compliance
@@ -1160,29 +1338,39 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-72
-    target_label: Article 72 — Post-market monitoring
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_72/2026-07-27
+    target_label: Article 72 — Post-market monitoring by providers and post-market monitoring plan for
+      high-risk AI systems
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_72/2026-07-27
     relation: closeMatch
     review_status: unreviewed
   - framework: iso_42001
     target_id: A.6.2.6
-    target_label: AI system operation and monitoring
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.6.2.6
+    target_label: A.6.2.6 AI system operation and monitoring
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: aiuc1
     target_id: C.8
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/C.8
     target_label: Monitor AI risk categories
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
-    target_id: manage-4
-    target_label: MANAGE 4 — risk treatments and response
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: manage-4.1
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/manage-4.1
+    target_label: 'MANAGE 4.1: Post-deployment AI system monitoring plans are implemented, including mechanisms
+      for capturing and evaluating input from users and other relevant AI actors, appeal and override,
+      decommissioning, incident response, recovery, and change management.'
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: dpv_ai
-    target_id: MonitoringControl
-    target_label: Monitoring Control
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: MonitorControl
+    target_uri: https://w3id.org/dpv/risk#MonitorControl
+    target_label: Monitor Control
+    target_url: https://w3c.github.io/dpv/2.3/risk/#MonitorControl
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: behavioural-manipulation
   type: subcategory
   broader: security-harmful-misuse
@@ -1195,30 +1383,38 @@ concepts:
   - post-processing
   mappings:
   - framework: eu_ai_act
-    target_id: article-5-1a
-    target_label: Article 5(1)(a) — subliminal/manipulative techniques (prohibited)
-    relation: exactMatch
-    review_status: unreviewed
-  - framework: eu_ai_act
     target_id: article-5-1b
-    target_label: Article 5(1)(b) — exploitation of vulnerabilities (prohibited)
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_5/par_1/pnt_b/2026-07-27
+    target_label: Article 5(1)(b) — exploitation of vulnerabilities due to age, disability or a specific
+      social or economic situation
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_5/par_1/pnt_b/2026-07-27
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
+  - framework: eu_ai_act
+    target_id: article-5-1a
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_5/par_1/pnt_a/2026-07-27
+    target_label: Article 5(1)(a) — subliminal, purposefully manipulative or deceptive techniques
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_5/par_1/pnt_a/2026-07-27
+    relation: closeMatch
+    review_status: agent-proposed
   - framework: aiuc1
     target_id: C.3
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/C.3
     target_label: Prevent harmful outputs
     relation: relatedMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: mit
-    target_id: subdomain-4.2
+    target_id: subdomain-4.3
+    target_uri: https://airisk.mit.edu/domain/subdomain-4.3
     target_label: Fraud, scams, and targeted manipulation
-    relation: closeMatch
-    review_status: unreviewed
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: air_2024
     target_id: L2-Manipulation
-    target_label: Societal Risks → Manipulation
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/air-2024/L2-Manipulation
+    target_label: Manipulation
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: synthetic-media-abuse
   type: subcategory
   broader: security-harmful-misuse
@@ -1232,29 +1428,47 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-50
-    target_label: Article 50 — Transparency obligations for AI interaction and AI-generated content
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_50/2026-07-27
+    target_label: Article 50 — Transparency obligations for providers and deployers of certain AI systems
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_50/2026-07-27
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: nist_600
     target_id: information-integrity
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/information-integrity
     target_label: Information Integrity
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
+  - framework: tc260
+    target_id: 3.2.2b
+    target_uri: https://taxonomy.eticas.ai/external/tc260/3.2.2b
+    target_label: §3.2.2(b) Distortion of facts and user deception
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: subdomain-4.1
+    target_uri: https://airisk.mit.edu/domain/subdomain-4.1
     target_label: Disinformation, surveillance, and influence at scale
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: air_2024
     target_id: L2-Deception
-    target_label: Societal Risks → Deception (Misrepresentation, Disinformation)
-    relation: closeMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: misinformation
-    target_label: Output → Misinformation
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/air-2024/L2-Deception
+    target_label: Deception
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: air_2024
+    target_id: L3-Misrepresentation
+    target_uri: https://taxonomy.eticas.ai/external/air-2024/L3-Misrepresentation
+    target_label: Misrepresentation
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: air_2024
+    target_id: L3-MisDisinformation
+    target_uri: https://taxonomy.eticas.ai/external/air-2024/L3-MisDisinformation
+    target_label: Mis/disinformation
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: csam-ncii-generation
   type: subcategory
   broader: security-harmful-misuse
@@ -1268,6 +1482,29 @@ concepts:
   scope: ALL
   lifecycle_stages:
   - post-processing
+  mappings:
+  - framework: eu_ai_act
+    target_id: article-5-1ba
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_5/par_1/pnt_ba/2026-07-27
+    target_label: Article 5(1)(ba) — generating or manipulating realistic intimate material of an identifiable
+      person without consent
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_5/par_1/pnt_ba/2026-07-27
+    relation: narrowMatch
+    review_status: reviewed
+  - framework: eu_ai_act
+    target_id: article-5-1bb
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_5/par_1/pnt_bb/2026-07-27
+    target_label: Article 5(1)(bb) — generating or manipulating material or performance within the meaning
+      of Article 2, points (c) and (e), of Directive 2011/93/EU
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_5/par_1/pnt_bb/2026-07-27
+    relation: narrowMatch
+    review_status: reviewed
+  - framework: nist_600
+    target_id: obscene-content
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/obscene-content
+    target_label: Obscene, Degrading, and/or Abusive Content
+    relation: broadMatch
+    review_status: agent-proposed
 - id: reliability-resilience
   type: subgroup
   broader: reliability
@@ -1278,29 +1515,35 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-15-4
-    target_label: Article 15(4) — Resilience regarding errors, faults or inconsistencies
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_15/par_4/2026-07-27
+    target_label: Article 15(4) — resilience regarding errors, faults or inconsistencies
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_15/par_4/2026-07-27
     relation: broadMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: iso_42001
     target_id: A.6.2.6
-    target_label: AI system operation and monitoring
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.6.2.6
+    target_label: A.6.2.6 AI system operation and monitoring
     relation: relatedMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
     target_id: secure-resilient
-    target_label: Secure & Resilient
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/secure-resilient
+    target_label: Secure and Resilient
     relation: broadMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: oecd
     target_id: principle-1.4
-    target_label: Robustness, security & safety
+    target_uri: https://taxonomy.eticas.ai/external/oecd-ai/principle-1.4
+    target_label: 1.4 Robustness, security and safety
     relation: broadMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: mit
     target_id: subdomain-7.3
+    target_uri: https://airisk.mit.edu/domain/subdomain-7.3
     target_label: Lack of capability or robustness
     relation: broadMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: graceful-degradation
   type: subcategory
   broader: reliability-resilience
@@ -1375,60 +1618,79 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-17
-    target_label: Article 17 — Quality management system + Article 9 — Risk management
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_17/2026-07-27
+    target_label: Article 17 — Quality management system
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_17/2026-07-27
+    relation: closeMatch
+    review_status: unreviewed
+  - framework: eu_ai_act
+    target_id: article-9
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_9/2026-07-27
+    target_label: Article 9 — Risk management system
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_9/2026-07-27
+    relation: narrowMatch
+    review_status: agent-proposed
+  - framework: iso_42001
+    target_id: A.3
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.3
+    target_label: A.3 Internal organization
     relation: closeMatch
     review_status: unreviewed
   - framework: iso_42001
     target_id: A.2
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.2
     target_label: A.2 Policies related to AI
-    relation: exactMatch
-    review_status: unreviewed
+    relation: narrowMatch
+    review_status: agent-proposed
   - framework: aiuc1
     target_id: E
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/E
     target_label: Accountability domain
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: coe_ai_convention
-    target_id: article-8
-    target_label: Article 8 — Accountability and responsibility
-    relation: closeMatch
-    review_status: unreviewed
-  - framework: nist_rmf
-    target_id: accountable-transparent
-    target_label: Accountable & Transparent
+    target_id: article-9
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-9
+    target_label: Article 9 — Accountability and responsibility
     relation: closeMatch
     review_status: unreviewed
   - framework: nist_rmf
     target_id: govern-function
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/govern-function
     target_label: GOVERN function
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
+  - framework: nist_rmf
+    target_id: accountable-transparent
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/accountable-transparent
+    target_label: Accountable and Transparent
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: nist_600
     target_id: value-chain
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/value-chain
     target_label: Value Chain and Component Integration
     relation: relatedMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: oecd
     target_id: principle-1.5
-    target_label: Accountability
+    target_uri: https://taxonomy.eticas.ai/external/oecd-ai/principle-1.5
+    target_label: 1.5 Accountability
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: mit
     target_id: subdomain-6.5
+    target_uri: https://airisk.mit.edu/domain/subdomain-6.5
     target_label: Governance failure
     relation: closeMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: governance-non-technical
-    target_label: Non-technical → Governance dimension
-    relation: exactMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: dpv_ai
-    target_id: Governance
-    target_label: dpv:OrganisationalMeasure (DPV core)
-    target_url: https://w3c.github.io/dpv/2.3/dpv/#OrganisationalMeasure
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: AIGovernance
+    target_uri: https://w3id.org/dpv#AIGovernance
+    target_label: AI Governance
+    target_url: https://w3c.github.io/dpv/2.3/dpv/#AIGovernance
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: governance-accountability
   type: subgroup
   broader: governance
@@ -1438,24 +1700,28 @@ concepts:
   mappings:
   - framework: iso_42001
     target_id: A.3
-    target_label: A.3 Internal organization (roles & responsibilities)
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.3
+    target_label: A.3 Internal organization
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: aiuc1
     target_id: E.4
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/E.4
     target_label: Assign accountability
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
     target_id: govern-function
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/govern-function
     target_label: GOVERN function
     relation: broadMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: oecd
     target_id: principle-1.5
-    target_label: Accountability
+    target_uri: https://taxonomy.eticas.ai/external/oecd-ai/principle-1.5
+    target_label: 1.5 Accountability
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: unclear-responsibilities
   type: subcategory
   broader: governance-accountability
@@ -1472,19 +1738,24 @@ concepts:
   mappings:
   - framework: iso_42001
     target_id: A.3.2
-    target_label: Roles and responsibilities
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.3.2
+    target_label: A.3.2 AI roles and responsibilities
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: aiuc1
     target_id: E.4
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/E.4
     target_label: Assign accountability
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
-    target_id: govern-1
-    target_label: GOVERN 1 — Policies, processes, procedures
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: govern-2.1
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/govern-2.1
+    target_label: 'GOVERN 2.1: Roles and responsibilities and lines of communication related to mapping,
+      measuring, and managing AI risks are documented and are clear to individuals and teams throughout
+      the organization.'
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: oversight-of-adverse-impacts
   type: subcategory
   broader: governance-accountability
@@ -1501,14 +1772,18 @@ concepts:
   mappings:
   - framework: iso_42001
     target_id: A.5.2
-    target_label: AI system impact assessment
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.5.2
+    target_label: A.5.2 AI system impact assessment process
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
-    target_id: manage-4
-    target_label: MANAGE 4 — risk treatments and response
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: manage-4.3
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/manage-4.3
+    target_label: 'MANAGE 4.3: Incidents and errors are communicated to relevant AI actors, including
+      affected communities. Processes for tracking, responding to, and recovering from incidents and errors
+      are followed and documented.'
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: governance-documentation
   type: subgroup
   broader: governance
@@ -1517,24 +1792,30 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-11
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_11/2026-07-27
     target_label: Article 11 — Technical documentation
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_11/2026-07-27
     relation: closeMatch
     review_status: unreviewed
   - framework: iso_42001
-    target_id: A.6.2.8
-    target_label: AI system documentation
+    target_id: A.6.2.7
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.6.2.7
+    target_label: A.6.2.7 AI system technical documentation
     relation: closeMatch
     review_status: unreviewed
   - framework: aiuc1
     target_id: E.10
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/E.10
     target_label: Document regulatory compliance
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
     target_id: govern-1
-    target_label: GOVERN 1 — Policies, processes, procedures
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/govern-1
+    target_label: 'GOVERN 1: Policies, processes, procedures, and practices across the organization related
+      to the mapping, measuring, and managing of AI risks are in place, transparent, and implemented effectively.'
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: poor-documentation
   type: subcategory
   broader: governance-documentation
@@ -1552,19 +1833,30 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-11
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_11/2026-07-27
     target_label: Article 11 — Technical documentation
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_11/2026-07-27
+    relation: closeMatch
+    review_status: unreviewed
+  - framework: eu_ai_act
+    target_id: annex-iv
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/anx_IV/2026-07-27
+    target_label: Annex IV — Technical documentation referred to in Article 11(1)
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/anx_IV/2026-07-27
     relation: closeMatch
     review_status: unreviewed
   - framework: iso_42001
-    target_id: A.6.2.8
-    target_label: AI system documentation
+    target_id: A.6.2.7
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.6.2.7
+    target_label: A.6.2.7 AI system technical documentation
     relation: closeMatch
     review_status: unreviewed
   - framework: aiuc1
     target_id: E.17
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/E.17
     target_label: Document system transparency policy
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: limited-auditability
   type: subcategory
   broader: governance-documentation
@@ -1580,19 +1872,29 @@ concepts:
   mappings:
   - framework: iso_42001
     target_id: A.6.2.8
-    target_label: AI system documentation
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.6.2.8
+    target_label: A.6.2.8 AI system recording of event logs
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: aiuc1
     target_id: E.15
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/E.15
     target_label: Log AI system activity
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
     target_id: measure-2.8
-    target_label: MEASURE 2.8 — risks and trustworthiness characteristics measured
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/measure-2.8
+    target_label: 'MEASURE 2.8: Risks associated with transparency and accountability – as identified
+      in the MAP function – are examined and documented.'
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: nist_rmf
+    target_id: accountable-transparent
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/accountable-transparent
+    target_label: Accountable and Transparent
+    relation: broadMatch
+    review_status: agent-proposed
 - id: governance-compliance
   type: subgroup
   broader: governance
@@ -1603,34 +1905,50 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-17
-    target_label: Article 17 — Quality management system + Article 9 — Risk management
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_17/2026-07-27
+    target_label: Article 17 — Quality management system
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_17/2026-07-27
     relation: closeMatch
     review_status: unreviewed
+  - framework: eu_ai_act
+    target_id: article-9
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_9/2026-07-27
+    target_label: Article 9 — Risk management system
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_9/2026-07-27
+    relation: narrowMatch
+    review_status: agent-proposed
   - framework: iso_42001
     target_id: A.9
-    target_label: A.9 Use of AI systems + clause 10 (improvement / nonconformity)
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.9
+    target_label: A.9 Use of AI systems
+    relation: closeMatch
+    review_status: inherited
+  - framework: iso_42001
+    target_id: clause-10
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/clause-10
+    target_label: Clause 10 — Improvement
     relation: closeMatch
     review_status: unreviewed
   - framework: aiuc1
     target_id: E.10
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/E.10
     target_label: Document regulatory compliance
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
     target_id: govern-1
-    target_label: GOVERN 1 — Policies, processes, procedures
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/govern-1
+    target_label: 'GOVERN 1: Policies, processes, procedures, and practices across the organization related
+      to the mapping, measuring, and managing of AI risks are in place, transparent, and implemented effectively.'
     relation: closeMatch
-    review_status: unreviewed
-  - framework: nist_600
-    target_id: value-chain
-    target_label: Value Chain and Component Integration
-    relation: narrowMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: dpv_ai
     target_id: RiskManagement
+    target_uri: https://w3id.org/dpv/risk#RiskManagement
     target_label: Risk Management
-    relation: closeMatch
-    review_status: unreviewed
+    target_url: https://w3c.github.io/dpv/2.3/risk/#RiskManagement
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: regulatory-non-compliance
   type: subcategory
   broader: governance-compliance
@@ -1647,19 +1965,23 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: chapter-iii
-    target_label: Chapter III — High-risk AI system requirements
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/cpt_III/2026-07-27
+    target_label: Chapter III — High-risk AI systems
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/cpt_III/2026-07-27
     relation: closeMatch
     review_status: unreviewed
   - framework: iso_42001
     target_id: A.2
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.2
     target_label: A.2 Policies related to AI
-    relation: closeMatch
-    review_status: unreviewed
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: aiuc1
     target_id: E.10
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/E.10
     target_label: Document regulatory compliance
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: lack-of-change-management
   type: subcategory
   broader: governance-compliance
@@ -1675,14 +1997,18 @@ concepts:
   mappings:
   - framework: iso_42001
     target_id: A.6.2.6
-    target_label: AI system operation and monitoring
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.6.2.6
+    target_label: A.6.2.6 AI system operation and monitoring
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
-    target_id: manage-4
-    target_label: MANAGE 4 — risk treatments and response
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: manage-4.1
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/manage-4.1
+    target_label: 'MANAGE 4.1: Post-deployment AI system monitoring plans are implemented, including mechanisms
+      for capturing and evaluating input from users and other relevant AI actors, appeal and override,
+      decommissioning, incident response, recovery, and change management.'
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: fitness-for-purpose
   type: subcategory
   broader: governance-compliance
@@ -1703,20 +2029,52 @@ concepts:
   - Task success
   mappings:
   - framework: iso_42001
-    target_id: A.6.2.2
-    target_label: Documented intended use
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: A.9.4
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.9.4
+    target_label: A.9.4 Intended use of the AI system
+    relation: narrowMatch
+    review_status: agent-proposed
   - framework: iso_42001
     target_id: A.6.2.4
-    target_label: AI system verification and validation
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.6.2.4
+    target_label: A.6.2.4 AI system verification and validation
+    relation: narrowMatch
+    review_status: agent-proposed
+  - framework: iso_42001
+    target_id: A.6.2.2
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.6.2.2
+    target_label: A.6.2.2 AI system requirements and specification
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: nist_rmf
     target_id: map-3
-    target_label: MAP 3 — AI capabilities and use cases
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/map-3
+    target_label: 'MAP 3: AI capabilities, targeted usage, goals, and expected benefits and costs compared
+      with appropriate benchmarks are understood.'
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: nist_rmf
+    target_id: measure-2.5
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/measure-2.5
+    target_label: 'MEASURE 2.5: The AI system to be deployed is demonstrated to be valid and reliable.
+      Limitations of the generalizability beyond the conditions under which the technology was developed
+      are documented.'
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: nist_rmf
+    target_id: map-3.3
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/map-3.3
+    target_label: 'MAP 3.3: Targeted application scope is specified and documented based on the system’s
+      capability, established context, and AI system categorization.'
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: nist_rmf
+    target_id: manage-1.1
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/manage-1.1
+    target_label: 'MANAGE 1.1: A determination is made as to whether the AI system achieves its intended
+      purposes and stated objectives and whether its development or deployment should proceed.'
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: data-governance
   type: subcategory
   broader: governance-compliance
@@ -1733,19 +2091,25 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-10
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_10/2026-07-27
     target_label: Article 10 — Data and data governance
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_10/2026-07-27
     relation: closeMatch
     review_status: unreviewed
   - framework: iso_42001
     target_id: A.7
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.7
     target_label: A.7 Data for AI systems
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
     target_id: map-2.3
-    target_label: MAP 2.3 — data and input
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/map-2.3
+    target_label: 'MAP 2.3: Scientific integrity and TEVV considerations are identified and documented,
+      including those related to experimental design, data collection and selection (e.g., availability,
+      representativeness, suitability), system trustworthiness, and construct validation.'
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: human-oversight-control
   type: subcategory
   broader: governance-accountability
@@ -1761,30 +2125,72 @@ concepts:
   source: HRA
   mappings:
   - framework: eu_ai_act
+    target_id: article-26-2
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_26/par_2/2026-07-27
+    target_label: Article 26(2) — assignment of human oversight to persons with the necessary competence,
+      training and authority
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_26/par_2/2026-07-27
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: eu_ai_act
     target_id: article-14
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_14/2026-07-27
     target_label: Article 14 — Human oversight
-    relation: exactMatch
-    review_status: unreviewed
-  - framework: iso_42001
-    target_id: A.6.2.7
-    target_label: Human oversight (lifecycle controls)
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_14/2026-07-27
     relation: closeMatch
-    review_status: unreviewed
+    review_status: agent-proposed
+  - framework: iso_42001
+    target_id: A.9.3
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.9.3
+    target_label: A.9.3 Objectives for responsible use of AI system
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: iso_42001
+    target_id: A.6.1.3
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.6.1.3
+    target_label: A.6.1.3 Processes for responsible AI system design and development
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: aiuc1
     target_id: C.7
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/C.7
     target_label: Flag high-risk outputs for human review
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
-    target_id: govern-3
-    target_label: GOVERN 3 — Human-AI configurations
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: govern-3.2
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/govern-3.2
+    target_label: 'GOVERN 3.2: Policies and procedures are in place to define and differentiate roles
+      and responsibilities for human-AI configurations and oversight of AI systems.'
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: nist_rmf
+    target_id: map-3.5
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/map-3.5
+    target_label: 'MAP 3.5: Processes for human oversight are defined, assessed, and documented in accordance
+      with organizational policies from the GOVERN function.'
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: nist_rmf
+    target_id: manage-2.4
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/manage-2.4
+    target_label: 'MANAGE 2.4: Mechanisms are in place and applied, and responsibilities are assigned
+      and understood, to supersede, disengage, or deactivate AI systems that demonstrate performance or
+      outcomes inconsistent with intended use.'
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: oecd
+    target_id: principle-1.4-b
+    target_uri: https://taxonomy.eticas.ai/external/oecd-ai/principle-1.4-b
+    target_label: 1.4(b) Mechanisms to override, repair or decommission AI systems safely
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: subdomain-5.2
+    target_uri: https://airisk.mit.edu/domain/subdomain-5.2
     target_label: Loss of human agency and autonomy
     relation: relatedMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: security-misuse
   type: category
   label: Security & Misuse
@@ -1806,66 +2212,73 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-15-5
-    target_label: Article 15(5) — Cybersecurity
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_15/par_5/2026-07-27
+    target_label: Article 15(5) — resilience against attempts by unauthorized third parties to alter use,
+      outputs or performance
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_15/par_5/2026-07-27
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: aiuc1
     target_id: B
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/B
     target_label: Security domain
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: coe_ai_convention
     target_id: article-12
-    target_label: Article 12 — Reliability, safe innovation (security dimension)
-    relation: broadMatch
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-12
+    target_label: Article 12 — Reliability
+    relation: relatedMatch
     review_status: unreviewed
   - framework: nist_rmf
     target_id: secure-resilient
-    target_label: Secure & Resilient
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/secure-resilient
+    target_label: Secure and Resilient
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_600
     target_id: information-security
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/information-security
     target_label: Information Security
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: oecd
     target_id: principle-1.4
-    target_label: Robustness, security & safety
+    target_uri: https://taxonomy.eticas.ai/external/oecd-ai/principle-1.4
+    target_label: 1.4 Robustness, security and safety
     relation: broadMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: tc260
-    target_id: 3.2.2a
-    target_label: §3.2.2(a) Information content risks — malicious manipulation generating illegal/harmful
-      content
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: 3.1.1e
+    target_uri: https://taxonomy.eticas.ai/external/tc260/3.1.1e
+    target_label: §3.1.1(e) External adversarial attack
+    relation: narrowMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: subdomain-2.2
+    target_uri: https://airisk.mit.edu/domain/subdomain-2.2
     target_label: AI system security vulnerabilities and attacks
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: mit
     target_id: domain-4
-    target_label: Malicious Actors & Misuse
+    target_uri: https://airisk.mit.edu/domain/domain-4
+    target_label: Malicious Actors
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: air_2024
-    target_id: L1-SystemOperational
-    target_label: System & Operational Risks (L1)
-    relation: closeMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: security-misuse
-    target_label: Inference → Adversarial robustness + Non-technical → Misuse
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: L2-SecurityRisks
+    target_uri: https://taxonomy.eticas.ai/external/air-2024/L2-SecurityRisks
+    target_label: Security Risks
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: dpv_ai
     target_id: SecurityAttack
+    target_uri: https://w3id.org/dpv/ai#SecurityAttack
     target_label: Security Attack
     target_url: https://w3c.github.io/dpv/2.3/ai/#SecurityAttack
-    relation: broadMatch
-    review_status: unreviewed
+    relation: narrowMatch
+    review_status: agent-proposed
 - id: security-ai-attacks
   type: subgroup
   broader: security-misuse
@@ -1875,35 +2288,37 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-15-5
-    target_label: Article 15(5) — Cybersecurity
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_15/par_5/2026-07-27
+    target_label: Article 15(5) — resilience against attempts by unauthorized third parties to alter use,
+      outputs or performance
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_15/par_5/2026-07-27
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: aiuc1
     target_id: B.1
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/B.1
     target_label: Third-party testing of adversarial robustness
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
     target_id: secure-resilient
-    target_label: Secure & Resilient
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/secure-resilient
+    target_label: Secure and Resilient
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: mit
     target_id: subdomain-2.2
+    target_uri: https://airisk.mit.edu/domain/subdomain-2.2
     target_label: AI system security vulnerabilities and attacks
     relation: closeMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: robustness-adversarial
-    target_label: Inference → Robustness → Adversarial robustness
-    relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: dpv_ai
     target_id: SecurityAttack
+    target_uri: https://w3id.org/dpv/ai#SecurityAttack
     target_label: Security Attack
     target_url: https://w3c.github.io/dpv/2.3/ai/#SecurityAttack
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: evasion-attacks
   type: subcategory
   broader: security-ai-attacks
@@ -1924,25 +2339,30 @@ concepts:
   mappings:
   - framework: aiuc1
     target_id: B.2
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/B.2
     target_label: Detect adversarial input
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: mit
     target_id: subdomain-2.2
+    target_uri: https://airisk.mit.edu/domain/subdomain-2.2
     target_label: AI system security vulnerabilities and attacks
-    relation: narrowMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: robustness-adversarial
-    target_label: Inference → Robustness → Adversarial robustness
-    relation: closeMatch
-    review_status: unreviewed
+    relation: broadMatch
+    review_status: agent-proposed
   - framework: dpv_ai
     target_id: AdversarialAttack
+    target_uri: https://w3id.org/dpv/ai#AdversarialAttack
     target_label: Adversarial Attack
     target_url: https://w3c.github.io/dpv/2.3/ai/#AdversarialAttack
-    relation: exactMatch
-    review_status: unreviewed
+    relation: broadMatch
+    review_status: agent-proposed
+  - framework: dpv_ai
+    target_id: ModelEvasion
+    target_uri: https://w3id.org/dpv/ai#ModelEvasion
+    target_label: Model Evasion
+    target_url: https://w3c.github.io/dpv/2.3/ai/#ModelEvasion
+    relation: narrowMatch
+    review_status: agent-proposed
 - id: prompt-injection
   type: subcategory
   broader: security-ai-attacks
@@ -1961,19 +2381,23 @@ concepts:
   mappings:
   - framework: aiuc1
     target_id: B.2
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/B.2
     target_label: Detect adversarial input
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_600
     target_id: information-security
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/information-security
     target_label: Information Security
-    relation: narrowMatch
-    review_status: unreviewed
+    relation: broadMatch
+    review_status: agent-proposed
   - framework: dpv_ai
-    target_id: PromptInjection
-    target_label: Prompt Injection
-    relation: exactMatch
-    review_status: unreviewed
+    target_id: SecurityAttack
+    target_uri: https://w3id.org/dpv/ai#SecurityAttack
+    target_label: Security Attack
+    target_url: https://w3c.github.io/dpv/2.3/ai/#SecurityAttack
+    relation: broadMatch
+    review_status: agent-proposed
 - id: jailbreaking
   type: subcategory
   broader: security-ai-attacks
@@ -1992,14 +2416,16 @@ concepts:
   mappings:
   - framework: aiuc1
     target_id: C.1
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/C.1
     target_label: Prevent jailbreaks (safety controls)
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: mit
     target_id: subdomain-2.2
+    target_uri: https://airisk.mit.edu/domain/subdomain-2.2
     target_label: AI system security vulnerabilities and attacks
-    relation: narrowMatch
-    review_status: unreviewed
+    relation: broadMatch
+    review_status: agent-proposed
 - id: data-poisoning
   type: subcategory
   broader: security-ai-attacks
@@ -2017,41 +2443,44 @@ concepts:
   - Backdoor attacks
   mappings:
   - framework: eu_ai_act
-    target_id: recital-76
-    target_label: Recital 76 — data poisoning (cybersecurity)
-    relation: exactMatch
-    review_status: unreviewed
+    target_id: article-15-5
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_15/par_5/2026-07-27
+    target_label: Article 15(5) — resilience against attempts by unauthorized third parties to alter use,
+      outputs or performance
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_15/par_5/2026-07-27
+    relation: broadMatch
+    review_status: reviewed
   - framework: aiuc1
     target_id: B.1
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/B.1
     target_label: Third-party testing of adversarial robustness
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
     target_id: secure-resilient
-    target_label: Secure & Resilient
-    relation: narrowMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/secure-resilient
+    target_label: Secure and Resilient
+    relation: broadMatch
+    review_status: agent-proposed
   - framework: nist_600
     target_id: information-security
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/information-security
     target_label: Information Security
-    relation: narrowMatch
-    review_status: unreviewed
+    relation: broadMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: subdomain-2.2
+    target_uri: https://airisk.mit.edu/domain/subdomain-2.2
     target_label: AI system security vulnerabilities and attacks
-    relation: narrowMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: data-poisoning
-    target_label: Input → Data poisoning / Training-data tampering
-    relation: exactMatch
-    review_status: unreviewed
+    relation: broadMatch
+    review_status: agent-proposed
   - framework: dpv_ai
     target_id: DataPoisoning
+    target_uri: https://w3id.org/dpv/ai#DataPoisoning
     target_label: Data Poisoning
     target_url: https://w3c.github.io/dpv/2.3/ai/#DataPoisoning
     relation: exactMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: security-system
   type: subgroup
   broader: security-misuse
@@ -2060,26 +2489,18 @@ concepts:
     of technical details that enable targeting. Unlike Governance risks, this includes whether the system
     and its environment can be technically compromised.
   mappings:
-  - framework: iso_42001
-    target_id: A.6.2.5
-    target_label: A.6.2.5 AI system deployment
-    relation: closeMatch
-    review_status: unreviewed
   - framework: aiuc1
     target_id: B
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/B
     target_label: Security domain
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_600
-    target_id: '9'
+    target_id: information-security
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/information-security
     target_label: Information Security
     relation: closeMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: security-non-technical
-    target_label: Non-technical → Misuse + Inference → Security
-    relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: supply-chain-vulnerabilities
   type: subcategory
   broader: governance-accountability
@@ -2097,19 +2518,23 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-25
-    target_label: Article 25 — value-chain responsibilities
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_25/2026-07-27
+    target_label: Article 25 — Responsibilities along the AI value chain
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_25/2026-07-27
     relation: closeMatch
     review_status: unreviewed
   - framework: iso_42001
     target_id: A.10
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.10
     target_label: A.10 Third-party and customer relationships
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_600
     target_id: value-chain
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/value-chain
     target_label: Value Chain and Component Integration
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: incident-response-gaps
   type: subcategory
   broader: governance-compliance
@@ -2125,29 +2550,44 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-73
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_73/2026-07-27
     target_label: Article 73 — Reporting of serious incidents
-    relation: exactMatch
-    review_status: unreviewed
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_73/2026-07-27
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: iso_42001
     target_id: clause-10
-    target_label: Clause 10 — Improvement / nonconformity & corrective action
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/clause-10
+    target_label: Clause 10 — Improvement
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: iso_42001
+    target_id: A.8.4
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.8.4
+    target_label: A.8.4 Communication of incidents
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: aiuc1
     target_id: E.1
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/E.1
     target_label: AI failure plan for security breaches + E.2 for harmful outputs
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
-    target_id: manage-4
-    target_label: MANAGE 4 — risk treatments and response
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: manage-4.3
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/manage-4.3
+    target_label: 'MANAGE 4.3: Incidents and errors are communicated to relevant AI actors, including
+      affected communities. Processes for tracking, responding to, and recovering from incidents and errors
+      are followed and documented.'
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: dpv_ai
-    target_id: IncidentManagement
-    target_label: Incident Management
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: IncidentManagementProcedures
+    target_uri: https://w3id.org/dpv#IncidentManagementProcedures
+    target_label: Incident Management Procedures
+    target_url: https://w3c.github.io/dpv/2.3/dpv/#IncidentManagementProcedures
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: security-harmful-misuse
   type: subgroup
   broader: security-misuse
@@ -2158,39 +2598,53 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-5-1a
-    target_label: Article 5(1)(a) — subliminal/manipulative techniques (prohibited)
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_5/par_1/pnt_a/2026-07-27
+    target_label: Article 5(1)(a) — subliminal, purposefully manipulative or deceptive techniques
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_5/par_1/pnt_a/2026-07-27
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: aiuc1
     target_id: F
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/F
     target_label: Society domain (cyber misuse + catastrophic misuse)
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
     target_id: safe
-    target_label: Safe (trustworthy characteristic)
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/safe
+    target_label: Safe
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: nist_rmf
+    target_id: secure-resilient
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/secure-resilient
+    target_label: Secure and Resilient
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: nist_600
     target_id: dangerous-content
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/dangerous-content
     target_label: Dangerous, Violent, or Hateful Content
-    relation: closeMatch
-    review_status: unreviewed
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: nist_600
+    target_id: cbrn
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/cbrn
+    target_label: CBRN Information or Capabilities
+    relation: narrowMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: domain-4
-    target_label: Malicious Actors & Misuse
+    target_uri: https://airisk.mit.edu/domain/domain-4
+    target_label: Malicious Actors
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: air_2024
     target_id: L2-Manipulation
-    target_label: Societal Risks → Manipulation
-    relation: closeMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: harmful-output-misuse
-    target_label: Output → Harmful output + Non-technical → Misuse
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/air-2024/L2-Manipulation
+    target_label: Manipulation
+    relation: narrowMatch
+    review_status: agent-proposed
 - id: environmental-impact
   type: category
   label: Environmental Impact
@@ -2211,41 +2665,61 @@ concepts:
   perspective: technical soundness
   mappings:
   - framework: eu_ai_act
-    target_id: article-95
-    target_label: Article 95 — Codes of conduct for sustainability + Recital 139
+    target_id: article-95-2b
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_95/par_2/pnt_b/2026-07-27
+    target_label: Article 95(2)(b) — codes of conduct on the impact of AI systems on environmental sustainability
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_95/par_2/pnt_b/2026-07-27
+    relation: relatedMatch
+    review_status: unreviewed
+  - framework: eu_ai_act
+    target_id: annex-xi-s1-2e
+    target_uri: https://taxonomy.eticas.ai/external/eu-ai-act-2026-07-27/annex-xi-s1-2e
+    target_label: Annex XI, Section 1, point 2(e) — known or estimated energy consumption of the model
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/anx_XI/2026-07-27
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: iso_42001
+    target_id: A.5.2
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.5.2
+    target_label: A.5.2 AI system impact assessment process
+    relation: relatedMatch
+    review_status: inherited
+  - framework: iso_42001
+    target_id: C.2.4
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/C.2.4
+    target_label: C.2.4 Environmental impact
     relation: relatedMatch
     review_status: unreviewed
   - framework: iso_42001
-    target_id: A.5.2
-    target_label: AI system impact assessment
+    target_id: A.5.5
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.5.5
+    target_label: A.5.5 Assessing societal impacts of AI systems
     relation: relatedMatch
-    review_status: unreviewed
+    review_status: agent-proposed
   - framework: nist_600
     target_id: environmental
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/environmental
     target_label: Environmental Impacts
     relation: exactMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: oecd
     target_id: principle-1.1
-    target_label: Inclusive growth, sustainable development & environmental sustainability
-    relation: exactMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/oecd-ai/principle-1.1
+    target_label: 1.1 Inclusive growth, sustainable development and well-being
+    relation: broadMatch
+    review_status: agent-proposed
   - framework: tc260
     target_id: 3.3.1b
-    target_label: §3.3.1(b) Social and Environmental Risks — energy, electricity, land, and water consumption
-      from AI computing
+    target_uri: https://taxonomy.eticas.ai/external/tc260/3.3.1b
+    target_label: §3.3.1(b) Challenges to the balance of resource supply and demand
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: mit
     target_id: subdomain-6.6
+    target_uri: https://airisk.mit.edu/domain/subdomain-6.6
     target_label: Environmental harm
     relation: exactMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: environmental-impact
-    target_label: Non-technical → Societal impact → Environmental impact
-    relation: exactMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: inference-energy-consumption
   type: subcategory
   broader: environmental-impact
@@ -2262,14 +2736,16 @@ concepts:
   mappings:
   - framework: nist_600
     target_id: environmental
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/environmental
     target_label: Environmental Impacts
-    relation: narrowMatch
-    review_status: unreviewed
+    relation: broadMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: subdomain-6.6
+    target_uri: https://airisk.mit.edu/domain/subdomain-6.6
     target_label: Environmental harm
-    relation: narrowMatch
-    review_status: unreviewed
+    relation: broadMatch
+    review_status: agent-proposed
 - id: training-resource-consumption
   type: subcategory
   broader: environmental-impact
@@ -2286,14 +2762,16 @@ concepts:
   mappings:
   - framework: nist_600
     target_id: environmental
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/environmental
     target_label: Environmental Impacts
-    relation: narrowMatch
-    review_status: unreviewed
+    relation: broadMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: subdomain-6.6
+    target_uri: https://airisk.mit.edu/domain/subdomain-6.6
     target_label: Environmental harm
-    relation: narrowMatch
-    review_status: unreviewed
+    relation: broadMatch
+    review_status: agent-proposed
 - id: hardware-efficiency
   type: subcategory
   broader: environmental-impact
@@ -2309,11 +2787,18 @@ concepts:
   - post-processing
   source: HRA
   mappings:
+  - framework: iso_42001
+    target_id: A.4.5
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.4.5
+    target_label: A.4.5 System and computing resources
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: nist_600
     target_id: environmental
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/environmental
     target_label: Environmental Impacts
-    relation: narrowMatch
-    review_status: unreviewed
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: transparency-explainability
   type: category
   label: Transparency & Explainability
@@ -2333,65 +2818,72 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-13
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_13/2026-07-27
     target_label: Article 13 — Transparency and provision of information to deployers
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_13/2026-07-27
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: iso_42001
     target_id: A.8
-    target_label: A.8 Information for interested parties + A.6.2.8 documentation
-    relation: exactMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.8
+    target_label: A.8 Information for interested parties of AI systems
+    relation: closeMatch
+    review_status: agent-proposed
   - framework: aiuc1
     target_id: E.16
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/E.16
     target_label: Implement AI disclosure mechanisms
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: coe_ai_convention
-    target_id: article-9
-    target_label: Article 9 — Transparency and oversight
+    target_id: article-8
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-8
+    target_label: Article 8 — Transparency and oversight
     relation: closeMatch
     review_status: unreviewed
   - framework: ieee_7001
     target_id: standard
+    target_uri: https://taxonomy.eticas.ai/external/ieee-7001/standard
     target_label: IEEE 7001-2021 (whole standard)
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
     target_id: explainable-interpretable
-    target_label: Explainable & Interpretable
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/explainable-interpretable
+    target_label: Explainable and Interpretable
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_600
     target_id: information-integrity
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/information-integrity
     target_label: Information Integrity
     relation: relatedMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: oecd
     target_id: principle-1.3
-    target_label: Transparency and explainability
+    target_uri: https://taxonomy.eticas.ai/external/oecd-ai/principle-1.3
+    target_label: 1.3 Transparency and explainability
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: ieee_2894
     target_id: standard
+    target_uri: https://taxonomy.eticas.ai/external/ieee-2894/standard
     target_label: IEEE 2894-2024 (whole guide)
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: mit
     target_id: subdomain-7.4
+    target_uri: https://airisk.mit.edu/domain/subdomain-7.4
     target_label: Lack of transparency or interpretability
     relation: closeMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: explainability-transparency
-    target_label: Output → Explainability + Non-technical → Transparency
-    relation: exactMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: dpv_ai
     target_id: TransparencyRisk
-    target_label: ai:TransparencyRisk + ai:ExplainabilityRisk (DPV AI extension)
+    target_uri: https://w3id.org/dpv/ai#TransparencyRisk
+    target_label: Transparency Risk
     target_url: https://w3c.github.io/dpv/2.3/ai/#TransparencyRisk
     relation: exactMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: transparency-explainability-group
   type: subgroup
   broader: transparency-explainability
@@ -2399,25 +2891,24 @@ concepts:
   definition: Risks from stakeholders being unable to understand why the system produces specific outputs.
   mappings:
   - framework: nist_rmf
-    target_id: explainable
-    target_label: Explainable & Interpretable
+    target_id: explainable-interpretable
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/explainable-interpretable
+    target_label: Explainable and Interpretable
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: mit
     target_id: subdomain-7.4
+    target_uri: https://airisk.mit.edu/domain/subdomain-7.4
     target_label: Lack of transparency or interpretability
     relation: closeMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: output-explainability
-    target_label: Output → Explainability
-    relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: dpv_ai
     target_id: ExplainabilityRisk
+    target_uri: https://w3id.org/dpv/ai#ExplainabilityRisk
     target_label: Explainability Risk
+    target_url: https://w3c.github.io/dpv/2.3/ai/#ExplainabilityRisk
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: system-explainability
   type: subcategory
   broader: transparency-explainability-group
@@ -2433,20 +2924,18 @@ concepts:
   source: HRA
   mappings:
   - framework: nist_rmf
-    target_id: explainable
-    target_label: Explainable & Interpretable
+    target_id: explainable-interpretable
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/explainable-interpretable
+    target_label: Explainable and Interpretable
     relation: closeMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: unexplainable-output
-    target_label: Output → Explainability → Unexplainable output
-    relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: dpv_ai
     target_id: ExplainabilityRisk
+    target_uri: https://w3id.org/dpv/ai#ExplainabilityRisk
     target_label: Explainability Risk
+    target_url: https://w3c.github.io/dpv/2.3/ai/#ExplainabilityRisk
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: right-to-explanation-contestation
   type: subcategory
   broader: transparency-explainability-group
@@ -2455,8 +2944,8 @@ concepts:
   definition: The risk that affected individuals are not informed about decisions taken with AI assistance,
     do not receive a meaningful explanation of those decisions, or have no effective channel to challenge
     or appeal them. Includes obligations under GDPR Article 22 (rights regarding automated individual
-    decision-making) and EU AI Act Article 13 (transparency and provision of information to deployers
-    and affected persons).
+    decision-making) and the EU AI Act's Article 86 (right to explanation of individual decision-making)
+    and Article 13 (transparency and provision of information to deployers).
   scope: ALL
   lifecycle_stages:
   - post-processing
@@ -2468,40 +2957,70 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-86
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_86/2026-07-27
     target_label: Article 86 — Right to explanation of individual decision-making
-    relation: exactMatch
-    review_status: unreviewed
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_86/2026-07-27
+    relation: narrowMatch
+    review_status: agent-proposed
   - framework: iso_42001
     target_id: A.8.3
-    target_label: External reporting + A.8.4 Communication of incidents
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.8.3
+    target_label: A.8.3 External reporting
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: aiuc1
     target_id: E.16
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/E.16
     target_label: Implement AI disclosure mechanisms
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
     target_id: accountable-transparent
-    target_label: Accountable & Transparent
-    relation: narrowMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/accountable-transparent
+    target_label: Accountable and Transparent
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: nist_rmf
+    target_id: measure-3.3
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/measure-3.3
+    target_label: 'MEASURE 3.3: Feedback processes for end users and impacted communities to report problems
+      and appeal system outcomes are established and integrated into AI system evaluation metrics.'
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: nist_rmf
+    target_id: manage-4.1
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/manage-4.1
+    target_label: 'MANAGE 4.1: Post-deployment AI system monitoring plans are implemented, including mechanisms
+      for capturing and evaluating input from users and other relevant AI actors, appeal and override,
+      decommissioning, incident response, recovery, and change management.'
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: nist_rmf
+    target_id: explainable-interpretable
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/explainable-interpretable
+    target_label: Explainable and Interpretable
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: oecd
-    target_id: principle-1.3
-    target_label: Transparency and explainability
-    relation: closeMatch
-    review_status: unreviewed
-  - framework: air_2024
-    target_id: L2-FundamentalRights
-    target_label: Fundamental Rights → Violating Specific Types of Rights
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: principle-1.3-iii
+    target_uri: https://taxonomy.eticas.ai/external/oecd-ai/principle-1.3-iii
+    target_label: 1.3(iii) Information on the data, factors, processes and logic behind a prediction,
+      content, recommendation or decision
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: oecd
+    target_id: principle-1.3-iv
+    target_uri: https://taxonomy.eticas.ai/external/oecd-ai/principle-1.3-iv
+    target_label: 1.3(iv) Information that enables those adversely affected to challenge the output
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: dpv_ai
-    target_id: RightToExplanation
-    target_label: Right to Explanation (DPV core / GDPR extension)
-    target_url: https://w3c.github.io/dpv/2.3/legal/eu/gdpr/
-    relation: exactMatch
-    review_status: unreviewed
+    target_id: A22-3-c
+    target_uri: https://w3id.org/dpv/legal/eu/gdpr#A22-3-c
+    target_label: A22 Right to contest decision
+    target_url: https://w3c.github.io/dpv/2.3/legal/eu/gdpr/#A22-3-c
+    relation: narrowMatch
+    review_status: agent-proposed
 - id: transparency-communication
   type: subgroup
   broader: transparency-explainability
@@ -2510,29 +3029,41 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-13
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_13/2026-07-27
     target_label: Article 13 — Transparency and provision of information to deployers
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_13/2026-07-27
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: iso_42001
     target_id: A.8.2
-    target_label: Information for users / affected parties
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.8.2
+    target_label: A.8.2 System documentation and information for users
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: aiuc1
     target_id: E.16
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/E.16
     target_label: Implement AI disclosure mechanisms
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_600
     target_id: information-integrity
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/information-integrity
     target_label: Information Integrity
-    relation: closeMatch
-    review_status: unreviewed
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: oecd
-    target_id: principle-1.3
-    target_label: Transparency and explainability
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: principle-1.3-i
+    target_uri: https://taxonomy.eticas.ai/external/oecd-ai/principle-1.3-i
+    target_label: 1.3(i) A general understanding of AI systems, including their capabilities and limitations
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: oecd
+    target_id: principle-1.3-ii
+    target_uri: https://taxonomy.eticas.ai/external/oecd-ai/principle-1.3-ii
+    target_label: 1.3(ii) Awareness of interactions with AI systems
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: stakeholder-communication
   type: subcategory
   broader: transparency-communication
@@ -2551,19 +3082,23 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-13
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_13/2026-07-27
     target_label: Article 13 — Transparency and provision of information to deployers
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_13/2026-07-27
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: iso_42001
     target_id: A.8.2
-    target_label: Information for users / affected parties
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.8.2
+    target_label: A.8.2 System documentation and information for users
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: aiuc1
     target_id: E.17
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/E.17
     target_label: Document system transparency policy
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: ai-interaction-disclosure
   type: subcategory
   broader: transparency-communication
@@ -2581,14 +3116,23 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-50
-    target_label: Article 50 — Transparency obligations for AI interaction and AI-generated content
-    relation: exactMatch
-    review_status: unreviewed
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_50/2026-07-27
+    target_label: Article 50 — Transparency obligations for providers and deployers of certain AI systems
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_50/2026-07-27
+    relation: closeMatch
+    review_status: agent-proposed
   - framework: aiuc1
     target_id: E.16
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/E.16
     target_label: Implement AI disclosure mechanisms
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
+  - framework: tc260
+    target_id: 3.2.2b
+    target_uri: https://taxonomy.eticas.ai/external/tc260/3.2.2b
+    target_label: §3.2.2(b) Distortion of facts and user deception
+    relation: broadMatch
+    review_status: agent-proposed
 - id: autonomy-agency
   type: category
   label: Human Agency & Control
@@ -2608,55 +3152,74 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-14
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_14/2026-07-27
     target_label: Article 14 — Human oversight
-    relation: broadMatch
-    review_status: unreviewed
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_14/2026-07-27
+    relation: narrowMatch
+    review_status: agent-proposed
   - framework: iso_42001
-    target_id: A.6.2.7
-    target_label: Human oversight (lifecycle controls)
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: A.9.3
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.9.3
+    target_label: A.9.3 Objectives for responsible use of AI system
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: aiuc1
     target_id: C.7
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/C.7
     target_label: Flag high-risk outputs for human review
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: coe_ai_convention
-    target_id: article-7-8
-    target_label: Articles 7–8 — Human agency and oversight (implied)
+    target_id: article-7
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-7
+    target_label: Article 7 — Human dignity and individual autonomy
     relation: broadMatch
     review_status: unreviewed
+  - framework: coe_ai_convention
+    target_id: article-8
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-8
+    target_label: Article 8 — Transparency and oversight
+    relation: relatedMatch
+    review_status: unreviewed
   - framework: nist_rmf
-    target_id: govern-3
-    target_label: GOVERN 3 — Human-AI configurations
+    target_id: govern-3.2
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/govern-3.2
+    target_label: 'GOVERN 3.2: Policies and procedures are in place to define and differentiate roles
+      and responsibilities for human-AI configurations and oversight of AI systems.'
     relation: relatedMatch
     review_status: unreviewed
   - framework: nist_600
-    target_id: '7'
+    target_id: human-ai-configuration
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/human-ai-configuration
     target_label: Human-AI Configuration
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: oecd
-    target_id: principle-1.2
-    target_label: Human rights, rule of law, fairness & privacy
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: principle-1.2-b
+    target_uri: https://taxonomy.eticas.ai/external/oecd-ai/principle-1.2-b
+    target_label: 1.2(b) Mechanisms and safeguards, such as capacity for human agency and oversight
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: domain-5
+    target_uri: https://airisk.mit.edu/domain/domain-5
     target_label: Human-Computer Interaction
     relation: closeMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: value-alignment-anthropomorphisation
-    target_label: Non-technical → Value alignment + Output → Anthropomorphisation
-    relation: relatedMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: dpv_ai
     target_id: HumanOversight
+    target_uri: https://w3id.org/dpv#HumanOversight
     target_label: Human Oversight
-    target_url: https://w3c.github.io/dpv/2.3/ai/#HumanOversight
-    relation: broadMatch
-    review_status: unreviewed
+    target_url: https://w3c.github.io/dpv/2.3/dpv/#HumanOversight
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: dpv_ai
+    target_id: HumanOversightIneffective
+    target_uri: https://w3id.org/dpv/risk#HumanOversightIneffective
+    target_label: Human Oversight Ineffective
+    target_url: https://w3c.github.io/dpv/2.3/risk/#HumanOversightIneffective
+    relation: narrowMatch
+    review_status: agent-proposed
 - id: automation-bias
   label: Automation bias
   definition: Over-reliance on automated outputs, accepting AI recommendations without sufficient scrutiny,
@@ -2668,22 +3231,33 @@ concepts:
   lifecycle_stages:
   - post-processing
   mappings:
+  - framework: eu_ai_act
+    target_id: article-14-4b
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_14/par_4/pnt_b/2026-07-27
+    target_label: Article 14(4)(b) — awareness of the tendency to rely or over-rely on the system's output
+      (automation bias)
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_14/par_4/pnt_b/2026-07-27
+    relation: closeMatch
+    review_status: agent-proposed
   - framework: nist_600
-    target_id: '7'
+    target_id: human-ai-configuration
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/human-ai-configuration
     target_label: Human-AI Configuration
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: mit
     target_id: subdomain-5.1
+    target_uri: https://airisk.mit.edu/domain/subdomain-5.1
     target_label: Overreliance and unsafe use
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: dpv_ai
     target_id: AutomationBias
+    target_uri: https://w3id.org/dpv/ai#AutomationBias
     target_label: Automation Bias
     target_url: https://w3c.github.io/dpv/2.3/ai/#AutomationBias
     relation: exactMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: trust-calibration
   label: Trust calibration
   definition: Inappropriate levels of trust in AI outputs — either excessive trust leading to uncritical
@@ -2696,15 +3270,17 @@ concepts:
   - post-processing
   mappings:
   - framework: nist_600
-    target_id: '7'
+    target_id: human-ai-configuration
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/human-ai-configuration
     target_label: Human-AI Configuration
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: mit
     target_id: subdomain-5.1
+    target_uri: https://airisk.mit.edu/domain/subdomain-5.1
     target_label: Overreliance and unsafe use
     relation: relatedMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: deskilling
   label: Deskilling
   definition: Erosion of human skills, expertise, or professional judgment through prolonged delegation
@@ -2718,14 +3294,16 @@ concepts:
   mappings:
   - framework: oecd
     target_id: recommendation-2.4
-    target_label: Building human capacity & preparing for labour-market transition
+    target_uri: https://taxonomy.eticas.ai/external/oecd-ai/recommendation-2.4
+    target_label: 2.4 Building human capacity and preparing for labour market transformation
     relation: relatedMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: mit
     target_id: subdomain-6.3
+    target_uri: https://airisk.mit.edu/domain/subdomain-6.3
     target_label: Economic and cultural devaluation of human effort
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: over-reliance
   label: Over-reliance on AI
   definition: Dependence on an AI system such that individuals or organisations can no longer make or
@@ -2738,21 +3316,26 @@ concepts:
   lifecycle_stages:
   - post-processing
   mappings:
+  - framework: eu_ai_act
+    target_id: article-14-4b
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_14/par_4/pnt_b/2026-07-27
+    target_label: Article 14(4)(b) — awareness of the tendency to rely or over-rely on the system's output
+      (automation bias)
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_14/par_4/pnt_b/2026-07-27
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: nist_600
-    target_id: '7'
+    target_id: human-ai-configuration
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/human-ai-configuration
     target_label: Human-AI Configuration
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: mit
     target_id: subdomain-5.1
+    target_uri: https://airisk.mit.edu/domain/subdomain-5.1
     target_label: Overreliance and unsafe use
-    relation: exactMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: anthropomorphisation
-    target_label: Output → Anthropomorphisation (over-reliance)
-    relation: closeMatch
-    review_status: unreviewed
+    relation: broadMatch
+    review_status: agent-proposed
 - id: loss-of-human-control
   label: Loss of meaningful human control
   definition: Human control over the system that exists in form but cannot be exercised in practice, because
@@ -2767,19 +3350,37 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-14
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_14/2026-07-27
     target_label: Article 14 — Human oversight
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_14/2026-07-27
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
+  - framework: eu_ai_act
+    target_id: article-26-2
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_26/par_2/2026-07-27
+    target_label: Article 26(2) — assignment of human oversight to persons with the necessary competence,
+      training and authority
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_26/par_2/2026-07-27
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: aiuc1
     target_id: C.7
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/C.7
     target_label: Flag high-risk outputs for human review
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
+  - framework: oecd
+    target_id: principle-1.4-b
+    target_uri: https://taxonomy.eticas.ai/external/oecd-ai/principle-1.4-b
+    target_label: 1.4(b) Mechanisms to override, repair or decommission AI systems safely
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: subdomain-5.2
+    target_uri: https://airisk.mit.edu/domain/subdomain-5.2
     target_label: Loss of human agency and autonomy
     relation: relatedMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: organisational-readiness
   type: category
   label: Organisational Readiness
@@ -2800,44 +3401,82 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-4
-    target_label: Article 4 — AI literacy of staff
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_4/2026-07-27
+    target_label: Article 4 — AI literacy
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_4/2026-07-27
+    relation: narrowMatch
+    review_status: agent-proposed
+  - framework: eu_ai_act
+    target_id: article-26-2
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_26/par_2/2026-07-27
+    target_label: Article 26(2) — assignment of human oversight to persons with the necessary competence,
+      training and authority
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_26/par_2/2026-07-27
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: iso_42001
-    target_id: A.4.2
-    target_label: A.4.2 Resources — human / competence and awareness
-    relation: exactMatch
-    review_status: unreviewed
+    target_id: A.4.6
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.4.6
+    target_label: A.4.6 Human resources
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: iso_42001
+    target_id: A.4.4
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.4.4
+    target_label: A.4.4 Tooling resources
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: iso_42001
+    target_id: A.3
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.3
+    target_label: A.3 Internal organization
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: aiuc1
     target_id: E.4
+    target_uri: https://taxonomy.eticas.ai/external/aiuc-1/E.4
     target_label: Assign accountability
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: coe_ai_convention
     target_id: article-16
-    target_label: Article 16 — Risk and impact management (capacity implied)
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-16
+    target_label: Article 16 — Risk and impact management framework
     relation: relatedMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
     target_id: map
-    target_label: MAP function — context and deployment environment
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/map
+    target_label: MAP function
     relation: relatedMatch
-    review_status: unreviewed
+    review_status: inherited
+  - framework: nist_rmf
+    target_id: govern-4
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/govern-4
+    target_label: 'GOVERN 4: Organizational teams are committed to a culture that considers and communicates
+      AI risk.'
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: nist_rmf
     target_id: govern-2
-    target_label: GOVERN 2 — accountability structures + GOVERN 4 workforce
-    relation: broadMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/govern-2
+    target_label: 'GOVERN 2: Accountability structures are in place so that the appropriate teams and
+      individuals are empowered, responsible, and trained for mapping, measuring, and managing AI risks.'
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: nist_rmf
+    target_id: map-1.4
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/map-1.4
+    target_label: 'MAP 1.4: The business value or context of business use has been clearly defined or
+      – in the case of assessing existing AI systems – re-evaluated.'
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: oecd
     target_id: recommendation-2.4
-    target_label: Building human capacity & preparing for labour-market transition
-    relation: closeMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: governance-skill-gaps
-    target_label: Non-technical → Governance + Skill gaps + Vendor risk
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/oecd-ai/recommendation-2.4
+    target_label: 2.4 Building human capacity and preparing for labour market transformation
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: org-preparedness
   type: subcategory
   broader: organisational-readiness
@@ -2854,19 +3493,46 @@ concepts:
   mappings:
   - framework: eu_ai_act
     target_id: article-4
-    target_label: Article 4 — AI literacy of staff
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_4/2026-07-27
+    target_label: Article 4 — AI literacy
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_4/2026-07-27
+    relation: narrowMatch
+    review_status: agent-proposed
   - framework: iso_42001
-    target_id: A.4.2
-    target_label: A.4.2 Resources — human / competence and awareness
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: A.4.6
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.4.6
+    target_label: A.4.6 Human resources
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: iso_42001
+    target_id: clause-7.2
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/clause-7.2
+    target_label: Clause 7.2 — Competence
+    relation: narrowMatch
+    review_status: agent-proposed
   - framework: nist_rmf
     target_id: govern-4
-    target_label: GOVERN 4 — culture and AI risk awareness
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/govern-4
+    target_label: 'GOVERN 4: Organizational teams are committed to a culture that considers and communicates
+      AI risk.'
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: nist_rmf
+    target_id: govern-2.2
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/govern-2.2
+    target_label: 'GOVERN 2.2: The organization’s personnel and partners receive AI risk management training
+      to enable them to perform their duties and responsibilities consistent with related policies, procedures,
+      and agreements.'
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: nist_rmf
+    target_id: map-3.4
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/map-3.4
+    target_label: 'MAP 3.4: Processes for operator and practitioner proficiency with AI system performance
+      and trustworthiness – and relevant technical standards and certifications – are defined, assessed,
+      and documented.'
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: technical-interoperability
   type: subcategory
   broader: organisational-readiness
@@ -2882,10 +3548,11 @@ concepts:
   - post-processing
   mappings:
   - framework: iso_42001
-    target_id: A.4.3
-    target_label: A.4.3 Tooling for AI systems
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: A.6.2.3
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.6.2.3
+    target_label: A.6.2.3 Documentation of AI system design and development
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: workflow-compatibility
   type: subcategory
   broader: organisational-readiness
@@ -2902,14 +3569,17 @@ concepts:
   mappings:
   - framework: iso_42001
     target_id: A.6.2.5
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.6.2.5
     target_label: A.6.2.5 AI system deployment
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
   - framework: nist_rmf
     target_id: map-3
-    target_label: MAP 3 — AI capabilities and use cases
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/map-3
+    target_label: 'MAP 3: AI capabilities, targeted usage, goals, and expected benefits and costs compared
+      with appropriate benchmarks are understood.'
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: deployment-sustainability
   type: subcategory
   broader: organisational-readiness
@@ -2926,19 +3596,23 @@ concepts:
   mappings:
   - framework: iso_42001
     target_id: A.10
+    target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.10
     target_label: A.10 Third-party and customer relationships
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
+  - framework: nist_rmf
+    target_id: manage-2.2
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/manage-2.2
+    target_label: 'MANAGE 2.2: Mechanisms are in place and applied to sustain the value of deployed AI
+      systems.'
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: nist_600
     target_id: value-chain
+    target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/value-chain
     target_label: Value Chain and Component Integration
-    relation: closeMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: vendor-lock-in
-    target_label: Non-technical → Vendor lock-in / dependency on third-party model
-    relation: closeMatch
-    review_status: unreviewed
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: institutional-capacity
   type: subcategory
   broader: organisational-readiness
@@ -2955,14 +3629,29 @@ concepts:
   mappings:
   - framework: oecd
     target_id: recommendation-2.4
-    target_label: Building human capacity & preparing for labour-market transition
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/oecd-ai/recommendation-2.4
+    target_label: 2.4 Building human capacity and preparing for labour market transformation
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: oecd
+    target_id: recommendation-2.2
+    target_uri: https://taxonomy.eticas.ai/external/oecd-ai/recommendation-2.2
+    target_label: 2.2 Fostering an inclusive AI-enabling ecosystem
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: oecd
+    target_id: recommendation-2.3-b
+    target_uri: https://taxonomy.eticas.ai/external/oecd-ai/recommendation-2.3-b
+    target_label: 2.3(b) Reviewing and adapting policy and regulatory frameworks and assessment mechanisms
+      for AI
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: subdomain-6.2
+    target_uri: https://airisk.mit.edu/domain/subdomain-6.2
     target_label: Increased inequality and decline in employment quality
     relation: relatedMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: agentic-ai
   type: category
   label: Agentic AI
@@ -2979,28 +3668,30 @@ concepts:
   maturity: established
   perspective: technical soundness
   mappings:
-  - framework: csa_agentic_profile
-    target_id: AG-MP.2-AG-MP.3-AG-GV.2
-    target_label: AG-MP.3 (Multi-Agent Topology Risk) + AG-MP.2 (Agent Action-Consequence Analysis) +
-      AG-GV.2 (Delegation Accountability)
-    relation: closeMatch
-    review_status: unreviewed
   - framework: owasp_agentic_top10
-    target_id: ASI01-ASI02-ASI03
-    target_label: ASI01 (Agent Goal Hijack) + ASI02 (Tool Misuse and Exploitation) + ASI03 (Identity and
-      Privilege Abuse)
-    relation: closeMatch
-    review_status: unreviewed
+    target_id: ASI01
+    target_uri: https://taxonomy.eticas.ai/external/owasp-agentic/ASI01
+    target_label: ASI01 Agent Goal Hijack
+    relation: narrowMatch
+    review_status: agent-proposed
+  - framework: owasp_agentic_top10
+    target_id: ASI02
+    target_uri: https://taxonomy.eticas.ai/external/owasp-agentic/ASI02
+    target_label: ASI02 Tool Misuse and Exploitation
+    relation: narrowMatch
+    review_status: agent-proposed
+  - framework: owasp_agentic_top10
+    target_id: ASI03
+    target_uri: https://taxonomy.eticas.ai/external/owasp-agentic/ASI03
+    target_label: ASI03 Identity and Privilege Abuse
+    relation: narrowMatch
+    review_status: agent-proposed
   - framework: air_2024
     target_id: L3-AutonomousUnsafeOperation
-    target_label: Operational Misuses → Autonomous Unsafe Operation of Systems
-    relation: closeMatch
-    review_status: unreviewed
-  - framework: ibm_atlas
-    target_id: agentic-explainability-robustness-efficiency
-    target_label: New and amplified risks of agentic AI — Explainability, Robustness, Computational Inefficiency
-    relation: closeMatch
-    review_status: unreviewed
+    target_uri: https://taxonomy.eticas.ai/external/air-2024/L3-AutonomousUnsafeOperation
+    target_label: Autonomous Unsafe Operation of Systems
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: agentic-actions-tool-use
   type: subgroup
   broader: agentic-ai
@@ -3008,6 +3699,13 @@ concepts:
   definition: Risks from the agent taking real-world actions through external tools, APIs, and services,
     including being granted excessive permissions, executing unnecessary or out-of-scope actions, bypassing
     human oversight, or consuming disproportionate resources.
+  mappings:
+  - framework: csa_agentic_profile
+    target_id: AG-MP.2
+    target_uri: https://taxonomy.eticas.ai/external/csa-agentic-profile/AG-MP.2
+    target_label: AG-MP.2 Agent Action-Consequence Analysis
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: unsafe-tool-calls
   type: subcategory
   broader: agentic-actions-tool-use
@@ -3021,6 +3719,13 @@ concepts:
   scope: LLM
   lifecycle_stages:
   - post-processing
+  mappings:
+  - framework: owasp_agentic_top10
+    target_id: ASI02
+    target_uri: https://taxonomy.eticas.ai/external/owasp-agentic/ASI02
+    target_label: ASI02 Tool Misuse and Exploitation
+    relation: closeMatch
+    review_status: agent-proposed
 - id: function-calling-hallucination
   type: subcategory
   broader: agentic-actions-tool-use
@@ -3047,6 +3752,13 @@ concepts:
   scope: LLM
   lifecycle_stages:
   - post-processing
+  mappings:
+  - framework: owasp_agentic_top10
+    target_id: ASI03
+    target_uri: https://taxonomy.eticas.ai/external/owasp-agentic/ASI03
+    target_label: ASI03 Identity and Privilege Abuse
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: scope-creep-goal-misalignment
   type: subcategory
   broader: agentic-actions-tool-use
@@ -3061,11 +3773,18 @@ concepts:
   lifecycle_stages:
   - post-processing
   mappings:
+  - framework: owasp_agentic_top10
+    target_id: ASI10
+    target_uri: https://taxonomy.eticas.ai/external/owasp-agentic/ASI10
+    target_label: ASI10 Rogue Agents
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: subdomain-7.1
-    target_label: AI pursuing its own goals
+    target_uri: https://airisk.mit.edu/domain/subdomain-7.1
+    target_label: AI pursuing its own goals in conflict with human goals or values
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: agentic-multi-agent-integrity
   type: subgroup
   broader: agentic-ai
@@ -3073,11 +3792,18 @@ concepts:
   definition: Risks from systems composed of multiple agents — including trust exploitation, cascading
     failures, goal misalignment between agents, and insufficient traceability across the pipeline.
   mappings:
+  - framework: csa_agentic_profile
+    target_id: AG-MP.3
+    target_uri: https://taxonomy.eticas.ai/external/csa-agentic-profile/AG-MP.3
+    target_label: AG-MP.3 Multi-Agent Topology Risk
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: subdomain-7.6
+    target_uri: https://airisk.mit.edu/domain/subdomain-7.6
     target_label: Multi-agent risks
     relation: closeMatch
-    review_status: unreviewed
+    review_status: inherited
 - id: trust-exploitation-between-agents
   type: subcategory
   broader: agentic-multi-agent-integrity
@@ -3091,6 +3817,13 @@ concepts:
   scope: LLM
   lifecycle_stages:
   - post-processing
+  mappings:
+  - framework: owasp_agentic_top10
+    target_id: ASI07
+    target_uri: https://taxonomy.eticas.ai/external/owasp-agentic/ASI07
+    target_label: ASI07 Insecure Inter-Agent Communication
+    relation: closeMatch
+    review_status: agent-proposed
 - id: untraceable-agent-actions
   type: subcategory
   broader: agentic-multi-agent-integrity
@@ -3105,3 +3838,10 @@ concepts:
   scope: LLM
   lifecycle_stages:
   - post-processing
+  mappings:
+  - framework: csa_agentic_profile
+    target_id: AG-GV.2
+    target_uri: https://taxonomy.eticas.ai/external/csa-agentic-profile/AG-GV.2
+    target_label: AG-GV.2 Delegation Accountability
+    relation: relatedMatch
+    review_status: agent-proposed

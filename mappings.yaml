@@ -10,9 +10,10 @@ frameworks:
   eu_ai_act:
     type: compliance
     name: EU AI Act (Regulation 2024/1689)
-    version: Regulation (EU) 2024/1689, OJ L 12.7.2024
-    url: https://artificialintelligenceact.eu
-    base_uri: https://w3id.org/dpv/legal/eu/aiact#
+    version: Consolidated text of 27 July 2026 (Regulation (EU) 2024/1689 as amended by Regulation (EU)
+      2026/1744)
+    url: https://eur-lex.europa.eu/eli/reg/2024/1689/2026-07-27
+    base_uri: http://data.europa.eu/eli/reg/2024/1689/
   iso_42001:
     type: compliance
     name: ISO/IEC 42001:2023 — AI Management System
@@ -64,7 +65,7 @@ frameworks:
   oecd:
     type: reference
     name: OECD AI Principles
-    version: 2024 revision
+    version: 2024 revision (3 May 2024)
     url: https://oecd.ai/en/ai-principles
     base_uri: https://taxonomy.eticas.ai/external/oecd-ai/
   tc260:
@@ -105,13 +106,8 @@ frameworks:
     version: 1.0 (June 2024)
     url: https://arxiv.org/abs/2406.17864
     base_uri: https://taxonomy.eticas.ai/external/air-2024/
-    paper: 'Zeng et al., AIR 2024: A Safety Risk Taxonomy for AI'
-  ibm_atlas:
-    type: taxonomy
-    name: IBM AI Risk Atlas
-    version: 2024-2025 (integrated into IBM Risk Atlas Nexus)
-    url: https://www.ibm.com/docs/en/watsonx/saas?topic=ai-risk-atlas
-    base_uri: https://taxonomy.eticas.ai/external/ibm-risk-atlas/
+    paper: 'Zeng et al., AI Risk Categorization Decoded (AIR 2024): From Government Regulations to Corporate
+      Policies'
   dpv_ai:
     type: taxonomy
     name: W3C Data Privacy Vocabulary — AI Extension

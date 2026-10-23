@@ -56,15 +56,15 @@ concepts:
     target_uri: http://data.europa.eu/eli/reg/2024/1689/art_10/par_2/pnt_f/2026-07-27
     target_label: Article 10(2)(f) — examination of data sets in view of possible biases
     target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_10/par_2/pnt_f/2026-07-27
-    relation: narrowMatch
-    review_status: agent-proposed
+    relation: relatedMatch
+    review_status: reviewed
   - framework: eu_ai_act
     target_id: article-10-2g
     target_uri: http://data.europa.eu/eli/reg/2024/1689/art_10/par_2/pnt_g/2026-07-27
     target_label: Article 10(2)(g) — measures to detect, prevent and mitigate possible biases
     target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_10/par_2/pnt_g/2026-07-27
-    relation: narrowMatch
-    review_status: agent-proposed
+    relation: relatedMatch
+    review_status: reviewed
   - framework: iso_42001
     target_id: A.7.4
     target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.7.4
@@ -635,8 +635,8 @@ concepts:
     target_id: 3.3.2a
     target_uri: https://taxonomy.eticas.ai/external/tc260/3.3.2a
     target_label: §3.3.2(a) Aggravating social bias and widening intelligence divide
-    relation: closeMatch
-    review_status: agent-proposed
+    relation: relatedMatch
+    review_status: reviewed
   - framework: mit
     target_id: subdomain-6.5
     target_uri: https://airisk.mit.edu/domain/subdomain-6.5
@@ -829,8 +829,8 @@ concepts:
     target_uri: https://w3id.org/dpv/risk#IllegalDataProcessing
     target_label: Illegal Data Processing
     target_url: https://w3c.github.io/dpv/2.3/risk/#IllegalDataProcessing
-    relation: closeMatch
-    review_status: agent-proposed
+    relation: broadMatch
+    review_status: reviewed
 - id: confidential-data-use-violation
   type: subcategory
   broader: privacy-collection-use
@@ -2556,12 +2556,6 @@ concepts:
     relation: relatedMatch
     review_status: agent-proposed
   - framework: iso_42001
-    target_id: clause-10
-    target_uri: https://taxonomy.eticas.ai/external/iso-42001/clause-10
-    target_label: Clause 10 — Improvement
-    relation: relatedMatch
-    review_status: agent-proposed
-  - framework: iso_42001
     target_id: A.8.4
     target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.8.4
     target_label: A.8.4 Communication of incidents
@@ -2706,8 +2700,8 @@ concepts:
     target_id: principle-1.1
     target_uri: https://taxonomy.eticas.ai/external/oecd-ai/principle-1.1
     target_label: 1.1 Inclusive growth, sustainable development and well-being
-    relation: broadMatch
-    review_status: agent-proposed
+    relation: relatedMatch
+    review_status: reviewed
   - framework: tc260
     target_id: 3.3.1b
     target_uri: https://taxonomy.eticas.ai/external/tc260/3.3.1b
@@ -2827,8 +2821,8 @@ concepts:
     target_id: A.8
     target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.8
     target_label: A.8 Information for interested parties of AI systems
-    relation: closeMatch
-    review_status: agent-proposed
+    relation: relatedMatch
+    review_status: reviewed
   - framework: aiuc1
     target_id: E.16
     target_uri: https://taxonomy.eticas.ai/external/aiuc-1/E.16
@@ -3019,8 +3013,8 @@ concepts:
     target_uri: https://w3id.org/dpv/legal/eu/gdpr#A22-3-c
     target_label: A22 Right to contest decision
     target_url: https://w3c.github.io/dpv/2.3/legal/eu/gdpr/#A22-3-c
-    relation: narrowMatch
-    review_status: agent-proposed
+    relation: relatedMatch
+    review_status: reviewed
 - id: transparency-communication
   type: subgroup
   broader: transparency-explainability
@@ -3237,8 +3231,8 @@ concepts:
     target_label: Article 14(4)(b) — awareness of the tendency to rely or over-rely on the system's output
       (automation bias)
     target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_14/par_4/pnt_b/2026-07-27
-    relation: closeMatch
-    review_status: agent-proposed
+    relation: relatedMatch
+    review_status: reviewed
   - framework: nist_600
     target_id: human-ai-configuration
     target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/human-ai-configuration
@@ -3400,13 +3394,6 @@ concepts:
   perspective: operational viability
   mappings:
   - framework: eu_ai_act
-    target_id: article-4
-    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_4/2026-07-27
-    target_label: Article 4 — AI literacy
-    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_4/2026-07-27
-    relation: narrowMatch
-    review_status: agent-proposed
-  - framework: eu_ai_act
     target_id: article-26-2
     target_uri: http://data.europa.eu/eli/reg/2024/1689/art_26/par_2/2026-07-27
     target_label: Article 26(2) — assignment of human oversight to persons with the necessary competence,
@@ -3414,6 +3401,13 @@ concepts:
     target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_26/par_2/2026-07-27
     relation: relatedMatch
     review_status: agent-proposed
+  - framework: eu_ai_act
+    target_id: article-4
+    target_uri: http://data.europa.eu/eli/reg/2024/1689/art_4/2026-07-27
+    target_label: Article 4 — AI literacy
+    target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_4/2026-07-27
+    relation: relatedMatch
+    review_status: reviewed
   - framework: iso_42001
     target_id: A.4.6
     target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.4.6
@@ -3496,8 +3490,8 @@ concepts:
     target_uri: http://data.europa.eu/eli/reg/2024/1689/art_4/2026-07-27
     target_label: Article 4 — AI literacy
     target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_4/2026-07-27
-    relation: narrowMatch
-    review_status: agent-proposed
+    relation: relatedMatch
+    review_status: reviewed
   - framework: iso_42001
     target_id: A.4.6
     target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.4.6
@@ -3508,8 +3502,8 @@ concepts:
     target_id: clause-7.2
     target_uri: https://taxonomy.eticas.ai/external/iso-42001/clause-7.2
     target_label: Clause 7.2 — Competence
-    relation: narrowMatch
-    review_status: agent-proposed
+    relation: relatedMatch
+    review_status: reviewed
   - framework: nist_rmf
     target_id: govern-4
     target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/govern-4

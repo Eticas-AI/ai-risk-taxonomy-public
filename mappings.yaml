@@ -29,7 +29,7 @@ frameworks:
   coe_ai_convention:
     type: compliance
     name: Council of Europe Framework Convention on AI (CETS No. 225)
-    version: Adopted May 2024
+    version: CETS No. 225, Vilnius, 5 September 2024
     url: https://www.coe.int/en/web/artificial-intelligence/the-framework-convention-on-artificial-intelligence
     base_uri: https://taxonomy.eticas.ai/external/coe-cets-225/
   ieee_7001:
@@ -76,8 +76,8 @@ frameworks:
     base_uri: https://taxonomy.eticas.ai/external/tc260/
   csa_agentic_profile:
     type: reference
-    name: CSA Agentic Profile (NIST AI RMF v1)
-    version: v1 (2025)
+    name: NIST AI Risk Management Framework — Agentic Profile (CSA)
+    version: Draft white paper, 2026-03-27
     url: https://labs.cloudsecurityalliance.org/agentic/agentic-nist-ai-rmf-profile-v1/
     base_uri: https://taxonomy.eticas.ai/external/csa-agentic-profile/
   owasp_agentic_top10:

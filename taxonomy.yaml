@@ -80,7 +80,7 @@ concepts:
   - framework: coe_ai_convention
     target_id: article-10
     target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-10
-    target_label: Article 10 — Equality and non-discrimination
+    target_label: Article 10 – Equality and non-discrimination
     relation: closeMatch
     review_status: inherited
   - framework: ieee_7003
@@ -399,6 +399,12 @@ concepts:
     target_label: Prevent customer-defined high-risk outputs
     relation: narrowMatch
     review_status: inherited
+  - framework: coe_ai_convention
+    target_id: article-10-2
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-10-2
+    target_label: Article 10(2)
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: nist_rmf
     target_id: fair
     target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/fair
@@ -476,6 +482,12 @@ concepts:
     target_label: A.5.2 AI system impact assessment process
     relation: closeMatch
     review_status: inherited
+  - framework: coe_ai_convention
+    target_id: article-10-1
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-10-1
+    target_label: Article 10(1)
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: nist_rmf
     target_id: fair
     target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/fair
@@ -613,6 +625,12 @@ concepts:
     target_label: Monitor AI risk categories
     relation: relatedMatch
     review_status: inherited
+  - framework: coe_ai_convention
+    target_id: article-10-2
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-10-2
+    target_label: Article 10(2)
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: nist_rmf
     target_id: systemic-bias
     target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/systemic-bias
@@ -702,7 +720,7 @@ concepts:
   - framework: coe_ai_convention
     target_id: article-11
     target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-11
-    target_label: Article 11 — Privacy and personal data protection
+    target_label: Article 11 – Privacy and personal data protection
     relation: closeMatch
     review_status: inherited
   - framework: ieee_7002
@@ -812,6 +830,12 @@ concepts:
     target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_4a/par_1/2026-07-27
     relation: relatedMatch
     review_status: agent-proposed
+  - framework: coe_ai_convention
+    target_id: article-11-a
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-11-a
+    target_label: Article 11(a)
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: tc260
     target_id: 3.1.2a
     target_uri: https://taxonomy.eticas.ai/external/tc260/3.1.2a
@@ -915,6 +939,12 @@ concepts:
     target_label: Implement customer data policies
     relation: closeMatch
     review_status: inherited
+  - framework: coe_ai_convention
+    target_id: article-11-a
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-11-a
+    target_label: Article 11(a)
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: re-identification
   type: subcategory
   broader: privacy-data-protection
@@ -929,6 +959,12 @@ concepts:
   - pre-processing
   - post-processing
   mappings:
+  - framework: coe_ai_convention
+    target_id: article-11-a
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-11-a
+    target_label: Article 11(a)
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: nist_600
     target_id: data-privacy
     target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/data-privacy
@@ -1011,6 +1047,12 @@ concepts:
     target_label: Prevent PII leakage
     relation: exactMatch
     review_status: inherited
+  - framework: coe_ai_convention
+    target_id: article-11-a
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-11-a
+    target_label: Article 11(a)
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: nist_600
     target_id: data-privacy
     target_uri: https://taxonomy.eticas.ai/external/nist-ai-600-1/data-privacy
@@ -1079,7 +1121,7 @@ concepts:
   - framework: coe_ai_convention
     target_id: article-12
     target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-12
-    target_label: Article 12 — Reliability
+    target_label: Article 12 – Reliability
     relation: broadMatch
     review_status: unreviewed
   - framework: nist_rmf
@@ -1138,6 +1180,12 @@ concepts:
     target_label: Prevent hallucinated outputs
     relation: closeMatch
     review_status: inherited
+  - framework: coe_ai_convention
+    target_id: article-12
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-12
+    target_label: Article 12 – Reliability
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: nist_rmf
     target_id: valid-reliable
     target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/valid-reliable
@@ -1356,6 +1404,12 @@ concepts:
     target_label: Monitor AI risk categories
     relation: closeMatch
     review_status: inherited
+  - framework: coe_ai_convention
+    target_id: article-16-2e
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-16-2e
+    target_label: Article 16(2)(e)
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: nist_rmf
     target_id: manage-4.1
     target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/manage-4.1
@@ -1403,6 +1457,12 @@ concepts:
     target_label: Prevent harmful outputs
     relation: relatedMatch
     review_status: inherited
+  - framework: coe_ai_convention
+    target_id: article-7
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-7
+    target_label: Article 7 – Human dignity and individual autonomy
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: mit
     target_id: subdomain-4.3
     target_uri: https://airisk.mit.edu/domain/subdomain-4.3
@@ -1431,6 +1491,12 @@ concepts:
     target_uri: http://data.europa.eu/eli/reg/2024/1689/art_50/2026-07-27
     target_label: Article 50 — Transparency obligations for providers and deployers of certain AI systems
     target_url: https://eur-lex.europa.eu/eli/reg/2024/1689/art_50/2026-07-27
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: coe_ai_convention
+    target_id: article-8
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-8
+    target_label: Article 8 – Transparency and oversight
     relation: relatedMatch
     review_status: agent-proposed
   - framework: nist_600
@@ -1651,9 +1717,15 @@ concepts:
   - framework: coe_ai_convention
     target_id: article-9
     target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-9
-    target_label: Article 9 — Accountability and responsibility
+    target_label: Article 9 – Accountability and responsibility
     relation: closeMatch
     review_status: unreviewed
+  - framework: coe_ai_convention
+    target_id: article-16
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-16
+    target_label: Article 16 – Risk and impact management framework
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: nist_rmf
     target_id: govern-function
     target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/govern-function
@@ -1710,6 +1782,12 @@ concepts:
     target_label: Assign accountability
     relation: closeMatch
     review_status: inherited
+  - framework: coe_ai_convention
+    target_id: article-9
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-9
+    target_label: Article 9 – Accountability and responsibility
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: nist_rmf
     target_id: govern-function
     target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/govern-function
@@ -1748,6 +1826,12 @@ concepts:
     target_label: Assign accountability
     relation: closeMatch
     review_status: inherited
+  - framework: coe_ai_convention
+    target_id: article-9
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-9
+    target_label: Article 9 – Accountability and responsibility
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: nist_rmf
     target_id: govern-2.1
     target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/govern-2.1
@@ -1776,6 +1860,18 @@ concepts:
     target_label: A.5.2 AI system impact assessment process
     relation: closeMatch
     review_status: inherited
+  - framework: coe_ai_convention
+    target_id: article-16-3
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-16-3
+    target_label: Article 16(3)
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: coe_ai_convention
+    target_id: article-16-2e
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-16-2e
+    target_label: Article 16(2)(e)
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: nist_rmf
     target_id: manage-4.3
     target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/manage-4.3
@@ -1857,6 +1953,18 @@ concepts:
     target_label: Document system transparency policy
     relation: closeMatch
     review_status: inherited
+  - framework: coe_ai_convention
+    target_id: article-16-2f
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-16-2f
+    target_label: Article 16(2)(f)
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: coe_ai_convention
+    target_id: article-14-2a
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-14-2a
+    target_label: Article 14(2)(a)
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: limited-auditability
   type: subcategory
   broader: governance-documentation
@@ -2001,6 +2109,12 @@ concepts:
     target_label: A.6.2.6 AI system operation and monitoring
     relation: closeMatch
     review_status: inherited
+  - framework: coe_ai_convention
+    target_id: article-16-2g
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-16-2g
+    target_label: Article 16(2)(g)
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: nist_rmf
     target_id: manage-4.1
     target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/manage-4.1
@@ -2044,6 +2158,12 @@ concepts:
     target_id: A.6.2.2
     target_uri: https://taxonomy.eticas.ai/external/iso-42001/A.6.2.2
     target_label: A.6.2.2 AI system requirements and specification
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: coe_ai_convention
+    target_id: article-16-2g
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-16-2g
+    target_label: Article 16(2)(g)
     relation: relatedMatch
     review_status: agent-proposed
   - framework: nist_rmf
@@ -2157,6 +2277,12 @@ concepts:
     target_label: Flag high-risk outputs for human review
     relation: closeMatch
     review_status: inherited
+  - framework: coe_ai_convention
+    target_id: article-8
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-8
+    target_label: Article 8 – Transparency and oversight
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: nist_rmf
     target_id: govern-3.2
     target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/govern-3.2
@@ -2227,7 +2353,7 @@ concepts:
   - framework: coe_ai_convention
     target_id: article-12
     target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-12
-    target_label: Article 12 — Reliability
+    target_label: Article 12 – Reliability
     relation: relatedMatch
     review_status: unreviewed
   - framework: nist_rmf
@@ -2832,7 +2958,7 @@ concepts:
   - framework: coe_ai_convention
     target_id: article-8
     target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-8
-    target_label: Article 8 — Transparency and oversight
+    target_label: Article 8 – Transparency and oversight
     relation: closeMatch
     review_status: unreviewed
   - framework: ieee_7001
@@ -2968,6 +3094,30 @@ concepts:
     target_label: Implement AI disclosure mechanisms
     relation: closeMatch
     review_status: inherited
+  - framework: coe_ai_convention
+    target_id: article-14-2b
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-14-2b
+    target_label: Article 14(2)(b)
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: coe_ai_convention
+    target_id: article-15-1
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-15-1
+    target_label: Article 15(1)
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: coe_ai_convention
+    target_id: article-14-2c
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-14-2c
+    target_label: Article 14(2)(c)
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: coe_ai_convention
+    target_id: article-14-2a
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-14-2a
+    target_label: Article 14(2)(a)
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: nist_rmf
     target_id: accountable-transparent
     target_uri: https://taxonomy.eticas.ai/external/nist-ai-rmf/accountable-transparent
@@ -3093,6 +3243,12 @@ concepts:
     target_label: Document system transparency policy
     relation: closeMatch
     review_status: inherited
+  - framework: coe_ai_convention
+    target_id: article-14-2a
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-14-2a
+    target_label: Article 14(2)(a)
+    relation: relatedMatch
+    review_status: agent-proposed
 - id: ai-interaction-disclosure
   type: subcategory
   broader: transparency-communication
@@ -3121,6 +3277,18 @@ concepts:
     target_label: Implement AI disclosure mechanisms
     relation: closeMatch
     review_status: inherited
+  - framework: coe_ai_convention
+    target_id: article-15-2
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-15-2
+    target_label: Article 15(2)
+    relation: relatedMatch
+    review_status: agent-proposed
+  - framework: coe_ai_convention
+    target_id: article-8
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-8
+    target_label: Article 8 – Transparency and oversight
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: tc260
     target_id: 3.2.2b
     target_uri: https://taxonomy.eticas.ai/external/tc260/3.2.2b
@@ -3166,13 +3334,13 @@ concepts:
   - framework: coe_ai_convention
     target_id: article-7
     target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-7
-    target_label: Article 7 — Human dignity and individual autonomy
+    target_label: Article 7 – Human dignity and individual autonomy
     relation: broadMatch
     review_status: unreviewed
   - framework: coe_ai_convention
     target_id: article-8
     target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-8
-    target_label: Article 8 — Transparency and oversight
+    target_label: Article 8 – Transparency and oversight
     relation: relatedMatch
     review_status: unreviewed
   - framework: nist_rmf
@@ -3363,6 +3531,12 @@ concepts:
     target_label: Flag high-risk outputs for human review
     relation: closeMatch
     review_status: inherited
+  - framework: coe_ai_convention
+    target_id: article-8
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-8
+    target_label: Article 8 – Transparency and oversight
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: oecd
     target_id: principle-1.4-b
     target_uri: https://taxonomy.eticas.ai/external/oecd-ai/principle-1.4-b
@@ -3435,7 +3609,7 @@ concepts:
   - framework: coe_ai_convention
     target_id: article-16
     target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-16
-    target_label: Article 16 — Risk and impact management framework
+    target_label: Article 16 – Risk and impact management framework
     relation: relatedMatch
     review_status: inherited
   - framework: nist_rmf
@@ -3621,6 +3795,12 @@ concepts:
   lifecycle_stages:
   - pre-processing
   mappings:
+  - framework: coe_ai_convention
+    target_id: article-20
+    target_uri: https://taxonomy.eticas.ai/external/coe-cets-225/article-20
+    target_label: Article 20 – Digital literacy and skills
+    relation: relatedMatch
+    review_status: agent-proposed
   - framework: oecd
     target_id: recommendation-2.4
     target_uri: https://taxonomy.eticas.ai/external/oecd-ai/recommendation-2.4

@@ -3913,6 +3913,13 @@ concepts:
   scope: LLM
   lifecycle_stages:
   - post-processing
+  mappings:
+  - framework: mit
+    target_id: subdomain-7.3
+    target_uri: https://airisk.mit.edu/domain/subdomain-7.3
+    target_label: Lack of capability or robustness
+    relation: broadMatch
+    review_status: agent-proposed
 - id: excessive-agency
   type: subcategory
   broader: agentic-actions-tool-use
@@ -4004,6 +4011,12 @@ concepts:
     target_label: ASI07 Insecure Inter-Agent Communication
     relation: closeMatch
     review_status: agent-proposed
+  - framework: mit
+    target_id: subdomain-7.6
+    target_uri: https://airisk.mit.edu/domain/subdomain-7.6
+    target_label: Multi-agent risks
+    relation: broadMatch
+    review_status: agent-proposed
 - id: untraceable-agent-actions
   type: subcategory
   broader: agentic-multi-agent-integrity
@@ -4024,4 +4037,10 @@ concepts:
     target_uri: https://taxonomy.eticas.ai/external/csa-agentic-profile/AG-GV.2
     target_label: AG-GV.2 Delegation Accountability
     relation: relatedMatch
+    review_status: agent-proposed
+  - framework: mit
+    target_id: subdomain-7.4
+    target_uri: https://airisk.mit.edu/domain/subdomain-7.4
+    target_label: Lack of transparency or interpretability
+    relation: broadMatch
     review_status: agent-proposed

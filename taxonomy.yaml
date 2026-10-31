@@ -3933,6 +3933,12 @@ concepts:
     target_label: ASI03 Identity and Privilege Abuse
     relation: relatedMatch
     review_status: agent-proposed
+  - framework: mit
+    target_id: subdomain-7.2
+    target_uri: https://airisk.mit.edu/domain/subdomain-7.2
+    target_label: AI possessing dangerous capabilities
+    relation: closeMatch
+    review_status: agent-proposed
 - id: scope-creep-goal-misalignment
   type: subcategory
   broader: agentic-actions-tool-use

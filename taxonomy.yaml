@@ -3937,8 +3937,8 @@ concepts:
     target_id: subdomain-7.2
     target_uri: https://airisk.mit.edu/domain/subdomain-7.2
     target_label: AI possessing dangerous capabilities
-    relation: closeMatch
-    review_status: agent-proposed
+    relation: relatedMatch
+    review_status: reviewed
 - id: scope-creep-goal-misalignment
   type: subcategory
   broader: agentic-actions-tool-use

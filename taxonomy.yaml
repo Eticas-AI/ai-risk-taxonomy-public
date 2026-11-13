@@ -1,6 +1,10 @@
 # Eticas AI Risk Taxonomy — public source (generated from the private
 # repository; do not edit here).
 #
+# Each concept's `type` is its level: dimension (the roots), group (an optional
+# grouping inside a dimension) or category (a named risk). Until v5.11.0 these
+# were category, subgroup and subcategory (CHANGELOG 6.0.0).
+#
 # Each concept's `mappings` list is computed from the mapping records:
 #   framework      key of the framework in mappings.yaml
 #   target_id      the part mapped to, as the framework's file names it
@@ -16,7 +20,7 @@
 
 concepts:
 - id: bias-fairness
-  type: category
+  type: dimension
   label: Bias & Fairness
   alt_labels:
   - Fairness
@@ -125,7 +129,7 @@ concepts:
     target_url: https://w3c.github.io/dpv/2.3/ai/#AIBias
     relation: closeMatch
 - id: geographic-cultural-language-skew
-  type: subcategory
+  type: category
   broader: bias-representational-harm
   maturity: established
   label: Geographic, cultural, or language skew
@@ -162,7 +166,7 @@ concepts:
     target_url: https://w3c.github.io/dpv/2.3/ai/#NonRepresentativeSamplingBias
     relation: closeMatch
 - id: feedback-loops
-  type: subcategory
+  type: category
   broader: bias-dynamic-systemic-bias
   maturity: established
   label: Feedback loops reinforcing inequality
@@ -194,7 +198,7 @@ concepts:
     target_label: Systemic bias
     relation: relatedMatch
 - id: stereotyping-demeaning-content
-  type: subcategory
+  type: category
   broader: bias-representational-harm
   maturity: emerging
   label: Stereotyping and demeaning content
@@ -228,7 +232,7 @@ concepts:
     target_label: Offensive Language
     relation: relatedMatch
 - id: harmful-content-toxicity
-  type: subcategory
+  type: category
   broader: bias-representational-harm
   maturity: emerging
   label: Harmful content and toxicity
@@ -276,7 +280,7 @@ concepts:
     target_label: Hate/Toxicity
     relation: closeMatch
 - id: sentiment-fairness
-  type: subcategory
+  type: category
   broader: bias-representational-harm
   maturity: emerging
   label: Sentiment and quality disparity across groups
@@ -297,7 +301,7 @@ concepts:
     target_url: https://airisk.mit.edu/navigator#/subdomain/1-1
     relation: broadMatch
 - id: performance-equity
-  type: subcategory
+  type: category
   broader: bias-outcome-disparities
   maturity: emerging
   label: Differential performance across populations
@@ -337,7 +341,7 @@ concepts:
     target_url: https://airisk.mit.edu/navigator#/subdomain/1-3
     relation: closeMatch
 - id: bias-outcome-disparities
-  type: subgroup
+  type: group
   broader: bias-fairness
   label: Outcome disparities
   definition: Risks related to unequal treatment, allocation, or performance outcomes across demographic
@@ -400,7 +404,7 @@ concepts:
     target_url: https://w3c.github.io/dpv/2.3/ai/#DataBias
     relation: relatedMatch
 - id: disparate-impact-protected-groups
-  type: subcategory
+  type: category
   broader: bias-outcome-disparities
   maturity: established
   label: Disparate impact on protected groups
@@ -475,7 +479,7 @@ concepts:
     target_url: https://w3c.github.io/dpv/2.3/risk/#Discrimination
     relation: closeMatch
 - id: bias-representational-harm
-  type: subgroup
+  type: group
   broader: bias-fairness
   label: Representational harm
   definition: Risks related to how the system represents groups in its outputs — through stereotypes,
@@ -505,7 +509,7 @@ concepts:
     target_url: https://w3c.github.io/dpv/2.3/ai/#NonRepresentativeSamplingBias
     relation: relatedMatch
 - id: homogenization-output-across-groups
-  type: subcategory
+  type: category
   broader: bias-representational-harm
   maturity: emerging
   label: Homogenization of output across groups
@@ -529,7 +533,7 @@ concepts:
     target_url: https://airisk.mit.edu/navigator#/subdomain/6-3
     relation: relatedMatch
 - id: bias-dynamic-systemic-bias
-  type: subgroup
+  type: group
   broader: bias-fairness
   label: Dynamic & Systemic bias
   definition: Risks related to how bias is amplified or perpetuated over time through interaction between
@@ -598,7 +602,7 @@ concepts:
     target_url: https://airisk.mit.edu/navigator#/subdomain/6-5
     relation: relatedMatch
 - id: privacy-confidentiality
-  type: category
+  type: dimension
   label: Privacy & Confidentiality
   alt_labels:
   - Privacy
@@ -607,7 +611,7 @@ concepts:
     that infringe on individuals'' rights to control their data (privacy), or that sensitive information
     is exposed, accessed, or shared without authorization (confidentiality). This includes risks from
     data leakage, re-identification, unauthorized use, or insufficient safeguards. On the confidentiality
-    side the category covers confidential information the system holds or is given - in particular customer,
+    side the dimension covers confidential information the system holds or is given - in particular customer,
     partner or third-party data entrusted under contract, NDA or similar terms of use; confidentiality
     as a general security property of the system (authentication, credential handling, endpoint hardening)
     is not a privacy risk and is not covered here.
@@ -703,7 +707,7 @@ concepts:
     target_url: https://w3c.github.io/dpv/2.3/dpv/#PersonalDataHandling
     relation: relatedMatch
 - id: privacy-collection-use
-  type: subgroup
+  type: group
   broader: privacy-confidentiality
   label: Data collection & use
   definition: Risks from how personal data, and data entrusted to the system under terms of use, is obtained,
@@ -722,7 +726,7 @@ concepts:
     target_url: https://w3c.github.io/dpv/2.3/dpv/#Collect
     relation: relatedMatch
 - id: unlawful-data-processing
-  type: subcategory
+  type: category
   broader: privacy-collection-use
   maturity: established
   label: Unlawful collection or processing of personal data
@@ -772,7 +776,7 @@ concepts:
     target_url: https://w3c.github.io/dpv/2.3/risk/#IllegalDataProcessing
     relation: broadMatch
 - id: confidential-data-use-violation
-  type: subcategory
+  type: category
   broader: privacy-collection-use
   maturity: emerging
   label: Use of confidential data outside its sharing terms
@@ -795,7 +799,7 @@ concepts:
     target_label: Implement customer data policies
     relation: closeMatch
 - id: privacy-data-protection
-  type: subgroup
+  type: group
   broader: privacy-confidentiality
   label: Data protection
   definition: Risks from how stored personal data, and data entrusted to the system under terms of use,
@@ -817,7 +821,7 @@ concepts:
     target_label: Data Privacy
     relation: closeMatch
 - id: weak-data-controls
-  type: subcategory
+  type: category
   broader: privacy-data-protection
   maturity: established
   label: Weak data retention, erasure, and access controls
@@ -855,7 +859,7 @@ concepts:
     target_url: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202601081#art_11
     relation: relatedMatch
 - id: re-identification
-  type: subcategory
+  type: category
   broader: privacy-data-protection
   maturity: established
   label: Re-identification of anonymised data
@@ -892,7 +896,7 @@ concepts:
     target_url: https://w3c.github.io/dpv/2.3/risk/#Reidentification
     relation: exactMatch
 - id: privacy-model-level
-  type: subgroup
+  type: group
   broader: privacy-confidentiality
   label: Model-level privacy
   definition: Risks from the model exposing personal or confidential information through its outputs.
@@ -921,7 +925,7 @@ concepts:
     note: Open-source tool for detecting and filtering personally identifiable information in LLM inputs
       and outputs.
 - id: sensitive-information-leakage
-  type: subcategory
+  type: category
   broader: privacy-model-level
   maturity: established
   label: Sensitive information leakage through model outputs
@@ -984,7 +988,7 @@ concepts:
     target_url: https://w3c.github.io/dpv/2.3/risk/#UnauthorisedDataDisclosure
     relation: closeMatch
 - id: reliability
-  type: category
+  type: dimension
   label: Reliability
   alt_labels:
   - Validity and Reliability
@@ -1060,7 +1064,7 @@ concepts:
     note: Benchmark for evaluating LLM reliability and accuracy in professional healthcare contexts. Useful
       when auditing AI systems deployed in health domains.
 - id: reliability-output-quality
-  type: subgroup
+  type: group
   broader: reliability
   label: Output Integrity and Robustness
   definition: Risks including hallucinations, output inconsistency, model drift, and out-of-distribution
@@ -1088,7 +1092,7 @@ concepts:
     target_label: Confabulation
     relation: narrowMatch
 - id: hallucination
-  type: subcategory
+  type: category
   broader: reliability-output-quality
   maturity: established
   label: Hallucination and fabricated outputs
@@ -1131,7 +1135,7 @@ concepts:
     target_url: https://airisk.mit.edu/navigator#/subdomain/3-1
     relation: closeMatch
 - id: output-inconsistency
-  type: subcategory
+  type: category
   broader: reliability-output-quality
   maturity: established
   label: Output inconsistency
@@ -1154,7 +1158,7 @@ concepts:
     target_label: Valid and Reliable
     relation: broadMatch
 - id: output-drift
-  type: subcategory
+  type: category
   broader: reliability-output-quality
   maturity: established
   label: Output drift over time
@@ -1172,7 +1176,7 @@ concepts:
     target_label: A.6.2.6 AI system operation and monitoring
     relation: closeMatch
 - id: out-of-distribution-robustness
-  type: subcategory
+  type: category
   broader: reliability-output-quality
   maturity: emerging
   label: Out-of-distribution robustness
@@ -1198,7 +1202,7 @@ concepts:
     target_url: https://airisk.mit.edu/navigator#/subdomain/7-3
     relation: broadMatch
 - id: task-performance
-  type: subcategory
+  type: category
   broader: reliability-output-quality
   maturity: emerging
   label: Task performance
@@ -1214,7 +1218,7 @@ concepts:
   lifecycle_stages:
   - post-processing
 - id: failure-remediation-gaps
-  type: subcategory
+  type: category
   broader: governance-compliance
   maturity: emerging
   label: Failure and remediation gaps
@@ -1247,7 +1251,7 @@ concepts:
       for the identified and measured AI risks are documented and monitored regularly.'
     relation: relatedMatch
 - id: monitoring-evaluation-gaps
-  type: subcategory
+  type: category
   broader: governance-compliance
   maturity: emerging
   label: Monitoring and evaluation gaps
@@ -1299,7 +1303,7 @@ concepts:
     target_url: https://w3c.github.io/dpv/2.3/risk/#MonitorControl
     relation: relatedMatch
 - id: behavioural-manipulation
-  type: subcategory
+  type: category
   broader: security-harmful-misuse
   maturity: emerging
   label: Behavioural manipulation
@@ -1345,7 +1349,7 @@ concepts:
     target_label: Manipulation
     relation: relatedMatch
 - id: synthetic-media-abuse
-  type: subcategory
+  type: category
   broader: security-harmful-misuse
   maturity: emerging
   label: Synthetic media abuse
@@ -1399,7 +1403,7 @@ concepts:
     target_label: Mis/disinformation
     relation: relatedMatch
 - id: csam-ncii-generation
-  type: subcategory
+  type: category
   broader: security-harmful-misuse
   maturity: emerging
   label: CSAM and NCII generation
@@ -1432,7 +1436,7 @@ concepts:
     target_label: Obscene, Degrading, and/or Abusive Content
     relation: broadMatch
 - id: reliability-resilience
-  type: subgroup
+  type: group
   broader: reliability
   label: Operational Resilience
   definition: Risks related to the system's ability to absorb disruption, degrade gracefully, and recover.
@@ -1467,7 +1471,7 @@ concepts:
     target_url: https://airisk.mit.edu/navigator#/subdomain/7-3
     relation: broadMatch
 - id: graceful-degradation
-  type: subcategory
+  type: category
   broader: reliability-resilience
   maturity: emerging
   label: Graceful degradation
@@ -1479,7 +1483,7 @@ concepts:
   lifecycle_stages:
   - post-processing
 - id: infrastructure-dependency
-  type: subcategory
+  type: category
   broader: reliability-resilience
   maturity: emerging
   label: Infrastructure dependency
@@ -1491,7 +1495,7 @@ concepts:
   lifecycle_stages:
   - post-processing
 - id: measurement-validity
-  type: subgroup
+  type: group
   broader: reliability
   maturity: emerging
   label: Measurement validity
@@ -1501,11 +1505,11 @@ concepts:
     internally consistent, and factually accurate yet still fail to measure what it claims. Especially
     salient for assessment, scoring, grading, and ranking systems, where the output IS a measurement.
     Follows the standard validity framework — content, criterion, construct, external, consequential validity
-    (Lissitz & Samuelsen, 2007); subcategories below operationalise specific validity types as audit-tractable
+    (Lissitz & Samuelsen, 2007); categories below operationalise specific validity types as audit-tractable
     risks.
   source: Eticas (Wiselook engagement, 2026-06; restructured Usman Gohar, July 2026)
 - id: construct-validity
-  type: subcategory
+  type: category
   broader: measurement-validity
   maturity: emerging
   label: Construct validity of evaluative outputs
@@ -1519,7 +1523,7 @@ concepts:
   - post-processing
   source: Eticas (Wiselook engagement, 2026-06)
 - id: governance
-  type: category
+  type: dimension
   label: Governance
   alt_labels:
   - Accountability
@@ -1610,7 +1614,7 @@ concepts:
     target_url: https://w3c.github.io/dpv/2.3/dpv/#AIGovernance
     relation: relatedMatch
 - id: governance-accountability
-  type: subgroup
+  type: group
   broader: governance
   label: Accountability
   definition: Risks from unclear allocation of responsibility, weak human oversight, and inadequate attribution
@@ -1643,7 +1647,7 @@ concepts:
     target_label: 1.5 Accountability
     relation: closeMatch
 - id: unclear-responsibilities
-  type: subcategory
+  type: category
   broader: governance-accountability
   maturity: established
   label: Unclear responsibilities and accountability gaps
@@ -1680,7 +1684,7 @@ concepts:
       the organization.'
     relation: relatedMatch
 - id: oversight-of-adverse-impacts
-  type: subcategory
+  type: category
   broader: governance-accountability
   maturity: emerging
   label: Oversight of significant adverse impacts
@@ -1718,7 +1722,7 @@ concepts:
       are followed and documented.'
     relation: relatedMatch
 - id: governance-documentation
-  type: subgroup
+  type: group
   broader: governance
   label: Documentation & auditability
   definition: Risks from incomplete, inaccessible, or absent documentation and audit trails.
@@ -1746,7 +1750,7 @@ concepts:
       to the mapping, measuring, and managing of AI risks are in place, transparent, and implemented effectively.'
     relation: closeMatch
 - id: poor-documentation
-  type: subcategory
+  type: category
   broader: governance-documentation
   maturity: established
   label: Poor documentation
@@ -1795,7 +1799,7 @@ concepts:
     target_url: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202601081#art_14
     relation: relatedMatch
 - id: limited-auditability
-  type: subcategory
+  type: category
   broader: governance-documentation
   maturity: established
   label: Limited auditability
@@ -1829,7 +1833,7 @@ concepts:
     target_label: Accountable and Transparent
     relation: broadMatch
 - id: governance-compliance
-  type: subgroup
+  type: group
   broader: governance
   label: Compliance & process
   definition: Risks from gaps in organisational processes for ongoing oversight, compliance, and lifecycle
@@ -1876,7 +1880,7 @@ concepts:
     target_url: https://w3c.github.io/dpv/2.3/risk/#RiskManagement
     relation: relatedMatch
 - id: regulatory-non-compliance
-  type: subcategory
+  type: category
   broader: governance-compliance
   maturity: established
   label: Regulatory non-compliance
@@ -1906,7 +1910,7 @@ concepts:
     target_label: Document regulatory compliance
     relation: closeMatch
 - id: lack-of-change-management
-  type: subcategory
+  type: category
   broader: governance-compliance
   maturity: established
   label: Lack of change management
@@ -1937,7 +1941,7 @@ concepts:
       decommissioning, incident response, recovery, and change management.'
     relation: relatedMatch
 - id: fitness-for-purpose
-  type: subcategory
+  type: category
   broader: governance-compliance
   maturity: emerging
   label: Fitness for purpose and task effectiveness
@@ -2002,7 +2006,7 @@ concepts:
       purposes and stated objectives and whether its development or deployment should proceed.'
     relation: relatedMatch
 - id: data-governance
-  type: subcategory
+  type: category
   broader: governance-compliance
   maturity: emerging
   label: Data governance
@@ -2034,7 +2038,7 @@ concepts:
       representativeness, suitability), system trustworthiness, and construct validation.'
     relation: relatedMatch
 - id: human-oversight-control
-  type: subcategory
+  type: category
   broader: governance-accountability
   maturity: emerging
   label: Human oversight and control
@@ -2112,7 +2116,7 @@ concepts:
     target_url: https://airisk.mit.edu/navigator#/subdomain/5-2
     relation: relatedMatch
 - id: security-misuse
-  type: category
+  type: dimension
   label: Security & Misuse
   alt_labels:
   - Safety, Security & Misuse
@@ -2192,7 +2196,7 @@ concepts:
     target_url: https://w3c.github.io/dpv/2.3/ai/#SecurityAttack
     relation: narrowMatch
 - id: security-ai-attacks
-  type: subgroup
+  type: group
   broader: security-misuse
   label: Adversarial Threats & Attacks
   definition: The risks that arise from adversarial inputs, injected instructions, bypassed safety controls,
@@ -2228,7 +2232,7 @@ concepts:
     target_url: https://w3c.github.io/dpv/2.3/ai/#SecurityAttack
     relation: closeMatch
 - id: evasion-attacks
-  type: subcategory
+  type: category
   broader: security-ai-attacks
   maturity: established
   label: Guardrail evasion
@@ -2269,7 +2273,7 @@ concepts:
     target_url: https://w3c.github.io/dpv/2.3/ai/#ModelEvasion
     relation: narrowMatch
 - id: prompt-injection
-  type: subcategory
+  type: category
   broader: security-ai-attacks
   maturity: established
   label: Prompt injection
@@ -2301,7 +2305,7 @@ concepts:
     target_url: https://w3c.github.io/dpv/2.3/ai/#SecurityAttack
     relation: broadMatch
 - id: jailbreaking
-  type: subcategory
+  type: category
   broader: security-ai-attacks
   maturity: established
   label: Jailbreaking
@@ -2328,7 +2332,7 @@ concepts:
     target_url: https://airisk.mit.edu/navigator#/subdomain/2-2
     relation: broadMatch
 - id: data-poisoning
-  type: subcategory
+  type: category
   broader: security-ai-attacks
   maturity: established
   label: Data poisoning
@@ -2378,7 +2382,7 @@ concepts:
     target_url: https://w3c.github.io/dpv/2.3/ai/#DataPoisoning
     relation: exactMatch
 - id: security-system
-  type: subgroup
+  type: group
   broader: security-misuse
   label: Infrastructure & System security
   definition: The risks that arise from unauthorised access, vulnerable third-party components, or over-disclosure
@@ -2396,7 +2400,7 @@ concepts:
     target_label: Information Security
     relation: closeMatch
 - id: supply-chain-vulnerabilities
-  type: subcategory
+  type: category
   broader: governance-accountability
   maturity: established
   label: Supply-chain vulnerabilities
@@ -2427,7 +2431,7 @@ concepts:
     target_label: Value Chain and Component Integration
     relation: closeMatch
 - id: incident-response-gaps
-  type: subcategory
+  type: category
   broader: governance-compliance
   maturity: established
   label: Incident response gaps
@@ -2469,7 +2473,7 @@ concepts:
     target_url: https://w3c.github.io/dpv/2.3/dpv/#IncidentManagementProcedures
     relation: relatedMatch
 - id: security-harmful-misuse
-  type: subgroup
+  type: group
   broader: security-misuse
   label: Harmful & Malicious Misuse
   definition: Risks from deliberate misuse of the AI system to generate harmful content, manipulate users,
@@ -2519,7 +2523,7 @@ concepts:
     target_label: Manipulation
     relation: narrowMatch
 - id: environmental-impact
-  type: category
+  type: dimension
   label: Environmental Impact
   alt_labels:
   - Sustainability
@@ -2586,7 +2590,7 @@ concepts:
     target_url: https://airisk.mit.edu/navigator#/subdomain/6-6
     relation: exactMatch
 - id: inference-energy-consumption
-  type: subcategory
+  type: category
   broader: environmental-impact
   maturity: emerging
   label: Inference-time energy consumption
@@ -2611,7 +2615,7 @@ concepts:
     target_url: https://airisk.mit.edu/navigator#/subdomain/6-6
     relation: broadMatch
 - id: training-resource-consumption
-  type: subcategory
+  type: category
   broader: environmental-impact
   maturity: emerging
   label: Training resource consumption
@@ -2636,7 +2640,7 @@ concepts:
     target_url: https://airisk.mit.edu/navigator#/subdomain/6-6
     relation: broadMatch
 - id: hardware-efficiency
-  type: subcategory
+  type: category
   broader: environmental-impact
   maturity: emerging
   label: Hardware efficiency
@@ -2661,7 +2665,7 @@ concepts:
     target_label: Environmental Impacts
     relation: relatedMatch
 - id: transparency-explainability
-  type: category
+  type: dimension
   label: Transparency & Explainability
   alt_labels:
   - Explainability & Transparency
@@ -2737,7 +2741,7 @@ concepts:
     target_url: https://w3c.github.io/dpv/2.3/ai/#TransparencyRisk
     relation: exactMatch
 - id: transparency-explainability-group
-  type: subgroup
+  type: group
   broader: transparency-explainability
   label: Explainability
   definition: Risks from stakeholders being unable to understand why the system produces specific outputs.
@@ -2760,7 +2764,7 @@ concepts:
     target_url: https://w3c.github.io/dpv/2.3/ai/#ExplainabilityRisk
     relation: closeMatch
 - id: system-explainability
-  type: subcategory
+  type: category
   broader: transparency-explainability-group
   maturity: emerging
   label: AI system explainability
@@ -2785,7 +2789,7 @@ concepts:
     target_url: https://w3c.github.io/dpv/2.3/ai/#ExplainabilityRisk
     relation: closeMatch
 - id: right-to-explanation-contestation
-  type: subcategory
+  type: category
   broader: transparency-explainability-group
   maturity: established
   label: Right to explanation and contestation
@@ -2884,7 +2888,7 @@ concepts:
     target_url: https://w3c.github.io/dpv/2.3/legal/eu/gdpr/#A22-3-c
     relation: relatedMatch
 - id: transparency-communication
-  type: subgroup
+  type: group
   broader: transparency-explainability
   label: Communication & disclosure
   definition: Risks from inadequate communication about system capabilities, limitations, and AI involvement.
@@ -2921,7 +2925,7 @@ concepts:
     target_label: 1.3(ii) Awareness of interactions with AI systems
     relation: relatedMatch
 - id: stakeholder-communication
-  type: subcategory
+  type: category
   broader: transparency-communication
   maturity: emerging
   label: Inadequate disclosure of system capabilities and limitations
@@ -2959,7 +2963,7 @@ concepts:
     target_url: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202601081#art_14
     relation: relatedMatch
 - id: ai-interaction-disclosure
-  type: subcategory
+  type: category
   broader: transparency-communication
   maturity: emerging
   label: Disclosure of AI interaction and synthetic content
@@ -3002,7 +3006,7 @@ concepts:
     target_label: §3.2.2(b) Distortion of facts and user deception
     relation: broadMatch
 - id: autonomy-agency
-  type: category
+  type: dimension
   label: Human Agency & Control
   alt_labels:
   - Autonomy & Agency
@@ -3085,7 +3089,7 @@ concepts:
   definition: Over-reliance on automated outputs, accepting AI recommendations without sufficient scrutiny,
     leading to missed errors and reduced human judgment.
   scope: ALL
-  type: subcategory
+  type: category
   broader: autonomy-agency
   maturity: emerging
   lifecycle_stages:
@@ -3120,7 +3124,7 @@ concepts:
   definition: Inappropriate levels of trust in AI outputs — either excessive trust leading to uncritical
     acceptance, or insufficient trust leading to underuse of valuable AI capabilities.
   scope: ALL
-  type: subcategory
+  type: category
   broader: autonomy-agency
   maturity: emerging
   lifecycle_stages:
@@ -3142,7 +3146,7 @@ concepts:
   definition: Erosion of human skills, expertise, or professional judgment through prolonged delegation
     of tasks to AI systems.
   scope: ALL
-  type: subcategory
+  type: category
   broader: autonomy-agency
   maturity: emerging
   lifecycle_stages:
@@ -3165,7 +3169,7 @@ concepts:
     evaluate the decision without it, so its errors pass through and its unavailability leaves the decision
     untaken.
   scope: ALL
-  type: subcategory
+  type: category
   broader: autonomy-agency
   maturity: emerging
   lifecycle_stages:
@@ -3195,7 +3199,7 @@ concepts:
     the pace, volume, or complexity of the system's decisions exceeds what a person can meaningfully assess,
     interrupt, or reverse before they take effect.
   scope: ALL
-  type: subcategory
+  type: category
   broader: autonomy-agency
   maturity: emerging
   lifecycle_stages:
@@ -3237,7 +3241,7 @@ concepts:
     target_url: https://airisk.mit.edu/navigator#/subdomain/5-2
     relation: relatedMatch
 - id: organisational-readiness
-  type: category
+  type: dimension
   label: Organisational Readiness
   alt_labels:
   - Integration Readiness
@@ -3322,7 +3326,7 @@ concepts:
     target_label: 2.4 Building human capacity and preparing for labour market transformation
     relation: relatedMatch
 - id: org-preparedness
-  type: subcategory
+  type: category
   broader: organisational-readiness
   maturity: emerging
   label: Organisational preparedness
@@ -3372,7 +3376,7 @@ concepts:
       and documented.'
     relation: relatedMatch
 - id: technical-interoperability
-  type: subcategory
+  type: category
   broader: organisational-readiness
   maturity: emerging
   label: Technical interoperability
@@ -3391,7 +3395,7 @@ concepts:
     target_label: A.6.2.3 Documentation of AI system design and development
     relation: relatedMatch
 - id: workflow-compatibility
-  type: subcategory
+  type: category
   broader: organisational-readiness
   maturity: emerging
   label: Workflow compatibility
@@ -3416,7 +3420,7 @@ concepts:
       with appropriate benchmarks are understood.'
     relation: relatedMatch
 - id: deployment-sustainability
-  type: subcategory
+  type: category
   broader: organisational-readiness
   maturity: emerging
   label: Deployment sustainability
@@ -3446,7 +3450,7 @@ concepts:
     target_label: Value Chain and Component Integration
     relation: relatedMatch
 - id: institutional-capacity
-  type: subcategory
+  type: category
   broader: organisational-readiness
   maturity: emerging
   label: Institutional absorptive capacity
@@ -3488,7 +3492,7 @@ concepts:
     target_url: https://airisk.mit.edu/navigator#/subdomain/6-2
     relation: relatedMatch
 - id: agentic-ai
-  type: category
+  type: dimension
   label: Agentic AI
   alt_labels:
   - AI Agents
@@ -3524,7 +3528,7 @@ concepts:
     target_label: Autonomous Unsafe Operation of Systems
     relation: relatedMatch
 - id: agentic-actions-tool-use
-  type: subgroup
+  type: group
   broader: agentic-ai
   label: Autonomous Actions and Tool Use
   definition: Risks from the agent taking real-world actions through external tools, APIs, and services,
@@ -3537,7 +3541,7 @@ concepts:
     target_label: AG-MP.2 Agent Action-Consequence Analysis
     relation: relatedMatch
 - id: unsafe-tool-calls
-  type: subcategory
+  type: category
   broader: agentic-actions-tool-use
   maturity: established
   label: Unsafe or unauthorised tool calls
@@ -3556,7 +3560,7 @@ concepts:
     target_label: ASI02 Tool Misuse and Exploitation
     relation: closeMatch
 - id: function-calling-hallucination
-  type: subcategory
+  type: category
   broader: agentic-actions-tool-use
   maturity: established
   label: Function calling hallucination
@@ -3576,7 +3580,7 @@ concepts:
     target_url: https://airisk.mit.edu/navigator#/subdomain/7-3
     relation: broadMatch
 - id: excessive-agency
-  type: subcategory
+  type: category
   broader: agentic-actions-tool-use
   maturity: established
   label: Excessive agency
@@ -3601,7 +3605,7 @@ concepts:
     target_url: https://airisk.mit.edu/navigator#/subdomain/7-2
     relation: relatedMatch
 - id: scope-creep-goal-misalignment
-  type: subcategory
+  type: category
   broader: agentic-actions-tool-use
   maturity: established
   label: Scope creep and goal misalignment
@@ -3626,7 +3630,7 @@ concepts:
     target_url: https://airisk.mit.edu/navigator#/subdomain/7-1
     relation: closeMatch
 - id: agentic-multi-agent-integrity
-  type: subgroup
+  type: group
   broader: agentic-ai
   label: Multi-agent Integrity
   definition: Risks from systems composed of multiple agents — including trust exploitation, cascading
@@ -3644,7 +3648,7 @@ concepts:
     target_url: https://airisk.mit.edu/navigator#/subdomain/7-6
     relation: closeMatch
 - id: trust-exploitation-between-agents
-  type: subcategory
+  type: category
   broader: agentic-multi-agent-integrity
   maturity: established
   label: Trust exploitation between agents
@@ -3669,7 +3673,7 @@ concepts:
     target_url: https://airisk.mit.edu/navigator#/subdomain/7-6
     relation: broadMatch
 - id: untraceable-agent-actions
-  type: subcategory
+  type: category
   broader: agentic-multi-agent-integrity
   maturity: established
   label: Unexplainable and untraceable actions
